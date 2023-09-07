@@ -7,34 +7,32 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('CartItems', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
-        type: Sequelize.STRING(30),
-        allowNull: false,
-        unique: true
+      quantity: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1
       },
-      email: {
-        type: Sequelize.STRING(256),
-        allowNull: false,
-        unique: true
+      productId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'ProductListings',
+          key: 'id'
+        },
+      onDelete: 'CASCADE'
       },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
-        allowNull: false
-      },
-      firstName: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      lastName: {
-        type: Sequelize.STRING,
-        allowNull: false
+      shoppingCartId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'ShoppingCarts',
+          key: 'id'
+        },
+      onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -50,7 +48,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName = "Users";
+    options.tableName = "CartItems";
     return queryInterface.dropTable(options);
   }
 };
