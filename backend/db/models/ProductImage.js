@@ -2,20 +2,20 @@
 const { Model, Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class ProductImages extends Model {
+  class ProductImage extends Model {
     static associate(models) {
-      ProductImages.belongsTo(models.ProductListing, { foreignKey: 'productId' })
+      ProductImage.belongsTo(models.ProductListing, { foreignKey: 'productId' })
     }
   };
 
-  ProductImages.init(
+  ProductImage.init(
     {
       url: DataTypes.STRING,
       productId: DataTypes.INTEGER
     },
     {
       sequelize,
-      modelName: "ProductImages",
+      modelName: "ProductImage",
       // defaultScope: {
       //   attributes: {
       //     exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
       // }
     }
   );
-  return ProductImages;
+  return ProductImage;
 };
