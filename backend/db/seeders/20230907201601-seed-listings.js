@@ -64,14 +64,26 @@ module.exports = {
         name: 'Daisy',
         description: "When Daisy loves, she loves hard. Make sure you're ready for her before you purchase.",
         price: 1000,
-        userId: 1
+        userId: 7
       },
       {
         name: 'Madame President',
         description: "You can't get any better than this 2,000 lb beauty. She'll be there to when you need guidance, when you need a hand, or when you're thirsty for some milk.",
         price: 2500,
+        userId: 7
+      },
+      {
+        name: 'Cupcake',
+        description: "Need a cow?",
+        price: 1100,
         userId: 1
       },
+      {
+        name: 'Moo',
+        description: "It's a cow",
+        price: 1111,
+        userId: 5
+      }
       
     ], { validate: true });
   },
@@ -81,7 +93,7 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       name: { [Op.in]: ['Sweetie Pie', 'Marshmallow', 'Sugarplum', 'Peaches', 'Tater Tot', 'Snickerdoodle', 'Bubblegum', 
-      'Bonbon', 'Daisy', 'Madame President'] }
+      'Bonbon', 'Daisy', 'Madame President', 'Cupcake', 'Moo'] }
     }, {});
   }
 };
