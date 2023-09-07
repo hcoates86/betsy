@@ -4,7 +4,8 @@ const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class CartItem extends Model {
     static associate(models) {
-      // define association here
+        CartItem.belongsTo(models.ShoppingCart, { foreignKey: 'shoppingCartId' })
+        CartItem.belongsTo(models.ProductListing, { foreignKey: 'productId' })
     }
   };
 

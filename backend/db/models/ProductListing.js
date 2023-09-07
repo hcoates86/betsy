@@ -4,7 +4,11 @@ const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class ProductListing extends Model {
     static associate(models) {
-      // define association here
+      ProductListing.hasMany(models.Review, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
+      ProductListing.hasMany(models.ProductImage, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
+      ProductListing.hasOne(models.CartItem, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
+      ProductListing.belongsTo(models.User, { foreignKey: 'userId' });
+
     }
   };
 
