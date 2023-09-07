@@ -14,6 +14,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      comment: {
+        type: Sequelize.TEXT
+      },
+      stars: {
+        type: Sequelize.INTEGER
+      },
       productId: {
         type: Sequelize.INTEGER,
         references: {
@@ -30,12 +36,6 @@ module.exports = {
       },
         onDelete: 'CASCADE'
       },
-      review: {
-        type: Sequelize.TEXT
-      },
-      stars: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -49,8 +49,7 @@ module.exports = {
     }, options);
   },
   
-  async down(queryInterface, Sequelize) {
-    options.tableName = "Reviews";
-    await queryInterface.dropTable(options);
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Reviews', options); // and here
   }
 };
