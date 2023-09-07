@@ -59,7 +59,6 @@ module.exports = {
         url: 'https://ibb.co/ySST4WN',
         productId: 12
       }
-
       
     ], { validate: true });
   },
@@ -68,7 +67,19 @@ module.exports = {
     options.tableName = 'ProductImages';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      hashedPassword: { [Op.in]: ['password'] }
+      url: { [Op.in]: [
+      'https://ibb.co/QkRJ6yZ',
+      'https://ibb.co/DCVtQMm',
+      'https://ibb.co/Qjfj02j',
+      'https://ibb.co/6J2CjD1',
+      'https://ibb.co/qk9J8BV',
+      'https://ibb.co/Y3QJBmF',
+      'https://ibb.co/vsrDcxX',
+      'https://ibb.co/FxxcwKB',
+      'https://ibb.co/92JbprW',
+      'https://ibb.co/XJtqs2Y',
+      'https://ibb.co/ySST4WN'
+      ] }
     }, {});
   }
 };
