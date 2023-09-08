@@ -10,9 +10,9 @@ const routes = require('./routes');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
-const app = express();
-
 const { ValidationError } = require('sequelize');
+
+const app = express();
 
 app.use(morgan('dev'));
 
