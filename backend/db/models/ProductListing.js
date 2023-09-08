@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "ProductListing",
       // defaultScope: {
       //   attributes: {
-      //     exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
+      //     exclude: ["createdAt", "updatedAt"]
       //   }
       // }
     }
