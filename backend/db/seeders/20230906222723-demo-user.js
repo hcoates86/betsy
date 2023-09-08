@@ -67,7 +67,7 @@ module.exports = {
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      hashedPassword: { [Op.in]: ['password'] }
+      email: { [Op.like]: ['%@user.io'] }
     }, {});
   }
 };
