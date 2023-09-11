@@ -118,18 +118,41 @@ router.post('/:productId/images', requireAuth, properAuth, async (req, res, next
     res.json(newImage)
 })
 
-//post review to a specific listing
-router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
+
+//get all reviews for a specific listing
+router.get('/:productId/reviews', async (req, res, next) => {
+  
     const listing = await ProductListing.findByPk(req.params.productId);
     const reviews = await listing.getReviews({ raw: true });
 
-    for (let review of reviews) {
-        const currReview = await Review.findByPk(review.id);
-        review.user = await User.findByPk(review.userId)
+    const reviewArray = [];
 
+    for (let review of reviews) {
+        review.user = await User.findByPk(review.userId, {attributes: ['username', 'picture']})
+
+        reviewArray.push(review)
     }
+    if (!reviewArray.length) res.json('No reviews')
+    res.json(reviewArray)
+
 
 })
+
+//post review to a specific listing
+router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
+    const { comment, stars } = req.body
+
+    const newReview = Review.create({
+        comment, stars,
+        userId: req.user.id,
+        productId: req.params.productId
+    })
+
+    res.json(newReview)
+
+})
+
+
 
 
 module.exports = router;
