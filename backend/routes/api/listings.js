@@ -50,7 +50,7 @@ router.get('/', async (req, res, next) => {
 //post a new product listing
 router.post('/new', requireAuth, async (req, res, next) => {
     //implement posting category later
-    const { name, description, price } = req.body;
+    const { name, description, price, quantity } = req.body;
 
     const newProduct = await ProductListing.create({
         userId: req.user.id,
@@ -62,7 +62,7 @@ router.post('/new', requireAuth, async (req, res, next) => {
 
 //edit product
 router.put('/:productId', requireAuth, properAuth, async (req, res, next) => {
-    const { name, description, price } = req.body;
+    const { name, description, price, quantity } = req.body;
 
     const listing = ProductListing.findByPk(req.params.productId);
     listing.set({
@@ -80,7 +80,7 @@ router.get('/:productId',  async (req, res, next) => {
     const listing = await ProductListing.findByPk(id, {raw: true});
 
     const images = await listing.getProductImages({ attributes: ['id', 'url']})
-    const poster = await listing.getUser({ attributes: ['id', 'username']})
+    const poster = await listing.getUser({ attributes: ['id', 'username', 'picture']})
 
     const totalReviews = await listing.countReviews();
     const totalStars = await Review.sum('stars', { where: { productId: id }})
@@ -132,11 +132,13 @@ router.get('/:productId/reviews', async (req, res, next) => {
 
         reviewArray.push(review)
     }
-    if (!reviewArray.length) res.json('No reviews')
+    
     res.json(reviewArray)
 
 
 })
+
+//get all reviews for a user's listings
 
 //post review to a specific listing
 router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
