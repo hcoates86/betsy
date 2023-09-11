@@ -1,9 +1,21 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
+const { requireAuth } = require('../../utils/auth');
 const { ProductListing, ProductImage, Review, User } = require('../../db/models');
 
 const router = express.Router();
+
+const properAuth = async (req, res, next) => {
+    const error = new Error("Product Listing does not belong to the current user");
+    const listing = await ProductListing.findByPk(req.params.productId);
+    error.status = 401;
+    error.title = "Permission denied"
+    if (req.user.id !== listing.userId) next(error)
+    else next()
+
+}
+
 
 //get all listings
 router.get('/', async (req, res, next) => {
@@ -36,7 +48,7 @@ router.get('/', async (req, res, next) => {
 
 
 //post a new product listing
-router.post('/new', async (req, res, next) => {
+router.post('/new', requireAuth, async (req, res, next) => {
     //implement posting category later
     const { name, description, price } = req.body;
 
@@ -48,7 +60,8 @@ router.post('/new', async (req, res, next) => {
     res.json(newProduct)
 })
 
-router.put('/:productId',  async (req, res, next) => {
+//edit product
+router.put('/:productId', requireAuth, properAuth, async (req, res, next) => {
     const { name, description, price } = req.body;
 
     const listing = ProductListing.findByPk(req.params.productId);
@@ -83,6 +96,38 @@ router.get('/:productId',  async (req, res, next) => {
     }
 
     res.json(newListing)
+
+})
+
+router.delete('/:productId', requireAuth, properAuth, async (req, res, next) => {
+    const listing = await ProductListing.findByPk(req.params.productId);
+    await listing.destroy()
+    res.status(200)
+    res.json("Deleted Product Listing")
+})
+
+//post image to a specific listing
+router.post('/:productId/images', requireAuth, properAuth, async (req, res, next) => {
+    const { url } = req.body;
+
+    const newImage = await ProductImage.create({
+        url,
+        productId: req.params.productId
+    })
+
+    res.json(newImage)
+})
+
+//post review to a specific listing
+router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
+    const listing = await ProductListing.findByPk(req.params.productId);
+    const reviews = await listing.getReviews({ raw: true });
+
+    for (let review of reviews) {
+        const currReview = await Review.findByPk(review.id);
+        review.user = await User.findByPk(review.userId)
+
+    }
 
 })
 
