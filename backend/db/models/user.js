@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Review, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
       User.hasMany(models.ProductListing, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
       User.hasOne(models.ShoppingCart, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
-
+      User.hasMany(models.Order, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
     }
   };
 

@@ -77,7 +77,7 @@ router.put('/:productId', requireAuth, properAuth, async (req, res, next) => {
 //get single product listing
 router.get('/:productId',  async (req, res, next) => {
     const id = req.params.productId;
-    const listing = await ProductListing.findByPk(id, {raw: true});
+    const listing = await ProductListing.findByPk(id);
 
     const images = await listing.getProductImages({ attributes: ['id', 'url']})
     const poster = await listing.getUser({ attributes: ['id', 'username', 'picture']})
@@ -88,7 +88,7 @@ router.get('/:productId',  async (req, res, next) => {
 
 
     const newListing = {
-        ...listing,
+        ...listing.dataValues,
         totalReviews,
         averageStars,
         images,
@@ -132,7 +132,7 @@ router.get('/:productId/reviews', async (req, res, next) => {
 
         reviewArray.push(review)
     }
-    
+
     res.json(reviewArray)
 
 
