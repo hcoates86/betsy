@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       ProductListing.hasMany(models.Order, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.hasOne(models.CartItem, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.belongsTo(models.User, { foreignKey: 'userId' });
-
     }
   };
 

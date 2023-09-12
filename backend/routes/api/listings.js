@@ -34,15 +34,14 @@ router.get('/', async (req, res, next) => {
             avgStars = Number.parseFloat(avgStars).toFixed(1);
         }
         //gets all images in an array of objects
-        let image = await currentProduct.getProductImages({ attributes: ['url'] })
+        let images = await currentProduct.getProductImages({ attributes: ['id', 'url'] })
 
         product.averageStars = avgStars
-        //sets first image, if null set placeholder on frontend
-        product.image = image[0].url || null;
+        product.image = images
 
         productArray.push(product);
     }
-    res.json({productArray})
+    res.json(productArray)
 
 })
 
@@ -54,7 +53,7 @@ router.post('/new', requireAuth, async (req, res, next) => {
 
     const newProduct = await ProductListing.create({
         userId: req.user.id,
-        name, description, price
+        name, description, price, quantity
     })
     res.status(201)
     res.json(newProduct)
@@ -66,7 +65,7 @@ router.put('/:productId', requireAuth, properAuth, async (req, res, next) => {
 
     const listing = ProductListing.findByPk(req.params.productId);
     listing.set({
-        name, description, price
+        name, description, price, quantity
     });
     await listing.save();
     res.json(listing);
