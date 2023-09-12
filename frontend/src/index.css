@@ -1,4 +1,24 @@
-/* TODO Add site wide styles */
 .hidden {
     display: hidden;
+}
+
+.errors {
+    color: red;
+    margin: 0;
+}
+
+.button-white {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border: 2px;
+    border-radius: 7px;
+}
+
+.button-black {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    border: 0;
+    border-radius: 7px;
 }

@@ -31,21 +31,24 @@ const HomePage = () => {
 
     return (
         <div>
+        <div className='popular-div'>
             <h1>The popular crowd</h1>
             {popular.map(listing => (
                 <div>
-                    <ListingItem listing/>
+                    <ListingItem listing={listing}/>
                 </div>
-            ))
-            }
+            ))}
+        </div>  
 
+        <div className='gift-div'>
             <h1>The Betsy Gift Guide</h1>
             <h2>Shop these unique cows</h2>
             {giftGuide.map(listing => (
                 <div>
-                    <ListingItem listing/>
+                    <ListingItem listing={listing}/>
                 </div>
             ))}
+        </div>    
 
         </div>
     )
