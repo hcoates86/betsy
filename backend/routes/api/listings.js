@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
         let avgStars;
         const currentProduct = await ProductListing.findByPk(product.id);
         const reviewTotal = await currentProduct.countReviews();
-        //check what etsy does for no reviews
+        //check what etsy does for no reviews- just leaves stars out entirely
         if (!reviewTotal) avgStars = 0;
         else {
             const average = await Review.sum('stars', { where: { productId: product.id }});
