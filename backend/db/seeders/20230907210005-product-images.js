@@ -12,53 +12,50 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await ProductImage.bulkCreate([
       {
-        url: 'https://ibb.co/QkRJ6yZ',
+        url: 'https://i.ibb.co/xY02Mxy/1.png',
         productId: 1
       },
       {
-        url: 'https://ibb.co/DCVtQMm',
+        url: 'https://i.ibb.co/T8vkt0J/2.png',
         productId: 2
       },
       {
-        url: 'https://ibb.co/Qjfj02j',
+        url: 'https://i.ibb.co/G303mK3/3.png',
         productId: 3
       },
       {
-        url: 'https://ibb.co/6J2CjD1',
+        url: 'https://i.ibb.co/vvbn0LQ/4.png',
         productId: 4
       },
       {
-        url: 'https://ibb.co/qk9J8BV',
+        url: 'https://i.ibb.co/nzfPyrt/5.png',
         productId: 5
       },
       {
-        url: 'https://ibb.co/Y3QJBmF',
+        url: 'https://i.ibb.co/47tCRzn/6.png',
         productId: 6
       },
       {
-        url: 'https://ibb.co/XJtqs2Y',
+        url: 'https://i.ibb.co/RhM7gpj/7.png',
         productId: 7
       },
       {
-        url: 'https://ibb.co/vsrDcxX',
+        url: 'https://i.ibb.co/f11Zp2C/8.png',
         productId: 8
       },
       {
-        url: 'https://ibb.co/FxxcwKB',
+        url: 'https://i.ibb.co/MpbcgC7/9.png',
         productId: 9
       },
       {
-        url: 'https://ibb.co/92JbprW',
+        url: 'https://i.ibb.co/MN7mV2B/10.png',
         productId: 10
       },
       {
-        url: 'https://ibb.co/ySST4WN',
+        url: 'https://i.ibb.co/QddBDrJ/11.png',
         productId: 11
       },
-      {
-        url: 'https://ibb.co/ySST4WN',
-        productId: 12
-      }
+  
       
     ], { validate: true });
   },
@@ -68,17 +65,18 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       url: { [Op.in]: [
-      'https://ibb.co/QkRJ6yZ',
-      'https://ibb.co/DCVtQMm',
-      'https://ibb.co/Qjfj02j',
-      'https://ibb.co/6J2CjD1',
-      'https://ibb.co/qk9J8BV',
-      'https://ibb.co/Y3QJBmF',
-      'https://ibb.co/vsrDcxX',
-      'https://ibb.co/FxxcwKB',
-      'https://ibb.co/92JbprW',
-      'https://ibb.co/XJtqs2Y',
-      'https://ibb.co/ySST4WN'
+      'https://i.ibb.co/xY02Mxy/1.png',
+      'https://i.ibb.co/T8vkt0J/2.png',
+      'https://i.ibb.co/G303mK3/3.png',
+      'https://i.ibb.co/vvbn0LQ/4.png',
+      'https://i.ibb.co/nzfPyrt/5.png',
+      'https://i.ibb.co/47tCRzn/6.png',
+      'https://i.ibb.co/RhM7gpj/7.png',
+      'https://i.ibb.co/f11Zp2C/8.png',
+      'https://i.ibb.co/MpbcgC7/9.png',
+      'https://i.ibb.co/MN7mV2B/10.png',
+      'https://i.ibb.co/QddBDrJ/11.png'
+
       ] }
     }, {});
   }

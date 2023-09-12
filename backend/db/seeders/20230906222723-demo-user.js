@@ -16,7 +16,7 @@ module.exports = {
         username: 'Demo-lition',
         firstName: 'Demo',
         lastName: 'Lition',
-        picture:'https://ibb.co/S7jCfdJ',
+        picture:'https://i.ibb.co/XkQRY3V/1.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -24,7 +24,7 @@ module.exports = {
         username: 'Bethy2',
         firstName: 'Elizabeth',
         lastName: 'Sanchez',
-        picture:'https://ibb.co/d6hGz4M',
+        picture:'https://i.ibb.co/ftc4PdF/2.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -32,7 +32,7 @@ module.exports = {
         username: 'RuthM',
         firstName: 'Ruth',
         lastName: 'Matthews',
-        picture:'https://ibb.co/jb5PL20',
+        picture:'https://i.ibb.co/ZGJphP4/3.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -40,7 +40,7 @@ module.exports = {
         username: 'Jess87',
         firstName: 'Jessica',
         lastName: 'Oneill',
-        picture:'https://ibb.co/Sy87hq1',
+        picture:'https://i.ibb.co/B3xKX87/4.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -48,7 +48,7 @@ module.exports = {
         username: 'Shannononon',
         firstName: 'Ethel',
         lastName: 'Shannon',
-        picture:'https://ibb.co/x153PWf',
+        picture:'https://i.ibb.co/6HsNVz1/5.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -56,7 +56,7 @@ module.exports = {
         username: 'Jaxjax',
         firstName: 'George',
         lastName: 'Middleton',
-        picture:'https://ibb.co/SmynZdx',
+        picture:'https://i.ibb.co/ZgX8bYJ/6.png',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -64,7 +64,7 @@ module.exports = {
         username: 'Margosha',
         firstName: 'Margaret',
         lastName: 'Roy',
-        picture:'https://ibb.co/cYLZZcS',
+        picture:'https://i.ibb.co/6XBTTR7/7.png',
         hashedPassword: bcrypt.hashSync('password')
       },
     ], { validate: true });
