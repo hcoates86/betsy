@@ -6,9 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       ProductListing.hasMany(models.Review, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.hasMany(models.ProductImage, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
+      ProductListing.hasMany(models.Order, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.hasOne(models.CartItem, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.belongsTo(models.User, { foreignKey: 'userId' });
-
     }
   };
 
@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
       price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
+      },
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       category: DataTypes.INTEGER,
       userId: DataTypes.INTEGER

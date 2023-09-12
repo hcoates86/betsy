@@ -16,13 +16,15 @@ module.exports = {
         username: 'Demo-lition',
         firstName: 'Demo',
         lastName: 'Lition',
+        picture:'https://ibb.co/S7jCfdJ',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
         email: 'user2@user.io',
         username: 'Bethy2',
         firstName: 'Elizabeth',
-        lastName: 'Oneill',
+        lastName: 'Sanchez',
+        picture:'https://ibb.co/d6hGz4M',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -30,13 +32,15 @@ module.exports = {
         username: 'RuthM',
         firstName: 'Ruth',
         lastName: 'Matthews',
+        picture:'https://ibb.co/jb5PL20',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
         email: 'user4@user.io',
-        username: 'FakeUser1',
-        firstName: 'Elizabeth',
+        username: 'Jess87',
+        firstName: 'Jessica',
         lastName: 'Oneill',
+        picture:'https://ibb.co/Sy87hq1',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -44,6 +48,7 @@ module.exports = {
         username: 'Shannononon',
         firstName: 'Ethel',
         lastName: 'Shannon',
+        picture:'https://ibb.co/x153PWf',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -51,6 +56,7 @@ module.exports = {
         username: 'Jaxjax',
         firstName: 'George',
         lastName: 'Middleton',
+        picture:'https://ibb.co/SmynZdx',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
@@ -58,6 +64,7 @@ module.exports = {
         username: 'Margosha',
         firstName: 'Margaret',
         lastName: 'Roy',
+        picture:'https://ibb.co/cYLZZcS',
         hashedPassword: bcrypt.hashSync('password')
       },
     ], { validate: true });

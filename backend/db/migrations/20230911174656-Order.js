@@ -7,36 +7,28 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('ProductListings', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.DECIMAL(10, 2),
-        allowNull: false
-      },
       quantity: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      category: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
+          key: 'id'
+        },
+      onDelete: 'cascade'
+      },
+      productId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'ProductListings',
           key: 'id'
         },
       onDelete: 'cascade'
@@ -55,6 +47,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ProductListings', options); // and here
+    return queryInterface.dropTable('Orders', options); // and here
   }
 };
