@@ -6,7 +6,7 @@ import { createListing, postImage } from '../../store/listings';
 import noCow from '../../images/noCow.png';
 
 
-const ListingForm = () => {
+const UpdateListing = ({productId}) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [photo, setPhoto] = useState('')
@@ -22,7 +22,6 @@ const ListingForm = () => {
         const errorObj = {};
         const fileTypes = ['.jpeg', '.png', '.jpg'];
 
-        //photos aren't required?
         // if (!photo) errorObj['photo'] = ''
         if (!name) errorObj['name'] = 'A name is required';
         if (!description) errorObj['description'] = 'A description is required';
@@ -50,7 +49,6 @@ const ListingForm = () => {
         const newListing = dispatch(createListing(listing))
 
         if (newListing.id) {
-            if (!photo.length) setPhoto(noCow);
             const newImage = { url: photo, productId: newListing.id}
             dispatch(postImage(newImage));
 
@@ -137,4 +135,4 @@ const ListingForm = () => {
     )
 }
 
-export default ListingForm;
+export default UpdateListing;

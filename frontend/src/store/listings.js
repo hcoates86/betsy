@@ -93,12 +93,11 @@ export const createListing = (listing) => async (dispatch) => {
 }
 
 export const postImage = (image) => async (dispatch) => {
-    const { url, preview, listingId } = image;
+    const { url, listingId } = image;
     const res = await csrfFetch(`/api/listings/${listingId}/images`, {
         method: 'POST',
         body: JSON.stringify({
-            url,
-            preview
+            url
         })
     });
 

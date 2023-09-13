@@ -5,6 +5,9 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import ListingForm from './components/ListingForm';
+import SingleListing from './components/SingleListing';
+import NoPage from "./components/NoPage";
+import UserListings from "./components/UserListings";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +25,12 @@ function App() {
           </Route>
           <Route exact path='/new-listing'>
             <ListingForm />
+          </Route>
+          <Route path='/listings/:productId'>
+            <SingleListing />
+          </Route>
+          <Route>
+            <NoPage />
           </Route>
         </Switch>}
     </>

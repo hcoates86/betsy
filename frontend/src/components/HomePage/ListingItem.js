@@ -7,7 +7,6 @@ const ListingItem = ({ listing }) => {
     if(listing.image[0] && listing.image[0].url) image = listing.image[0].url;
     else image = noCow;
 
-    //this should be the store's rating
     let stars;
     if(listing.averageStars) {
         const num = parseInt(listing.averageStars[0])
