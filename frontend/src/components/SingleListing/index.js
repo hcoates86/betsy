@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
+import noCow from '../../images/noCow.png';
+
 
 
 const SingleListing = () => {
@@ -11,13 +13,19 @@ const SingleListing = () => {
 
     const listing = useSelector(state => state.listings.singleListing)
     
-    
     useEffect(() => {
         dispatch(fetchListing(productId))
         dispatch(getListingReviews(productId))
     }, [dispatch])
     
-    if (!listing) return null;
+    if (!Object.keys(listing).length) return null;
+
+    let image;
+    if(listing.image && listing.image[0]) image = listing.image[0].url;
+    else image = noCow;
+
+    let price =  null;
+    if (listing.price) price = (listing.price).toFixed(2);
 
     let stars;
     if(listing.averageStars) {
@@ -33,12 +41,12 @@ const SingleListing = () => {
     return (
         <div>
             <div>
-                <img src={listing.images[0].url} alt={listing.name}></img>
+                <img src={image} alt={listing.name}></img>
             </div>
 
             <div>
                 <div>
-                    <h1>${(listing.price).toFixed(2)}</h1>
+                    <h1>${price}</h1>
                     <p>{listing.name}</p>
                     <p>{listing.postedBy.username}</p>
                     <p>Quantity {listing.quantity}</p>

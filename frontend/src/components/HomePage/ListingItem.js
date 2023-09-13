@@ -4,7 +4,7 @@ import noCow from '../../images/noCow.png';
 
 const ListingItem = ({ listing }) => {
     let image;
-    if(listing.image[0] && listing.image[0].url) image = listing.image[0].url;
+    if(listing.image && listing.image[0]) image = listing.image[0].url;
     else image = noCow;
 
     let stars;

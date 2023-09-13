@@ -29,6 +29,10 @@ function App() {
           <Route path='/listings/:productId'>
             <SingleListing />
           </Route>
+          <Route path='/user/listings'>
+            <UserListings />
+          </Route>
+
           <Route>
             <NoPage />
           </Route>

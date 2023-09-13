@@ -153,7 +153,7 @@ export const getUserListings = () => async (dispatch) => {
 
 
 
-const initialState = {allListings:{}, singleListing: { ListingImages: []}, user: {}}
+const initialState = {allListings:{}, singleListing: {}}
 
 
 const listingReducer = (state = initialState, action) => {
@@ -166,7 +166,7 @@ const listingReducer = (state = initialState, action) => {
             })
             return {...state, ...listingsState}
         case VIEW_LISTING:
-            newState = {...state, singleListing: {...state.singleListing}};
+            newState = {...state, singleListing: {}};
             newState.singleListing = action.listing;
             return newState;
         case MAKE_LISTING:

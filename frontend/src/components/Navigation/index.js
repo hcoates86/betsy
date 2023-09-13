@@ -15,9 +15,15 @@ function Navigation({ isLoaded }){
       </li>
 
       {sessionUser ? (
+        <>
         <li>
           <NavLink exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
         </li>
+        <li>
+          <NavLink exact to='/user/listings'>My Herd</NavLink>
+        </li>
+        </>
+
       ) : (<></>)}
 
      

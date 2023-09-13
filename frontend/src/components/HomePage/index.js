@@ -17,7 +17,6 @@ const HomePage = () => {
 
     if (!listings) return null;
 
-    console.log('!!!',listings);
     const popular = [];
     const giftGuide = [];
 
