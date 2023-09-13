@@ -4,6 +4,8 @@ import { getListings } from '../../store/listings';
 import ListingItem from '../HomePage/ListingItem';
 import OpenModalButton from '../OpenModalButton';
 import DeleteListing from '../DeleteListing';
+import { Link } from 'react-router-dom';
+
 
 const UserListings = () => {
 
@@ -29,6 +31,8 @@ const UserListings = () => {
                         buttonText='Delete'
                         modalComponent={<DeleteListing productId={listing.id} />}
                     />
+                    <Link to={`/user/listings/${listing.id}`}>Update</Link>
+
                 </div>
             ))}
 

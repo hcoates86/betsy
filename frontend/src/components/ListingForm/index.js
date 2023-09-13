@@ -17,24 +17,26 @@ const ListingForm = () => {
     const [quantity, setQuantity] = useState(1);
 
     const [errors, setErrors] = useState({});
+    const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
         const errorObj = {};
         const fileTypes = ['.jpeg', '.png', '.jpg'];
 
-        //photos aren't required?
+        //photos aren't required
         // if (!photo) errorObj['photo'] = ''
         if (!name) errorObj['name'] = 'A name is required';
         if (!description) errorObj['description'] = 'A description is required';
-        if (!price) errorObj['price'] = 'Please set a price of at least $0.01';
-        if (!quantity) errorObj['quantity'] = 'Please set a quantity of at least 1';
+        if (price <= 0 ) errorObj['price'] = 'Please set a price of at least $0.01';
+        if (quantity < 1) errorObj['quantity'] = 'Please set a quantity of at least 1';
         if (!(fileTypes.some(type => {
             return photo.endsWith(type)})) && photo.length) {
             errorObj['photo'] = 'Photo URL must end in .png, .jpg, or .jpeg';
         }
+        if (submitted) {
         setErrors(errorObj);
-        
-    }, [photo, name, description, price, quantity])
+        }
+    }, [photo, name, description, price, quantity, submitted])
 
 
     const cancel = () => {
@@ -43,21 +45,25 @@ const ListingForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        setSubmitted(true);
+
         const listing = {
             name, description, price, quantity
         }
+        if (!Object.keys(errors).length){
+        const newListing = await dispatch(createListing(listing))
 
-        const newListing = dispatch(createListing(listing))
-
+        console.log(newListing);
         if (newListing.id) {
-            if (!photo.length) setPhoto(noCow);
-            const newImage = { url: photo, productId: newListing.id}
-            dispatch(postImage(newImage));
-
+            let newImage;
+            if (!photo.length) newImage = { url: noCow, productId: newListing.id}
+            newImage = { url: photo, productId: newListing.id}
+            await dispatch(postImage(newImage))
             history.push(`/listings/${newListing.id}`)
 
         }
-
+        }
     }
 
     return (
@@ -76,6 +82,7 @@ const ListingForm = () => {
                     />
                     
                 </div>
+                 {errors.photo && <p className='errors'>{errors.photo}</p>}
 
                 <div>
                     
@@ -86,6 +93,9 @@ const ListingForm = () => {
                     />
                     
                 </div>
+                {errors.name && <p className='errors'>{errors.name}</p>}
+
+
                 {/* <label>Category</label> */}
 
                 <div>
@@ -98,6 +108,7 @@ const ListingForm = () => {
                     rows="8" cols="75"
                     />
                 </div>
+                {errors.description && <p className='errors'>{errors.description}</p>}
                 
             </div>
 
@@ -106,6 +117,7 @@ const ListingForm = () => {
                 <div>
                     
                     <label>Price</label>
+                    <span>$</span>
                     <input
                         className=''
                         type="number"
@@ -113,6 +125,8 @@ const ListingForm = () => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </div>
+                {errors.price && <p className='errors'>{errors.price}</p>}
+
 
                 <div>
     
@@ -123,9 +137,10 @@ const ListingForm = () => {
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                     />
-    
                     
                 </div>
+                {errors.quantity && <p className='errors'>{errors.quantity}</p>}
+
             </div>
 
             <div className='cancel-post-div'>

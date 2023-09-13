@@ -43,7 +43,6 @@ router.get('/', async (req, res, next) => {
         // })
 
 
-        //check what etsy does for no reviews- just leaves stars out entirely
         if (!reviewTotal) avgStars = 0;
         else {
             const average = await Review.sum('stars', { where: { productId: product.id }});

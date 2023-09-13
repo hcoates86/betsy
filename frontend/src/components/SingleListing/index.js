@@ -20,8 +20,9 @@ const SingleListing = () => {
     
     if (!Object.keys(listing).length) return null;
 
+
     let image;
-    if(listing.image && listing.image[0]) image = listing.image[0].url;
+    if(listing.images && listing.images[0]) image = listing.images[0].url;
     else image = noCow;
 
     let price =  null;

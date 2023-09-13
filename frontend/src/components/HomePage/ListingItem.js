@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import noCow from '../../images/noCow.png';
 
 const ListingItem = ({ listing }) => {
+    
     let image;
     if(listing.image && listing.image[0]) image = listing.image[0].url;
     else image = noCow;

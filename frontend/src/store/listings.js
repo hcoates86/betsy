@@ -93,8 +93,8 @@ export const createListing = (listing) => async (dispatch) => {
 }
 
 export const postImage = (image) => async (dispatch) => {
-    const { url, listingId } = image;
-    const res = await csrfFetch(`/api/listings/${listingId}/images`, {
+    const { url, productId } = image;
+    const res = await csrfFetch(`/api/listings/${productId}/images`, {
         method: 'POST',
         body: JSON.stringify({
             url
@@ -170,11 +170,13 @@ const listingReducer = (state = initialState, action) => {
             newState.singleListing = action.listing;
             return newState;
         case MAKE_LISTING:
-            newState = {...state, allListings: {...state.allListings, ...action.listing}, singleListing: {...state.singleListing, ...action.listing}};
+            newState = {...state, allListings: {...state.allListings}, singleListing: {}};
+            newState.allListings[action.listing.id] = action.listing;
+            newState.singleListing = action.listing;
             return newState;
         case ADD_IMAGE:
-            newState = {...state, allListings: {...state.allListings}, singleListing: {...state.singleListing, ListingImages: [...state.singleListing.ListingImages]}};;
-            newState.singleListing.ListingImages = [...action.image];
+            newState = {...state, allListings: {...state.allListings}, singleListing: {...state.singleListing}};;
+            newState.singleListing.image = action.image;
             return newState;
         case UPDATE_LISTING:
             newState = {...state, allListings: {...state.allListings}, singleListing: {...state.singleListing}};
