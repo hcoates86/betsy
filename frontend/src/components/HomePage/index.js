@@ -33,10 +33,10 @@ const HomePage = () => {
 
     return (
         <div>
-        <div className='popular-div'>
             <h1>The popular crowd</h1>
+        <div className='popular-div'>
             {popular.map(listing => (
-                <div>
+                <div className='outer-div'>
                     <ListingItem listing={listing}/>
                 </div>
             ))}

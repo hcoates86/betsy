@@ -17,20 +17,25 @@ const ListingItem = ({ listing }) => {
         if(num === 2) stars = '★★☆☆☆';
         if(num === 1) stars = '★☆☆☆☆';
 
-    } else stars = '☆☆☆☆☆'
-
-    // add .00 to price if it doesn't have fractions, or change model to float?
-    // if(listing.price.includes('.')
+    } else stars = null;
 
     return (
         <Link to={`/listings/${listing.id}`}>
-            <div>
+            <div className='outer-div'>
 
                 <img className='thumbnail' src={image} alt={listing.name}></img>
-                <div>
-                    <p>{listing.name}</p>
-                    <p>{stars}</p>
-                    <p>${listing.price}</p>
+                <div className='info-div'>
+                    <p id='list-name'>{listing.name}</p>
+                    {stars ? (
+                        <>
+                        <p ><span id='stars'>{stars}</span> <span id='review-num'>({listing.totalReviews})</span></p>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+
+                    <p id='price'>${(listing.price).toFixed(2)}</p>
+                    <p id='store'>{listing.seller.username}</p>
                 </div>
 
             </div>

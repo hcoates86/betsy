@@ -4,6 +4,8 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { useHistory } from 'react-router-dom';
+
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -11,6 +13,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +27,11 @@ function LoginFormModal() {
         }
       });
   };
+
+  const demo = () => {
+    return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+    .then(closeModal).then(history.push('/'))
+  }
 
   return (
     <>
@@ -52,6 +60,7 @@ function LoginFormModal() {
         )}
         <button type="submit">Log In</button>
       </form>
+      <button className='button-black' onClick={demo}>Demo User</button>
     </>
   );
 }

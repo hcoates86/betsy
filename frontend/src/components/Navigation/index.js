@@ -13,6 +13,14 @@ function Navigation({ isLoaded }){
       <li>
         <NavLink exact to="/">Betsy</NavLink>
       </li>
+
+      {sessionUser ? (
+        <li>
+          <NavLink exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
+        </li>
+      ) : (<></>)}
+
+     
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />

@@ -3,6 +3,10 @@
     list-style-type: none;
 }
 
-.nav-bar li {
+/* .nav-bar li {
     text-decoration: none;
+} */
+
+.fa-solid {
+ color: black;
 }

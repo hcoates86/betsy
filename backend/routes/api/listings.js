@@ -21,11 +21,28 @@ const properAuth = async (req, res, next) => {
 router.get('/', async (req, res, next) => {
     const products = await ProductListing.findAll({raw: true})
     const productArray = [];
-    
+   
     for (let product of products) {
         let avgStars;
         const currentProduct = await ProductListing.findByPk(product.id);
         const reviewTotal = await currentProduct.countReviews();
+
+        const seller = await currentProduct.getUser();
+
+        const sellerListings = await seller.getProductListings();
+        console.log(sellerListings);
+
+         // let totalReviews = 0;
+    // let totalStars = 0;
+
+        // sellerListings.map(async listing => {
+        //     const sellerReviews = await listing.countReviews();
+        //     const reviewStars = await Review.sum('stars', { where: { productId: listing.id }});
+        //     totalStars += reviewStars;
+        //     totalReviews += sellerReviews;
+        // })
+
+
         //check what etsy does for no reviews- just leaves stars out entirely
         if (!reviewTotal) avgStars = 0;
         else {
@@ -38,6 +55,9 @@ router.get('/', async (req, res, next) => {
 
         product.averageStars = avgStars
         product.image = images
+        product.seller = seller;
+        product.totalReviews = reviewTotal;
+        // product.totalReviews = totalReviews
 
         productArray.push(product);
     }

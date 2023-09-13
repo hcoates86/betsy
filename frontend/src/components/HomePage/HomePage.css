@@ -1,0 +1,49 @@
+.thumbnail {
+    width: 350px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.popular-div {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin: auto;
+    justify-content: center;
+}
+
+.info-div p {
+    margin: 0;
+}
+
+.outer-div {
+    width: 350px;
+}
+
+#stars {
+    color: black;
+    font-size: 1.3em;
+}
+
+#review-num {
+    color: gray;
+}
+
+#list-name {
+    color: black;
+    font-size: 1.1em;
+    font-weight: 200;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: normal;
+    white-space: nowrap;
+}
+
+#price {
+    color: black;
+    font-size: 1.3em;
+}
+
+#store {
+    color: gray;
+}

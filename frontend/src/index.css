@@ -7,12 +7,17 @@
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+
 .button-white {
     color: black;
     background-color: white;
     cursor: pointer;
-    border: 2px;
-    border-radius: 7px;
+    border: 2px solid black;
+    border-radius: 8px;
 }
 
 .button-black {
@@ -22,3 +27,4 @@
     border: 0;
     border-radius: 7px;
 }
+
