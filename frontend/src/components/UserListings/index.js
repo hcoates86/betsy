@@ -22,20 +22,24 @@ const UserListings = () => {
     if (!listings || !listings.length) return null;
 
     return (
-        <div>
+        <div className='flex-div'>
+            
             <h1>Your listings</h1>
-            {listings.filter(listing => listing.userId === user.id).map(listing => (
-                <div key={listing.id}>
-                    <ListingItem listing={listing}/>
-                    <OpenModalButton 
-                        buttonText='Delete'
-                        modalComponent={<DeleteListing productId={listing.id} />}
-                    />
-                    <Link to={`/user/listings/${listing.id}`}>Update</Link>
-
-                </div>
-            ))}
-
+            <div className='flex-div'>
+                
+                {listings.filter(listing => listing.userId === user.id).map(listing => (
+                    <div key={listing.id}>
+                        <ListingItem listing={listing}/>
+                        <OpenModalButton 
+                            buttonText='Delete'
+                            modalComponent={<DeleteListing productId={listing.id} />}
+                        />
+                        <Link to={`/user/listings/${listing.id}`}>Update</Link>
+                
+                    </div>
+                ))}
+                
+            </div>
         </div>
     )        
 

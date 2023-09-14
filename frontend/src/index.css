@@ -36,3 +36,14 @@ button {
     border-radius: 7px;
     padding: 5px;
 }
+
+.flex-div {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 15px;
+}
+
+.block {
+    display: block;
+}
