@@ -10,6 +10,7 @@ import noCow from '../../images/noCow.png';
 const SingleListing = () => {
     const {productId} = useParams();
     const dispatch = useDispatch();
+    const [stars, setStars] = useState(null)
 
     const listing = useSelector(state => state.listings.singleListing)
     
@@ -18,6 +19,21 @@ const SingleListing = () => {
         dispatch(getListingReviews(productId))
     }, [dispatch])
     
+    useEffect(() => {
+        if(listing.averageStars) {
+            //rounds number down to display star value
+            const num = Math.floor(listing.averageStars)
+
+            if(num === 5) setStars('★★★★★');
+            if(num === 4) setStars('★★★★☆');
+            if(num === 3) setStars('★★★☆☆');
+            if(num === 2) setStars('★★☆☆☆');
+            if(num === 1) setStars('★☆☆☆☆');
+        } else setStars(null)
+
+    }, [listing])
+
+
     if (!Object.keys(listing).length) return null;
 
     if (!listing || !listing.price) return null;
@@ -28,17 +44,6 @@ const SingleListing = () => {
 
     let price =  null;
     if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
-
-    let stars;
-    if(listing.averageStars) {
-        const num = parseInt(listing.averageStars[0])
-        if(num === 5) stars = '★★★★★';
-        if(num === 4) stars = '★★★★☆';
-        if(num === 3) stars = '★★★☆☆';
-        if(num === 2) stars = '★★☆☆☆';
-        if(num === 1) stars = '★☆☆☆☆';
-
-    } else stars = null;
 
     return (
         <div>
