@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
   return (
     <ul className='nav-bar'>
       <li>
-        <NavLink exact to="/">Betsy</NavLink>
+        <NavLink className='betsy' exact to="/">Betsy</NavLink>
       </li>
       <li>
         <NavLink exact to="/listings">All Cow Listings</NavLink>

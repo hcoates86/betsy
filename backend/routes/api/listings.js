@@ -49,7 +49,6 @@ router.get('/', async (req, res, next) => {
         const seller = await currentProduct.getUser();
 
         const sellerListings = await seller.getProductListings();
-        console.log(sellerListings);
 
          // let totalReviews = 0;
     // let totalStars = 0;
@@ -179,14 +178,21 @@ router.get('/:productId/reviews', async (req, res, next) => {
 //post review to a specific listing
 router.post('/:productId/reviews', requireAuth, async (req, res, next) => {
     const { comment, stars } = req.body
+    const user = await User.findByPk(req.user.id, { raw:true, attributes: ['id', 'username', 'picture']});
+
 
     const newReview = await Review.create({
         comment, stars,
         userId: req.user.id,
-        productId: req.params.productId
+        productId: +req.params.productId
     })
 
-    res.json(newReview)
+    const reviewInfo = {
+        ...newReview.dataValues,
+        user: user
+    }
+
+    res.json(reviewInfo)
 
 })
 

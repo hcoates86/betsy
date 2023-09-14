@@ -19,31 +19,3 @@
 .outer-div {
     width: 350px;
 }
-
-#stars {
-    color: black;
-    font-size: 1.3em;
-}
-
-#review-num {
-    color: gray;
-}
-
-#list-name {
-    color: black;
-    font-size: 1.1em;
-    font-weight: 200;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: normal;
-    white-space: nowrap;
-}
-
-#price {
-    color: black;
-    font-size: 1.3em;
-}
-
-#store {
-    color: gray;
-}

@@ -104,7 +104,7 @@ const SingleListing = () => {
                             { review.userId === user?.id ? 
                                 (
                                 <>
-                                <OpenModalButton
+                                    <OpenModalButton
                                     buttonText="Delete"
                                     modalComponent={<ConfirmDeleteReviewModal reviewId={review.id} />}
                                     />

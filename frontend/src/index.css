@@ -1,3 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Peralta&family=Red+Hat+Display&display=swap');
+
+
+* {
+    font-family: 'Red Hat Display', sans-serif;
+}
+
 .hidden {
     display: none;
 }
