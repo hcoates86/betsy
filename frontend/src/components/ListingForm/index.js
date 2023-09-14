@@ -43,6 +43,7 @@ const ListingForm = () => {
         history.push('/')
     }
 
+    console.log(errors);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -52,17 +53,16 @@ const ListingForm = () => {
             name, description, price, quantity
         }
         if (!Object.keys(errors).length){
-        const newListing = await dispatch(createListing(listing))
+            const newListing = await dispatch(createListing(listing))
 
-        console.log(newListing);
-        if (newListing.id) {
-            let newImage;
-            if (!photo.length) newImage = { url: noCow, productId: newListing.id}
-            newImage = { url: photo, productId: newListing.id}
-            await dispatch(postImage(newImage))
-            history.push(`/listings/${newListing.id}`)
+            if (newListing.id) {
+                let newImage;
+                if (!photo.length) newImage = { url: noCow, productId: newListing.id}
+                else newImage = { url: photo, productId: newListing.id}
+                await dispatch(postImage(newImage))
+                history.push(`/listings/${newListing.id}`)
 
-        }
+            }
         }
     }
 

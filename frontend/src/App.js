@@ -8,6 +8,7 @@ import ListingForm from './components/ListingForm';
 import SingleListing from './components/SingleListing';
 import NoPage from "./components/NoPage";
 import UserListings from "./components/UserListings";
+import AllListings from "./components/AllListings";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path='/user/listings'>
             <UserListings />
+          </Route>
+          <Route exact path ='/listings'>
+            <AllListings />
           </Route>
 
           <Route>

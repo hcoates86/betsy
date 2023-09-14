@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const { requireAuth } = require('../../utils/auth');
 
-const { ProductListing, ProductImage, Review, User } = require('../../db/models');
+const { Review } = require('../../db/models');
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.put('/:reviewId', requireAuth, properAuth, async (req, res, next) => {
     const { comment, stars } = req.body;
     const currReview = await Review.findByPk(req.params.reviewId);
 
-    //check if I can attach an object
+    //check if it works
     // const errors = {};
     // const err = new Error("Validation Error");
     // err.title = "Body validation error";
@@ -35,7 +35,7 @@ router.put('/:reviewId', requireAuth, properAuth, async (req, res, next) => {
     //     next(err)
     // }
 
-    currReview.set({ comment, stars })
+    await currReview.set({ comment, stars })
     await currReview.save()
 
     res.json(currReview)

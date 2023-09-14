@@ -13,6 +13,9 @@ function Navigation({ isLoaded }){
       <li>
         <NavLink exact to="/">Betsy</NavLink>
       </li>
+      <li>
+        <NavLink exact to="/listings">All Cow Listings</NavLink>
+      </li>
 
       {sessionUser ? (
         <>

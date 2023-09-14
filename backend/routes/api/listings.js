@@ -16,6 +16,25 @@ const properAuth = async (req, res, next) => {
 
 }
 
+const productValidations = async (req, res, next) => {
+    const {name, description, price, quantity} = req.body;
+    const errors = {};
+    const err = new Error();
+    if (!name) errors["name"] = "Name is required";
+    if (!description) errors["description"] = "Description is required";
+    if (price <= 0 ) errors['price'] = 'Please set a price of at least $0.01';
+    if (quantity < 1) errors['quantity'] = 'Please set a quantity of at least 1';
+    if (Object.values(errors).length) {
+        err = {
+            ...errors, 
+            title: "Can't create a new listing",
+            message: "Validation Error",
+            status: 400
+        };
+        next(err)
+      } next()
+}
+
 
 //get all listings
 router.get('/', async (req, res, next) => {
@@ -66,7 +85,7 @@ router.get('/', async (req, res, next) => {
 
 
 //post a new product listing
-router.post('/new', requireAuth, async (req, res, next) => {
+router.post('/new', requireAuth, productValidations, async (req, res, next) => {
     //implement posting category later
     const { name, description, price, quantity } = req.body;
 
@@ -79,11 +98,11 @@ router.post('/new', requireAuth, async (req, res, next) => {
 })
 
 //edit product
-router.put('/:productId', requireAuth, properAuth, async (req, res, next) => {
+router.put('/:productId', requireAuth, properAuth, productValidations, async (req, res, next) => {
     const { name, description, price, quantity } = req.body;
 
-    const listing = ProductListing.findByPk(req.params.productId);
-    listing.set({
+    const listing = await ProductListing.findByPk(req.params.productId);
+    await listing.set({
         name, description, price, quantity
     });
     await listing.save();
@@ -110,7 +129,7 @@ router.get('/:productId',  async (req, res, next) => {
         totalReviews,
         averageStars,
         images,
-        postedBy: poster
+        seller: poster
     }
 
     res.json(newListing)
@@ -147,7 +166,6 @@ router.get('/:productId/reviews', async (req, res, next) => {
 
     for (let review of reviews) {
         review.user = await User.findByPk(review.userId, {attributes: ['username', 'picture']})
-
         reviewArray.push(review)
     }
 
@@ -162,7 +180,7 @@ router.get('/:productId/reviews', async (req, res, next) => {
 router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
     const { comment, stars } = req.body
 
-    const newReview = Review.create({
+    const newReview = await Review.create({
         comment, stars,
         userId: req.user.id,
         productId: req.params.productId

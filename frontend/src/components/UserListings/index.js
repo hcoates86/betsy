@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getListings } from '../../store/listings';
-import ListingItem from '../HomePage/ListingItem';
+import ListingItem from '../ListingItem';
 import OpenModalButton from '../OpenModalButton';
 import DeleteListing from '../DeleteListing';
 import { Link } from 'react-router-dom';

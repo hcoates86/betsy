@@ -20,13 +20,14 @@ const SingleListing = () => {
     
     if (!Object.keys(listing).length) return null;
 
+    if (!listing || !listing.price) return null;
 
     let image;
     if(listing.images && listing.images[0]) image = listing.images[0].url;
     else image = noCow;
 
     let price =  null;
-    if (listing.price) price = (listing.price).toFixed(2);
+    if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
 
     let stars;
     if(listing.averageStars) {
@@ -49,7 +50,7 @@ const SingleListing = () => {
                 <div>
                     <h1>${price}</h1>
                     <p>{listing.name}</p>
-                    <p>{listing.postedBy.username}</p>
+                    <p>{listing.seller?.username}</p>
                     <p>Quantity {listing.quantity}</p>
                 </div>
                 <div>

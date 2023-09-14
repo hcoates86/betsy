@@ -2,7 +2,7 @@ import { getListings } from '../../store/listings';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './HomePage.css';
-import ListingItem from './ListingItem';
+import ListingItem from '../ListingItem';
 
 const HomePage = () => {
     //returns an array of all listings or an empty one if it's empty

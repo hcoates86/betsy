@@ -1,9 +1,11 @@
-import './HomePage.css';
+import './ListingItem.css';
 import { Link } from 'react-router-dom';
 import noCow from '../../images/noCow.png';
 
 const ListingItem = ({ listing }) => {
     
+    if(!listing) return null;
+
     let image;
     if(listing.image && listing.image[0]) image = listing.image[0].url;
     else image = noCow;
@@ -18,6 +20,9 @@ const ListingItem = ({ listing }) => {
         if(num === 1) stars = '★☆☆☆☆';
 
     } else stars = null;
+
+    let price =  null;
+    if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
 
     return (
         <Link to={`/listings/${listing.id}`}>
@@ -34,8 +39,8 @@ const ListingItem = ({ listing }) => {
                         <></>
                     )}
 
-                    <p id='price'>${(listing.price).toFixed(2)}</p>
-                    <p id='store'>{listing.seller.username}</p>
+                    <p id='price'>${price}</p>
+                    <p id='store'>{listing.seller?.username}</p>
                 </div>
 
             </div>
