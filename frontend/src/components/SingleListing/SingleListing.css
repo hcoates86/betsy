@@ -1,6 +1,6 @@
 .review-profile {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -12,6 +12,7 @@
 
 .single-review {
     border-bottom: 1px solid gray;
+    width: 700px;
 }
 
 .review-total {

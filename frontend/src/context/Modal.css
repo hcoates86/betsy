@@ -1,24 +1,54 @@
 #modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  #modal-content {
-    position: absolute;
-    background-color: white;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal-content {
+  position: absolute;
+  background-color: white;
+  line-height: 250%;  
+  border: 5px solid black;
+  border-radius: 3%;
+}
+
+.starSelect {
+  font-size: 2em;
+  margin: 5px;
+}
+
+.star-filled {
+display: inline;
+cursor: pointer;
+}
+
+#starSpan {
+font-size: .8em;
+}
+
+#postRevButton {
+padding: 15px;
+margin-bottom: 15px;
+width: 100%;
+}
+
+.rev-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+}

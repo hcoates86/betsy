@@ -5,6 +5,10 @@ import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
 import noCow from '../../images/noCow.png';
 import './SingleListing.css';
+import ConfirmDeleteReviewModal from '../ConfirmDeleteReviewModal';
+import OpenModalButton from '../OpenModalButton/';
+import UpdateReview from '../UpdateReview';
+import ReviewModal from '../ReviewModal';
 
 
 const SingleListing = () => {
@@ -13,6 +17,7 @@ const SingleListing = () => {
     const [stars, setStars] = useState(null)
     const [plural, setPlural] = useState(null)
 
+    const user = useSelector(state => state.session.user)
     const listing = useSelector(state => state.listings.singleListing)
     const reviewObj = useSelector(state => state.reviews.listing)
     const reviews = Object.values(reviewObj)
@@ -81,6 +86,10 @@ const SingleListing = () => {
                 <div className="review-total">
     
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
+                    <OpenModalButton
+                    buttonText="Leave a Review"
+                    modalComponent={<ReviewModal productId={productId} />}
+                    />
                     
                 </div>
                     {reviews.map(review => (
@@ -89,9 +98,22 @@ const SingleListing = () => {
                         
                         <div>
                             
-                            <img className='review-profile' src={review.user.picture} alt={review.user.username}></img>
-                            <p className="review-userinfo">{review.user.username}</p>
+                            <img className='review-profile' src={review.user?.picture} alt={review.user?.username}></img>
+                            <p className="review-userinfo">{review.user?.username}</p>
                             <p className="review-userinfo">{monthConverter(review.createdAt.split('-')[1])} {review.createdAt.split('-')[2].split(' ')[0]}, {review.createdAt.split('-')[0]}</p>
+                            { review.userId === user?.id ? 
+                                (
+                                <>
+                                <OpenModalButton
+                                    buttonText="Delete"
+                                    modalComponent={<ConfirmDeleteReviewModal reviewId={review.id} />}
+                                    />
+
+                                    <OpenModalButton
+                                    buttonText="Update"
+                                    modalComponent={<UpdateReview reviewId={review.id} />}
+                                    />
+                                </>) : (<></>)}
                         </div>
                     </div>
                     ))}

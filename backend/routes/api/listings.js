@@ -177,7 +177,7 @@ router.get('/:productId/reviews', async (req, res, next) => {
 //get all reviews for a user's listings
 
 //post review to a specific listing
-router.post('/:productId/reviews', requireAuth, properAuth, async (req, res, next) => {
+router.post('/:productId/reviews', requireAuth, async (req, res, next) => {
     const { comment, stars } = req.body
 
     const newReview = await Review.create({

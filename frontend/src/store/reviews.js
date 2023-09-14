@@ -33,14 +33,10 @@ const editReviewAction = (review) => {
     }
 }
 
-export const postReview = (newReview) => async (dispatch) => {
-    const { comment, stars, productId } = newReview;
+export const postReview = ({newReview, productId}) => async (dispatch) => {
     const res = await csrfFetch(`/api/listings/${productId}/reviews`, {
         method: 'POST',
-        body: JSON.stringify({
-            comment, 
-            stars
-        })
+        body: JSON.stringify(newReview)
     });
 
     const review = await res.json();
