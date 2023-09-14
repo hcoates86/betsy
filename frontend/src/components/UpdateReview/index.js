@@ -10,14 +10,20 @@ function UpdateReview({reviewUpdating}) {
     const [disabled, setDisabled] = useState(false);
     const [review, setReview] = useState(reviewUpdating.comment);
     const [stars, setStars] = useState(reviewUpdating.stars);
+    const [star1, setStar1] = useState('☆');
+    const [star2, setStar2] = useState('☆');
+    const [star3, setStar3] = useState('☆');
+    const [star4, setStar4] = useState('☆');
+    const [star5, setStar5] = useState('☆');
+
     
     const [buttonClass, setButtonClass] = useState('');
 
-    const starDiv1 = document.querySelector('.one-star');
-    const starDiv2 = document.querySelector('.two-star');
-    const starDiv3 = document.querySelector('.three-star');
-    const starDiv4 = document.querySelector('.four-star');
-    const starDiv5 = document.querySelector('.five-star');
+    // const starDiv1 = document.querySelector('.one-star');
+    // const starDiv2 = document.querySelector('.two-star');
+    // const starDiv3 = document.querySelector('.three-star');
+    // const starDiv4 = document.querySelector('.four-star');
+    // const starDiv5 = document.querySelector('.five-star');
 
 
     useEffect(() => {
@@ -33,24 +39,20 @@ function UpdateReview({reviewUpdating}) {
     
 
     useEffect (() => {
-        if (stars >= 1 ) starDiv1.innerText = '★';
-        if (stars >= 2 ) starDiv2.innerText = '★';
-        if (stars >= 3 ) starDiv3.innerText = '★';
-        if (stars >= 4 ) starDiv4.innerText = '★';
-        if (stars === 5 ) starDiv5.innerText = '★';
+        if (stars >= 1 ) setStar1('★');
+        if (stars >= 2 ) setStar2('★');
+        if (stars >= 3 ) setStar3('★');
+        if (stars >= 4 ) setStar4('★');
+        if (stars === 5 ) setStar5('★');
 
         if (stars >=1) {
-            if (stars < 2) starDiv2.innerText = '☆';
-            if (stars < 3) starDiv3.innerText = '☆';
-            if (stars < 4) starDiv4.innerText = '☆';
-            if (stars < 5) starDiv5.innerText = '☆';
+            if (stars < 2) setStar2('☆');
+            if (stars < 3) setStar3('☆');
+            if (stars < 4) setStar4('☆');
+            if (stars < 5) setStar5('☆');
         }
         
-    }, [stars, starDiv1, starDiv2, starDiv3, starDiv4, starDiv5])
-
-    const starChecker = (num) => {
-        setStars(+num);
-    }
+    }, [stars, star1, star2, star3, star4, star5])
 
     const postYourReview = async () => {
         const newReview = {...reviewUpdating, comment: review, stars}
@@ -74,12 +76,12 @@ function UpdateReview({reviewUpdating}) {
         />
         <div className='starSelect'>
             <div className='star-filled one-star' 
-            onClick={()=> {starChecker('1')}}
-            >☆</div>
-            <div className='star-filled two-star' onClick={()=> {starChecker('2')}}>☆</div>
-            <div className='star-filled three-star' onClick={()=> {starChecker('3')}}>☆</div>
-            <div className='star-filled four-star' onClick={()=> {starChecker('4')}}>☆</div>
-            <div className='star-filled five-star' onClick={()=> {starChecker('5')}}>☆</div>
+            onClick={()=> {setStars(1)}}
+            >{star1}</div>
+            <div className='star-filled two-star' onClick={()=> {setStars(2)}}>{star2}</div>
+            <div className='star-filled three-star' onClick={()=> {setStars(3)}}>{star3}</div>
+            <div className='star-filled four-star' onClick={()=> {setStars(4)}}>{star4}</div>
+            <div className='star-filled five-star' onClick={()=> {setStars(5)}}>{star5}</div>
             <span id='starSpan'> Stars</span>
             </div>
         <button disabled={disabled} onClick={postYourReview} id='postRevButton' className={buttonClass}>Update</button>
