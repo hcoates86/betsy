@@ -21,6 +21,8 @@ const SingleListing = () => {
     const listing = useSelector(state => state.listings.singleListing)
     const reviewObj = useSelector(state => state.reviews.listing)
     const reviews = Object.values(reviewObj)
+
+    console.log('RRR!!!',reviews);
     
     useEffect(() => {
         dispatch(fetchListing(productId))
@@ -111,7 +113,7 @@ const SingleListing = () => {
 
                                     <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<UpdateReview reviewId={review.id} />}
+                                    modalComponent={<UpdateReview reviewUpdating={review}/>}
                                     />
                                 </>) : (<></>)}
                         </div>
