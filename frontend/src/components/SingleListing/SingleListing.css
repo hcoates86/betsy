@@ -1,0 +1,20 @@
+.review-profile {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.review-userinfo {
+    display: inline-block;
+    padding: 10px;
+}
+
+.single-review {
+    border-bottom: 1px solid gray;
+}
+
+.review-total {
+    border-bottom: 2px solid gray;
+
+}

@@ -4,15 +4,18 @@ import { useParams } from "react-router-dom";
 import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
 import noCow from '../../images/noCow.png';
-
+import './SingleListing.css';
 
 
 const SingleListing = () => {
     const {productId} = useParams();
     const dispatch = useDispatch();
     const [stars, setStars] = useState(null)
+    const [plural, setPlural] = useState(null)
 
     const listing = useSelector(state => state.listings.singleListing)
+    const reviewObj = useSelector(state => state.reviews.listing)
+    const reviews = Object.values(reviewObj)
     
     useEffect(() => {
         dispatch(fetchListing(productId))
@@ -30,12 +33,13 @@ const SingleListing = () => {
             if(num === 2) setStars('★★☆☆☆');
             if(num === 1) setStars('★☆☆☆☆');
         } else setStars(null)
+        if (listing.totalReviews !== 1) setPlural('s');
+        else setPlural(null)
 
     }, [listing])
 
 
     if (!Object.keys(listing).length) return null;
-
     if (!listing || !listing.price) return null;
 
     let image;
@@ -44,6 +48,15 @@ const SingleListing = () => {
 
     let price =  null;
     if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
+
+    const months = ['0', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function monthConverter(num) {
+      if (+num < 10) num = num[1];
+      return months[+num]
+    }
+
+    console.log(reviews);
 
     return (
         <div>
@@ -65,7 +78,23 @@ const SingleListing = () => {
                 
             </div>
             <div>
-                {stars}
+                <div className="review-total">
+    
+                    <h2>{listing.totalReviews} review{plural} {stars}</h2>
+                    
+                </div>
+                    {reviews.map(review => (
+                    <div className="single-review">
+                        <p>{review.comment}</p>
+                        
+                        <div>
+                            
+                            <img className='review-profile' src={review.user.picture} alt={review.user.username}></img>
+                            <p className="review-userinfo">{review.user.username}</p>
+                            <p className="review-userinfo">{monthConverter(review.createdAt.split('-')[1])} {review.createdAt.split('-')[2].split(' ')[0]}, {review.createdAt.split('-')[0]}</p>
+                        </div>
+                    </div>
+                    ))}
             </div>
 
 
