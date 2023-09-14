@@ -94,19 +94,17 @@ const reviewReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LISTING_REVIEWS:
-            newState = {listing:{...state.listing}};
-            if (action.reviews.Reviews) {
-            action.reviews.Reviews.forEach(review => {
-                newState.listing[review.id] = review
-            })} else newState.listing = null;
-            return {...state, ...newState};
+            newState = {...state, listing:{}};
+            if (action.reviews) {
+            action.reviews.forEach(review => newState.listing[review.id] = review)}
+            return newState;
         case DELETE_REVIEW:
             newState = {...state, listing: {...state.listing}};
             delete newState.listing[action.reviewId];
             return newState;
         case POST_REVIEW:
             newState = {...state, listing: {...state.listing}};
-            newState.listing = {...newState.listing, [action.review.id]:{...action.review}};
+            newState.listing[action.review.id] = action.review;
             return newState;
         default:
             return state;
