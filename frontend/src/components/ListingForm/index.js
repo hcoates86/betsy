@@ -13,9 +13,16 @@ const ListingForm = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const listing = useSelector(state => state.listings.singleListing)
+    // const listing = useSelector(state => state.listings.singleListing)
+    const listings = Object.values(
+        useSelector(state => state.listings.allListings)
+    )
+    const listing = listings.filter(listing => listing.id === +productId)[0]
 
-    const [photo, setPhoto] = useState(listing?.images[0].url || '')
+    let listingPhoto = '';
+    if (listing && listing.images) listingPhoto = listing.images[0].url
+    
+    const [photo, setPhoto] = useState(listingPhoto)
     const [name, setName] = useState(listing?.name || '')
     // const [category, setCategory] = useState('')
     const [description, setDescription] = useState(listing?.description || '')
@@ -26,9 +33,8 @@ const ListingForm = () => {
     const [submitted, setSubmitted] = useState(false);
 
 
-
     useEffect(() => {
-        dispatch(fetchListing(productId))
+        if (productId) dispatch(fetchListing(productId))
     }, [dispatch])
 
     useEffect(() => {
@@ -53,6 +59,8 @@ const ListingForm = () => {
     const cancel = () => {
         history.push('/')
     }
+
+    if (productId && listing && +productId !== listing.id) return null;
 
     let title;
     let buttonText;
