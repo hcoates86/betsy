@@ -22,7 +22,8 @@ const ListingForm = () => {
     let listingPhoto = '';
     if (listing && listing.images) listingPhoto = listing.images[0].url
     
-    const [photo, setPhoto] = useState(listingPhoto)
+    // const [photo, setPhoto] = useState(listingPhoto)
+    const [photo, setPhoto] = useState(listing?.images ? listing.images[0].url :  '')
     const [name, setName] = useState(listing?.name || '')
     // const [category, setCategory] = useState('')
     const [description, setDescription] = useState(listing?.description || '')
@@ -60,7 +61,10 @@ const ListingForm = () => {
         history.push('/')
     }
 
-    if (productId && listing && +productId !== listing.id) return null;
+    if (productId) {
+        if (!listing) return null;
+        if (listing && +productId !== listing.id) return null;
+    }
 
     let title;
     let buttonText;
@@ -73,8 +77,6 @@ const ListingForm = () => {
         buttonText = 'Post'
     }
 
-
-    console.log(errors);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -85,6 +87,7 @@ const ListingForm = () => {
         }
         if (!Object.keys(errors).length){
             if (productId) {
+                product.id = productId;
                 await dispatch(updatedListing(product))
                 const newImage = { url: photo, productId }
                 await dispatch(postImage(newImage))

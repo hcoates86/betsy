@@ -70,8 +70,6 @@ const SingleListing = () => {
 
     }
 
-    console.log(reviews);
-
     return (
         <div>
             <div>

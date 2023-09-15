@@ -101,7 +101,7 @@ router.put('/:productId', requireAuth, properAuth, productValidations, async (re
     const { name, description, price, quantity } = req.body;
 
     const listing = await ProductListing.findByPk(req.params.productId);
-    await listing.set({
+    listing.set({
         name, description, price, quantity
     });
     await listing.save();
