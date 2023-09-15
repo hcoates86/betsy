@@ -63,6 +63,16 @@ const SingleListing = () => {
       return months[+num]
     }
 
+    function returnStars(stars) {
+        if (stars === 5) return '★★★★★';
+        else if (stars === 4) return '★★★★☆'
+        else if (stars === 3) return '★★★☆☆'
+        else if (stars === 2) return '★★☆☆☆'
+        else if (stars === 1) return '★☆☆☆☆'
+        else return null
+
+    }
+
     console.log(reviews);
 
     return (
@@ -96,6 +106,7 @@ const SingleListing = () => {
                 </div>
                     {reviews.map(review => (
                     <div className="single-review">
+                        <p>{returnStars(review.stars)}</p>
                         <p>{review.comment}</p>
                         
                         <div>
