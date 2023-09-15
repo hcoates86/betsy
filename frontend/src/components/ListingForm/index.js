@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import './ListingForm.css'
 import { createListing, postImage } from '../../store/listings';
 import noCow from '../../images/noCow.png';
-import { fetchListing } from '../../store/listings';
+import { fetchListing, updatedListing } from '../../store/listings';
 
 
 const ListingForm = () => {
@@ -72,20 +72,26 @@ const ListingForm = () => {
 
         setSubmitted(true);
 
-        const listing = {
+        const product = {
             name, description, price, quantity
         }
         if (!Object.keys(errors).length){
-            const newListing = await dispatch(createListing(listing))
+            if (productId) {
+                await dispatch(updatedListing(product))
+                const newImage = { url: photo, productId }
+                await dispatch(postImage(newImage))
+                history.push(`/listings/${productId}`)
+            } else {
+            const newListing = await dispatch(createListing(product))
 
             if (newListing.id) {
-                let newImage;
-                if (!photo.length) newImage = { url: noCow, productId: newListing.id}
-                else newImage = { url: photo, productId: newListing.id}
+                // let newImage;
+                // if (!photo.length) newImage = { url: noCow, productId: newListing.id}
+                const newImage = { url: photo, productId: newListing.id }
                 await dispatch(postImage(newImage))
                 history.push(`/listings/${newListing.id}`)
 
-            }
+            }}
         } else return
     }
 
