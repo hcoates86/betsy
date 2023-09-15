@@ -107,12 +107,13 @@ const ListingForm = () => {
     }
 
     return (
+        <div className='flex-div'>
     <form onSubmit={handleSubmit} className="list-form-box">
             {/* {Object.values(errors).length > 0 && <label className="errors">{errors.comment}</label>} */}
             <h1>{title}</h1>
 
-            <div>
-                <p>Listing details</p>
+            <div className='div-border'>
+                <p className='p-margin'>Listing details</p>
                 <div>
                     
                     <label>Photo</label>
@@ -129,6 +130,7 @@ const ListingForm = () => {
                     <label>Name</label>
                     <input type='text' className='' 
                     value={name}
+                    
                     onChange={(e) => setName(e.target.value)}
                     />
                     
@@ -146,14 +148,15 @@ const ListingForm = () => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows="8" cols="75"
+                    maxlength="1000"
                     />
                 </div>
                 {errors.description && <p className='errors'>{errors.description}</p>}
                 
             </div>
 
-            <div>
-                <p>Inventory and pricing</p>
+            <div className='div-border'>
+                <p className='p-margin'>Inventory and pricing</p>
                 <div>
                     
                     <label>Price</label>
@@ -188,7 +191,7 @@ const ListingForm = () => {
             <button className='button-black' type="submit">{buttonText}</button>
             </div>
         </form>
-
+        </div>
     )
 }
 

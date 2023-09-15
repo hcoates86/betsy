@@ -1,14 +1,55 @@
 .cancel-post-div {
     display: flex;
-    justify-content: space-evenly;
+    margin: auto;
+}
+
+.cancel-post-div > button {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    font-size: .9rem;
 }
 
 .list-form-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 label {
     margin-right: 5px;
+}
+
+.div-border {
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+    padding: 2em;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.div-border input {
+    border: 1px solid gainsboro;
+    width: 80%;
+    position: relative;
+    left: 4rem;
+}
+
+.div-border textarea {
+    border: 1px solid gainsboro;
+    width: 80%;
+    position: relative;
+    right: 0;
+    left: 2em;
+}
+
+label {
+    width: fit-content;
+}
+
+.div-border div {
+    margin-bottom: 1em;
+}
+
+.p-margin {
+    margin-top: 0;
 }
