@@ -23,8 +23,7 @@ const ListingForm = () => {
         const errorObj = {};
         const fileTypes = ['.jpeg', '.png', '.jpg'];
 
-        //photos aren't required
-        // if (!photo) errorObj['photo'] = ''
+        if (!photo) errorObj['photo'] = 'A photo is required';
         if (!name) errorObj['name'] = 'A name is required';
         if (!description) errorObj['description'] = 'A description is required';
         if (price <= 0 ) errorObj['price'] = 'Please set a price of at least $0.01';

@@ -75,7 +75,7 @@ const SingleListing = () => {
     return (
         <div>
             <div>
-                <img src={image} alt={listing.name}></img>
+                <img className='listing-image' src={image} alt={listing.name}></img>
             </div>
 
             <div>
