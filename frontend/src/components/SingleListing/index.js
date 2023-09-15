@@ -21,8 +21,6 @@ const SingleListing = () => {
     const listing = useSelector(state => state.listings.singleListing)
     const reviewObj = useSelector(state => state.reviews.listing)
     const reviews = Object.values(reviewObj)
-
-    console.log('RRR!!!',reviews);
     
     useEffect(() => {
         dispatch(fetchListing(productId))
@@ -100,12 +98,12 @@ const SingleListing = () => {
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
                     <OpenModalButton
                     buttonText="Leave a Review"
-                    modalComponent={<ReviewModal productId={productId} />}
+                    modalComponent={<UpdateReview productId={productId} type='create' />}
                     />
                     
                 </div>
                     {reviews.map(review => (
-                    <div className="single-review">
+                    <div className="single-review" key={review.id}>
                         <p>{returnStars(review.stars)}</p>
                         <p>{review.comment}</p>
                         
@@ -123,8 +121,8 @@ const SingleListing = () => {
                                     />
 
                                     <OpenModalButton
-                                    buttonText="Update"
-                                    modalComponent={<UpdateReview reviewUpdating={review}/>}
+                                    buttonText="Edit"
+                                    modalComponent={<UpdateReview review={review} type='update'/>}
                                     />
                                 </>) : (<></>)}
                         </div>
