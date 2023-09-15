@@ -27,11 +27,13 @@ label {
     margin-bottom: 10%;
 }
 
-.div-border input {
+.form-input {
     border: 1px solid gainsboro;
     width: 80%;
     position: relative;
     left: 4rem;
+    padding: 3px;
+    border-radius: 3px;
 }
 
 .div-border textarea {
@@ -40,6 +42,23 @@ label {
     position: relative;
     right: 0;
     left: 2em;
+    border-radius: 3px;
+}
+
+.input2 {
+    border: 1px solid gainsboro;
+    width: 7rem;
+    position: relative;
+    left: 20px;
+    margin-left: 10px;
+    padding: 3px;
+    border-radius: 3px;
+
+}
+
+#price-tag {
+    position: relative;
+    left: 1.3em;
 }
 
 label {
@@ -52,4 +71,8 @@ label {
 
 .p-margin {
     margin-top: 0;
+}
+
+#desc {
+    vertical-align: top;
 }

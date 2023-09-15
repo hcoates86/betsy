@@ -117,7 +117,7 @@ const ListingForm = () => {
                 <div>
                     
                     <label>Photo</label>
-                    <input type='url' className=''
+                    <input type='url' className='form-input'
                     value={photo}
                     onChange={(e) => setPhoto(e.target.value)}
                     />
@@ -128,7 +128,7 @@ const ListingForm = () => {
                 <div>
                     
                     <label>Name</label>
-                    <input type='text' className='' 
+                    <input type='text' className='form-input' 
                     value={name}
                     
                     onChange={(e) => setName(e.target.value)}
@@ -142,7 +142,7 @@ const ListingForm = () => {
 
                 <div>
                     
-                    <label>Description</label>
+                    <label id='desc'>Description</label>
                     <textarea 
                     className='' 
                     value={description}
@@ -160,9 +160,9 @@ const ListingForm = () => {
                 <div>
                     
                     <label>Price</label>
-                    <span>$</span>
+                    <span id='price-tag'>$</span>
                     <input
-                        className=''
+                        className='input2'
                         type="number"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
@@ -175,7 +175,7 @@ const ListingForm = () => {
     
                     <label>Quantity</label>
                     <input
-                        className=''
+                        className='input2'
                         type="number"
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}

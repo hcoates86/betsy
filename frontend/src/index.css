@@ -32,7 +32,7 @@ a {
     color: white;
     background-color: black;
     cursor: pointer;
-    border: 0;
+    border: 2px solid black;
     border-radius: 7px;
 }
 
@@ -40,9 +40,10 @@ button {
     color: white;
     background-color: black;
     cursor: pointer;
-    border: 0;
+    border: 2px solid black;
     border-radius: 7px;
-    padding: 5px;
+    padding: 2px 1em;
+    min-width: 6em;
 }
 
 .flex-div {
