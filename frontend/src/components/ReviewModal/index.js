@@ -92,10 +92,10 @@ function ReviewModal({review, productId, type}) {
             <div className='star-filled one-star' 
             onClick={()=> {setStars(1)}}
             >{star1}</div>
-            <div className='star-filled two-star' onClick={()=> {setStars(2)}}>{star2}</div>
-            <div className='star-filled three-star' onClick={()=> {setStars(3)}}>{star3}</div>
-            <div className='star-filled four-star' onClick={()=> {setStars(4)}}>{star4}</div>
-            <div className='star-filled five-star' onClick={()=> {setStars(5)}}>{star5}</div>
+            <div className='star-filled' onClick={()=> {setStars(2)}}>{star2}</div>
+            <div className='star-filled' onClick={()=> {setStars(3)}}>{star3}</div>
+            <div className='star-filled' onClick={()=> {setStars(4)}}>{star4}</div>
+            <div className='star-filled' onClick={()=> {setStars(5)}}>{star5}</div>
             <span id='starSpan'> Stars</span>
             </div>
         <button disabled={disabled} onClick={postYourReview} id='postRevButton' className={buttonClass}>{buttonText}</button>

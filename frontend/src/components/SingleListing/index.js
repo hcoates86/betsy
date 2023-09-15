@@ -5,7 +5,7 @@ import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
 import noCow from '../../images/noCow.png';
 import './SingleListing.css';
-import ConfirmDeleteReviewModal from '../ConfirmDeleteReviewModal';
+import DeleteReviewModal from '../DeleteReviewModal';
 import OpenModalButton from '../OpenModalButton/';
 import ReviewModal from '../ReviewModal';
 
@@ -116,7 +116,7 @@ const SingleListing = () => {
                                 <>
                                     <OpenModalButton
                                     buttonText="Delete"
-                                    modalComponent={<ConfirmDeleteReviewModal reviewId={review.id} />}
+                                    modalComponent={<DeleteReviewModal reviewId={review.id} />}
                                     />
 
                                     <OpenModalButton
