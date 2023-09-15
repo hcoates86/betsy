@@ -22,10 +22,15 @@
   position: absolute;
   background-color: white;
   line-height: 250%;  
-  border: 5px solid black;
-  border-radius: 3%;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
+#modal-content > div {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
 .starSelect {
   font-size: 2em;
   margin: 5px;

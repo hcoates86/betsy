@@ -62,7 +62,7 @@ const ListingForm = () => {
                 history.push(`/listings/${newListing.id}`)
 
             }
-        }
+        } else return
     }
 
     return (

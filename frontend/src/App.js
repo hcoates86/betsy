@@ -27,8 +27,11 @@ function App() {
           <Route exact path='/new-listing'>
             <ListingForm />
           </Route>
-          <Route path='/listings/:productId'>
+          <Route exact path='/listings/:productId'>
             <SingleListing />
+          </Route>
+          <Route exact path='/user/listings/:productId'>
+            <ListingForm />
           </Route>
           <Route path='/user/listings'>
             <UserListings />
@@ -36,6 +39,7 @@ function App() {
           <Route exact path ='/listings'>
             <AllListings />
           </Route>
+          
 
           <Route>
             <NoPage />
