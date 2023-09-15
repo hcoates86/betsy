@@ -7,7 +7,6 @@ import noCow from '../../images/noCow.png';
 import './SingleListing.css';
 import ConfirmDeleteReviewModal from '../ConfirmDeleteReviewModal';
 import OpenModalButton from '../OpenModalButton/';
-import UpdateReview from '../UpdateReview';
 import ReviewModal from '../ReviewModal';
 
 
@@ -98,7 +97,7 @@ const SingleListing = () => {
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
                     <OpenModalButton
                     buttonText="Leave a Review"
-                    modalComponent={<UpdateReview productId={productId} type='create' />}
+                    modalComponent={<ReviewModal productId={productId} type='create' />}
                     />
                     
                 </div>
@@ -122,7 +121,7 @@ const SingleListing = () => {
 
                                     <OpenModalButton
                                     buttonText="Edit"
-                                    modalComponent={<UpdateReview review={review} type='update'/>}
+                                    modalComponent={<ReviewModal review={review} type='update'/>}
                                     />
                                 </>) : (<></>)}
                         </div>
