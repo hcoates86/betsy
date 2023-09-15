@@ -1,23 +1,35 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './ListingForm.css'
 import { createListing, postImage } from '../../store/listings';
 import noCow from '../../images/noCow.png';
+import { fetchListing } from '../../store/listings';
 
 
 const ListingForm = () => {
+    //only update should have a productId
+    const {productId} = useParams();
+
     const history = useHistory();
     const dispatch = useDispatch();
-    const [photo, setPhoto] = useState('')
-    const [name, setName] = useState('')
+    const listing = useSelector(state => state.listings.singleListing)
+
+    const [photo, setPhoto] = useState(listing?.images[0].url || '')
+    const [name, setName] = useState(listing?.name || '')
     // const [category, setCategory] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(1);
+    const [description, setDescription] = useState(listing?.description || '')
+    const [price, setPrice] = useState(listing?.price || 0);
+    const [quantity, setQuantity] = useState(listing?.quantity || 1);
 
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+
+
+
+    useEffect(() => {
+        dispatch(fetchListing(productId))
+    }, [dispatch])
 
     useEffect(() => {
         const errorObj = {};
@@ -41,6 +53,18 @@ const ListingForm = () => {
     const cancel = () => {
         history.push('/')
     }
+
+    let title;
+    let buttonText;
+    if (productId) {
+        title = 'Update your listing';
+        buttonText = 'Update'
+    }
+    else {
+        title = 'Create a listing'
+        buttonText = 'Post'
+    }
+
 
     console.log(errors);
     const handleSubmit = async (e) => {
@@ -68,7 +92,7 @@ const ListingForm = () => {
     return (
     <form onSubmit={handleSubmit} className="list-form-box">
             {/* {Object.values(errors).length > 0 && <label className="errors">{errors.comment}</label>} */}
-            <h1>Create a listing</h1>
+            <h1>{title}</h1>
 
             <div>
                 <p>Listing details</p>
@@ -144,7 +168,7 @@ const ListingForm = () => {
 
             <div className='cancel-post-div'>
             <button className='button-white' onClick={cancel}>Cancel</button>
-            <button className='button-black' type="submit">Post</button>
+            <button className='button-black' type="submit">{buttonText}</button>
             </div>
         </form>
 
