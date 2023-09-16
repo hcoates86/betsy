@@ -31,7 +31,7 @@ const HomePage = () => {
     console.log("2: ", giftGuide);
 
     return (
-        <div>
+        <div className='popular-outer'>
             <h1>The popular crowd</h1>
         <div className='popular-div'>
             {popular.map(listing => (

@@ -1,13 +1,11 @@
-.thumbnail {
-    width: 350px;
-    height: 260px;
-    object-fit: cover;
+.popular-outer {
+    margin-right: 10%;
+    margin-left: 10%;
 }
-
 .popular-div {
     display: flex;
     flex-wrap: nowrap;
-    gap: 15px;
+    gap: 5%;
     margin: auto;
     justify-content: center;
 }
@@ -16,6 +14,8 @@
     margin: 0;
 }
 
-.outer-div {
-    width: 350px;
+
+
+.popular-div > div {
+    max-width: 19%;
 }
