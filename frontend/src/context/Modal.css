@@ -24,6 +24,24 @@
   line-height: 250%;  
   border: 1px solid black;
   border-radius: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 5px;
+}
+
+#modal-content > form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#modal-content > form > label {
+  display: block;
+}
+
+#modal-content > form > label input {
+  padding-left: 5px;
 }
 
 #modal-content > div {

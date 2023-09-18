@@ -33,7 +33,7 @@ const HomePage = () => {
     return (
         <div className='popular-outer'>
             <h1>The popular crowd</h1>
-        <div className='popular-div'>
+        <div className='flex-div'>
             {popular.map(listing => (
                 <div className='outer-div'>
                     <ListingItem listing={listing}/>
@@ -44,11 +44,13 @@ const HomePage = () => {
         <div className='gift-div'>
             <h1>The Betsy Gift Guide</h1>
             <h2>Shop these unique cows</h2>
+            <div className='flex-div'>
             {giftGuide.map(listing => (
                 <div>
                     <ListingItem listing={listing}/>
                 </div>
             ))}
+            </div>
         </div>    
 
         </div>

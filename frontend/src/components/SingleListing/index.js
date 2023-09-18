@@ -93,11 +93,12 @@ const SingleListing = () => {
                 <div className="review-total">
     
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
+                    {user && 
                     <OpenModalButton
                     buttonText="Leave a Review"
                     modalComponent={<ReviewModal productId={productId} type='create' />}
                     />
-                    
+                    }
                 </div>
                     {reviews.map(review => (
                     <div className="single-review" key={review.id}>
