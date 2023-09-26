@@ -5,6 +5,7 @@ import noCow from '../../images/noCow.png';
 const ListingItem = ({ listing }) => {
     
     if(!listing) return null;
+    if(!listing.price) return null;
 
     let image;
     if(listing.image && listing.image[0]) image = listing.image[0].url;
@@ -21,8 +22,9 @@ const ListingItem = ({ listing }) => {
 
     } else stars = null;
 
-    let price =  null;
-    if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
+    // let price =  null;
+    //useeffect
+    // if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
 
     return (
         <Link to={`/listings/${listing.id}`}>
@@ -39,7 +41,7 @@ const ListingItem = ({ listing }) => {
                         <></>
                     )}
 
-                    <p id='price'>${price}</p>
+                    <p id='price'>${(listing.price).toFixed(2)}</p>
                     <p id='store'>{listing.seller?.username}</p>
                 </div>
 
