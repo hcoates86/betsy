@@ -23,8 +23,9 @@ const ListingItem = ({ listing }) => {
     } else stars = null;
 
     // let price =  null;
-    //useeffect
+    //just do tofixed in the backend
     // if (typeof listing.price === 'number') price = (listing.price).toFixed(2);
+    
 
     return (
         <Link to={`/listings/${listing.id}`}>
@@ -41,7 +42,7 @@ const ListingItem = ({ listing }) => {
                         <></>
                     )}
 
-                    <p id='price'>${(listing.price).toFixed(2)}</p>
+                    <p id='price'>${listing.price}</p>
                     <p id='store'>{listing.seller?.username}</p>
                 </div>
 
