@@ -50,9 +50,9 @@ const SingleListing = () => {
     if(listing.images && listing.images[0]) image = listing.images[0].url;
     else image = noCow;
 
-    let price;
-    if (!listing.price) return null;
-    else price = (listing.price).toFixed(2);
+    let price = listing.price;
+    // if (!listing.price) return null;
+    // else price = (listing.price).toFixed(2);
 
     const months = ['0', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
