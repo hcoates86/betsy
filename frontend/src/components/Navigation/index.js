@@ -25,6 +25,9 @@ function Navigation({ isLoaded }){
         <li>
           <NavLink exact to='/user/listings'>My Herd</NavLink>
         </li>
+        <li>
+          <NavLink exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
+        </li>
         </>
 
       ) : (<></>)}

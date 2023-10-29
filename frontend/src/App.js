@@ -9,6 +9,7 @@ import SingleListing from './components/SingleListing';
 import NoPage from "./components/NoPage";
 import UserListings from "./components/UserListings";
 import AllListings from "./components/AllListings";
+import Cart from "./components/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,8 +37,11 @@ function App() {
           <Route path='/user/listings'>
             <UserListings />
           </Route>
-          <Route exact path ='/listings'>
+          <Route exact path='/listings'>
             <AllListings />
+          </Route>
+          <Route exact path='/cart'>
+            <Cart />
           </Route>
           
 

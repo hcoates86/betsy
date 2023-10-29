@@ -2,7 +2,6 @@ import { getListings } from '../../store/listings';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Cart.css';
-import ListingItem from '../ListingItem';
 
 const Cart = () => {
     //returns an array of all cart items or an empty one if it's empty
@@ -15,6 +14,8 @@ const Cart = () => {
         dispatch(getAllCartItems())
     }, [dispatch]);
 
+    console.log(cart);
+
     if (!cart) return null;
 
 
@@ -22,9 +23,9 @@ const Cart = () => {
         <div>
             <h1>Your Cart</h1>
         <div className=''>
-            {popular.map(listing => (
+            {cart.map(item => (
                 <div className='outer-div'>
-                    <ListingItem listing={listing}/>
+
                 </div>
             ))}
         </div>   

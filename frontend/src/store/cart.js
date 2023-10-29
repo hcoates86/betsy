@@ -5,56 +5,56 @@ const DELETE_CART = 'carts/deleteCart';
 const POST_CART = 'carts/postCart';
 const EDIT_CART = 'carts/editCart';
 
-const getCartItems = (carts) => {
+const getCartItems = (cartItems) => {
     return {
         type: GET_CART_ITEMS,
-        carts
+        cartItems
     }
 }
 
-const removeCartItem = (cartId) => {
+const removeCartItem = (productId) => {
     return {
         type: DELETE_CART,
-        cartId
+        productId
     }
 }
 
-const postNewCartItem = (cart) => {
+const postNewCartItem = (cartItem) => {
     return {
         type: POST_CART,
-        cart
+        cartItem
     }
 }
 
-const editCartItemAction = (cart) => {
+const editCartItemAction = (cartItem) => {
     return {
         type: EDIT_CART,
-        cart
+        cartItem
     }
 }
 
-export const postCartItem = ({newCart, productId}) => async (dispatch) => {
+export const postCartItem = ({newCartItem, productId}) => async (dispatch) => {
     const res = await csrfFetch(`/api/cart/${productId}`, {
         method: 'POST',
-        body: JSON.stringify(newCart)
+        body: JSON.stringify(newCartItem)
     });
 
-    const cart = await res.json();
+    const cartItem = await res.json();
     if (res.ok) {
-        dispatch(postNewCartItem(cart))
+        dispatch(postNewCartItem(cartItem))
     } 
-    return cart
+    return cartItem
 
 }
 
 export const getAllCartItems = (productId) => async (dispatch) => {
     const res = await csrfFetch(`/api/cart`);
 
-    const carts = await res.json()
+    const cart = await res.json()
     if (res.ok) {
-        dispatch(getCartItems(carts))
+        dispatch(getCartItems(cartItems))
     } 
-    return carts;
+    return cart;
 
 };
 
@@ -64,7 +64,7 @@ export const deleteCartItem = (productId) => async (dispatch) => {
         method: 'DELETE'
     });
     if (res.ok) {
-        dispatch(removeCartItem(cartId))
+        dispatch(removeCartItem(productId))
     } else {
         const errors = await res.json();
         return errors;
@@ -90,17 +90,18 @@ const cartReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_CART_ITEMS:
-            newState = {...state, listing:{}};
-            if (action.carts) {
-            action.carts.forEach(cart => newState.listing[cart.id] = cart)}
+            newState = {...state, cart:{}};
+            if (action.cartItems) {
+                action.cartItems.forEach(item => newState.cart[item.id] = item)
+            }
             return newState;
         case DELETE_CART:
-            newState = {...state, listing: {...state.listing}};
-            delete newState.listing[action.cartId];
+            newState = {...state, cart: {...state.cart}};
+            delete newState.cart[action.productId];
             return newState;
         case POST_CART:
-            newState = {...state, listing: {...state.listing}};
-            newState.listing[action.cart.id] = action.cart;
+            newState = {...state, cart: {...state.cart}};
+            newState.listing[action.cart.id] = action.cartItem;
             return newState;
         default:
             return state;
