@@ -27,8 +27,6 @@ const HomePage = () => {
         if(count > 5 && count < 12) giftGuide.push(listings[i])
         count++
     }
-    console.log("1: ", popular);
-    console.log("2: ", giftGuide);
 
     return (
         <div className='popular-outer'>
