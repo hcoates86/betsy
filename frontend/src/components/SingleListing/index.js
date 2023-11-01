@@ -71,6 +71,11 @@ const SingleListing = () => {
 
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+    }
+
     return (
         <div>
             <div>
@@ -82,6 +87,7 @@ const SingleListing = () => {
                     <h1>${price}</h1>
                     <p>{listing.name}</p>
                     <p>{listing.seller?.username}</p>
+
                     <p>Quantity {listing.quantity}</p>
                 </div>
                 <div>
@@ -90,6 +96,16 @@ const SingleListing = () => {
                 </div>
                 
             </div>
+
+            <div>
+            <form onSubmit={handleSubmit} className="add-cart-form">
+                
+
+                <button className='button-black' type="submit">Add to Cart</button>
+
+            </form>
+            </div>
+
             <div>
                 <div className="review-total">
     

@@ -26,10 +26,10 @@ const postNewCartItem = (cartItem) => {
     }
 }
 
-const editCartItemAction = (cartItem) => {
+const editCartItemAction = (product) => {
     return {
         type: EDIT_CART,
-        cartItem
+        product
     }
 }
 
@@ -50,11 +50,11 @@ export const postCartItem = ({newCartItem, productId}) => async (dispatch) => {
 export const getAllCartItems = (productId) => async (dispatch) => {
     const res = await csrfFetch(`/api/cart`);
 
-    const cart = await res.json()
+    const cartItems = await res.json()
     if (res.ok) {
         dispatch(getCartItems(cartItems))
     } 
-    return cart;
+    return cartItems;
 
 };
 
@@ -71,11 +71,11 @@ export const deleteCartItem = (productId) => async (dispatch) => {
     }
 }
 
-export const editCartItem = (productId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/cart/${productId}`, {
+export const editCartItem = (product) => async (dispatch) => {
+    const res = await csrfFetch(`/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cart)
+        body: JSON.stringify(product)
     })
     const data = await res.json();
     if (res.ok) {

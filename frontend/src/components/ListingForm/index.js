@@ -25,7 +25,7 @@ const ListingForm = () => {
     // const [photo, setPhoto] = useState(listingPhoto)
     const [photo, setPhoto] = useState(listing?.images ? listing.images[0].url :  '')
     const [name, setName] = useState(listing?.name || '')
-    // const [category, setCategory] = useState('')
+    const [category, setCategory] = useState(listing?.category || '')
     const [description, setDescription] = useState(listing?.description || '')
     const [price, setPrice] = useState(listing?.price || 0);
     const [quantity, setQuantity] = useState(listing?.quantity || 1);
@@ -138,7 +138,14 @@ const ListingForm = () => {
                 {errors.name && <p className='errors'>{errors.name}</p>}
 
 
-                {/* <label>Category</label> */}
+                <label>Category</label>
+                <select name="category" id="cat" required>
+                    <option value="dairy">Dairy</option>
+                    <option value="meat">Meat</option>
+                    <option value="other">Other</option>
+                    
+                    onChange={(e) => setCategory(e.target.value)}
+                    </select>
 
                 <div>
                     

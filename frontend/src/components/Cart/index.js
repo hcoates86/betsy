@@ -1,4 +1,4 @@
-import { getListings } from '../../store/listings';
+import { getAllCartItems } from '../../store/cart';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Cart.css';

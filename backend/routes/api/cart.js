@@ -7,10 +7,6 @@ const { ProductListing, ProductImage, Review, User, CartItem, ShoppingCart } = r
 
 const router = express.Router();
 
-const cartValidations = async (req, res, next) => {
-
-}
-
 //show cart with cart items inside
 router.get('/', async (req, res, next) => {
     //grab logged in user
@@ -37,6 +33,24 @@ router.post('/:productId', async (req, res, next) => {
     })
 
     res.json(newCartItem)
+
+})
+
+//edit quantity in cart
+router.put('/:productId', async (req, res, next) => {
+    const { quantity } = req.body;
+    const cartItem = await CartItem.findByPk(req.params.productId);
+    const listing = await cartItem.getProductListing();
+    const err = new Error("Insufficient quantity remaining");
+    err.status = 400;
+
+    if (+quantity > listing.quantity) next(err);
+
+
+    cartItem.set({ quantity })
+    await cartItem.save()
+    res.json(cartItem)
+
 
 })
 
