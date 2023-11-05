@@ -71,10 +71,23 @@ const SingleListing = () => {
 
     }
 
+    //creates dropdown options for the quantity
+
+    const quantityArr = [];
+    if (!listing.quantity) quantityArr.push(<option key="0" value="0">0</option>)
+    else {
+        for (let i = 1; i <= listing.quantity; i++) {
+            quantityArr.push(<option key={`${i}`} value={`${i}`}>{i}</option>)
+    }}
+    
+        
     const handleSubmit = async (e) => {
         e.preventDefault();
 
     }
+
+    
+
 
     return (
         <div>
@@ -88,18 +101,22 @@ const SingleListing = () => {
                     <p>{listing.name}</p>
                     <p>{listing.seller?.username}</p>
 
-                    <p>Quantity {listing.quantity}</p>
                 </div>
                 <div>
                     <h3>Description</h3>
                     <p>{listing.description}</p>
+                    <p>{listing.quantity}</p>
                 </div>
                 
             </div>
 
             <div>
             <form onSubmit={handleSubmit} className="add-cart-form">
-                
+                <label for="quantity-select">Quantity</label>
+                <select name="quantity" id="quantity-select">
+
+                {quantityArr}
+                </select>
 
                 <button className='button-black' type="submit">Add to Cart</button>
 
