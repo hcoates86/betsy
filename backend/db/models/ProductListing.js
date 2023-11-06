@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       ProductListing.hasMany(models.Order, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.hasOne(models.CartItem, { foreignKey: 'productId', onDelete: 'CASCADE', hooks: true });
       ProductListing.belongsTo(models.User, { foreignKey: 'userId' });
+      ProductListing.belongsTo(models.Category, { foreignKey: 'categoryId' });
+
     }
   };
 
@@ -36,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      category: DataTypes.INTEGER,
+      categoryId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER
     },
     {

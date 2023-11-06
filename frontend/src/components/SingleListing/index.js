@@ -13,17 +13,18 @@ import ReviewModal from '../ReviewModal';
 const SingleListing = () => {
     const {productId} = useParams();
     const dispatch = useDispatch();
-    const [stars, setStars] = useState(null)
-    const [plural, setPlural] = useState(null)
+    const [stars, setStars] = useState(null);
+    const [plural, setPlural] = useState(null);
+    const [quantity, setQuantity] = useState(null);
 
-    const user = useSelector(state => state.session.user)
-    const listing = useSelector(state => state.listings.singleListing)
-    const reviewObj = useSelector(state => state.reviews.listing)
-    const reviews = Object.values(reviewObj)
+    const user = useSelector(state => state.session.user);
+    const listing = useSelector(state => state.listings.singleListing);
+    const reviewObj = useSelector(state => state.reviews.listing);
+    const reviews = Object.values(reviewObj);
     
     useEffect(() => {
-        dispatch(fetchListing(productId))
-        dispatch(getListingReviews(productId))
+        dispatch(fetchListing(productId));
+        dispatch(getListingReviews(productId));
     }, [dispatch])
     
     useEffect(() => {
@@ -113,7 +114,8 @@ const SingleListing = () => {
             <div>
             <form onSubmit={handleSubmit} className="add-cart-form">
                 <label for="quantity-select">Quantity</label>
-                <select name="quantity" id="quantity-select">
+                        onChange={(e) => setQuantity(e.target.value)}
+                <select name="quantity" id="quantity-select" >
 
                 {quantityArr}
                 </select>
