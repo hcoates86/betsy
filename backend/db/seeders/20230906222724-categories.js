@@ -1,5 +1,5 @@
 'use strict';
-const { ProductListing } = require('../models');
+const { Category } = require('../models');
 const bcrypt = require("bcryptjs");
 
 let options = {};
@@ -12,15 +12,18 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await Category.bulkCreate([
       {
+        id: 1,
         name: 'Dairy'
       },
       {
+        id: 2,
         name: 'Meat'
       },
       {
+        id: 3,
         name: 'Other'
       }
-    ])
+    ], { validate: true })
   },
 
   async down (queryInterface, Sequelize) {

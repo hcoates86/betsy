@@ -30,8 +30,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      category: {
+      categoryId: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
+        },
+      onDelete: 'cascade'
       },
       userId: {
         type: Sequelize.INTEGER,
