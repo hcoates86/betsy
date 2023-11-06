@@ -85,12 +85,11 @@ router.get('/', async (req, res, next) => {
 
 //post a new product listing
 router.post('/new', requireAuth, productValidations, async (req, res, next) => {
-    //implement posting category later
-    const { name, description, price, quantity } = req.body;
+    const { name, description, price, quantity, categoryId } = req.body;
 
     const newProduct = await ProductListing.create({
         userId: req.user.id,
-        name, description, price, quantity
+        name, description, price, quantity, categoryId
     })
     res.status(201)
     res.json(newProduct)
@@ -98,11 +97,11 @@ router.post('/new', requireAuth, productValidations, async (req, res, next) => {
 
 //edit product
 router.put('/:productId', requireAuth, properAuth, productValidations, async (req, res, next) => {
-    const { name, description, price, quantity } = req.body;
+    const { name, description, price, quantity, categoryId } = req.body;
 
     const listing = await ProductListing.findByPk(req.params.productId);
     listing.set({
-        name, description, price, quantity
+        name, description, price, quantity, categoryId
     });
     await listing.save();
     res.json(listing);
