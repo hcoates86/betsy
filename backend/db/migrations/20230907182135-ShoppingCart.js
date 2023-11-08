@@ -15,7 +15,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       total: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(10, 2),
+        defaultValue: 0.00
       },
       userId: {
         type: Sequelize.INTEGER,

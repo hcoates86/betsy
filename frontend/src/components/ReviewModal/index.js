@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { editReview } from '../../store/reviews';
+import { editReview, postReview } from '../../store/reviews';
 import { useModal } from "../../context/Modal";
-import { postReview } from '../../store/reviews';
 
 
 function ReviewModal({review, productId, type}) {

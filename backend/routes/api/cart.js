@@ -9,7 +9,7 @@ const router = express.Router();
 
 //show cart with cart items inside
 router.get('/', async (req, res, next) => {
-    //grab logged in user
+    //grab logged in user and get their cart
     const user = await User.findByPk(req.user.id);
     const cart = await user.getShoppingCart();
     const cartItems = await cart.getCartItems();
@@ -24,7 +24,12 @@ router.post('/:productId', async (req, res, next) => {
     const { quantity } = req.body;
 
     const user = await User.findByPk(req.user.id);
-    const cart = await user.getShoppingCart();
+    let cart = await user.getShoppingCart();
+    if (!cart) {
+        cart = await ShoppingCart.create({
+            userId: user.id
+        }) 
+    }
 
     const newCartItem = await CartItem.create({
         quantity,

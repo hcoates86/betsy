@@ -8,6 +8,7 @@ import './SingleListing.css';
 import DeleteReviewModal from '../DeleteReviewModal';
 import OpenModalButton from '../OpenModalButton/';
 import ReviewModal from '../ReviewModal';
+import { postCartItem } from '../../store/cart';
 
 
 const SingleListing = () => {
@@ -52,8 +53,6 @@ const SingleListing = () => {
     else image = noCow;
 
     let price = listing.price;
-    // if (!listing.price) return null;
-    // else price = (listing.price).toFixed(2);
 
     const months = ['0', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -85,6 +84,10 @@ const SingleListing = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const newCartItem = { quantity, productId: listing.id }
+
+        dispatch(postCartItem(newCartItem));
+
     }
 
     
@@ -114,8 +117,8 @@ const SingleListing = () => {
             <div>
             <form onSubmit={handleSubmit} className="add-cart-form">
                 <label for="quantity-select">Quantity</label>
-                        onChange={(e) => setQuantity(e.target.value)}
-                <select name="quantity" id="quantity-select" >
+                        
+                <select name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
 
                 {quantityArr}
                 </select>

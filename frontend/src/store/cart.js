@@ -33,7 +33,9 @@ const editCartItemAction = (product) => {
     }
 }
 
-export const postCartItem = ({newCartItem, productId}) => async (dispatch) => {
+export const postCartItem = (newCartItem) => async (dispatch) => {
+    const { productId } = newCartItem;
+
     const res = await csrfFetch(`/api/cart/${productId}`, {
         method: 'POST',
         body: JSON.stringify(newCartItem)
@@ -47,7 +49,7 @@ export const postCartItem = ({newCartItem, productId}) => async (dispatch) => {
 
 }
 
-export const getAllCartItems = (productId) => async (dispatch) => {
+export const getAllCartItems = () => async (dispatch) => {
     const res = await csrfFetch(`/api/cart`);
 
     const cartItems = await res.json()
