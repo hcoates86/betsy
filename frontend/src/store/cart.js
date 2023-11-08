@@ -12,10 +12,10 @@ const getCartItems = (cartItems) => {
     }
 }
 
-const removeCartItem = (productId) => {
+const removeCartItem = (cartId) => {
     return {
         type: DELETE_CART,
-        productId
+        cartId
     }
 }
 
@@ -26,10 +26,10 @@ const postNewCartItem = (cartItem) => {
     }
 }
 
-const editCartItemAction = (product) => {
+const editCartItemAction = (cartItem) => {
     return {
         type: EDIT_CART,
-        product
+        cartItem
     }
 }
 
@@ -62,12 +62,12 @@ export const getAllCartItems = () => async (dispatch) => {
 };
 
 
-export const deleteCartItem = (productId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/cart/${productId}`, {
+export const deleteCartItem = (cartId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/cart/${cartId}`, {
         method: 'DELETE'
     });
     if (res.ok) {
-        dispatch(removeCartItem(productId))
+        dispatch(removeCartItem(cartId))
     } else {
         const errors = await res.json();
         return errors;
@@ -80,11 +80,11 @@ export const editCartItem = (product) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(product)
     })
-    const data = await res.json();
+    const cartItem = await res.json();
     if (res.ok) {
-        dispatch(editCartItemAction(data))
+        dispatch(editCartItemAction(cartItem))
     }
-    return data;
+    return cartItem;
 }
 
 const initialState = {}
@@ -100,9 +100,13 @@ const cartReducer = (state = initialState, action) => {
             return newState;
         case DELETE_CART:
             newState = {...state};
-            delete newState[action.productId];
+            delete newState[action.cartId];
             return newState;
         case POST_CART:
+            newState = {...state};
+            newState[action.cartItem.id] = action.cartItem;
+            return newState;
+        case EDIT_CART:
             newState = {...state};
             newState[action.cartItem.id] = action.cartItem;
             return newState;

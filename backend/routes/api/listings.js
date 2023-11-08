@@ -46,9 +46,9 @@ router.get('/', async (req, res, next) => {
         const currentProduct = await ProductListing.findByPk(product.id);
         const reviewTotal = await currentProduct.countReviews();
 
-        const seller = await currentProduct.getUser();
+        const seller = await currentProduct.getUser({ attributes: ['id', 'username', 'picture']});
 
-        const sellerListings = await seller.getProductListings();
+        // const sellerListings = await seller.getProductListings();
 
          // let totalReviews = 0;
     // let totalStars = 0;
@@ -70,8 +70,8 @@ router.get('/', async (req, res, next) => {
         //gets all images in an array of objects
         let images = await currentProduct.getProductImages({ attributes: ['id', 'url'] })
 
-        product.averageStars = avgStars
-        product.image = images
+        product.averageStars = avgStars;
+        product.image = images;
         product.seller = seller;
         product.totalReviews = reviewTotal;
         // product.totalReviews = totalReviews

@@ -23,11 +23,13 @@ const Cart = () => {
         <div>
             <h1>Your Cart</h1>
         <div className=''>
+            <ul>
             {cart.map(item => (
-                <div className='outer-div'>
-
-                </div>
+                <li>
+                    <p>{item.quantity}</p>
+                </li>
             ))}
+            </ul>
         </div>   
 
         </div>

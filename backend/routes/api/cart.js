@@ -12,11 +12,32 @@ router.get('/', async (req, res, next) => {
     //grab logged in user and get their cart
     const user = await User.findByPk(req.user.id);
     const cart = await user.getShoppingCart();
-    const cartItems = await cart.getCartItems();
 
-    res.json(cartItems)
+    const cartArray = [];
 
+    if (!cart) {
+        cart = await ShoppingCart.create({
+            userId: user.id
+        }) 
+    }
+    const cartItems = await cart.getCartItems({raw: true});
 
+    for (let item of cartItems) {
+        const itemListing = await ProductListing.findByPk(item.productId)
+        let images = await itemListing.getProductImages({ attributes: ['id', 'url'] })
+        const seller = await itemListing.getUser({ attributes: ['id', 'username', 'picture']});
+
+        item.price = itemListing.price
+        item.name = itemListing.name;
+        //have to check quantity against total for possible error
+        item.totalQuantity = itemListing.quantity;
+        item.seller = seller;
+        item.image = images;
+
+        cartArray.push(item)
+    }
+
+    res.json(cartArray)
 })
 
 //add to cart
@@ -42,9 +63,9 @@ router.post('/:productId', async (req, res, next) => {
 })
 
 //edit quantity in cart
-router.put('/:productId', async (req, res, next) => {
+router.put('/:cartId', async (req, res, next) => {
     const { quantity } = req.body;
-    const cartItem = await CartItem.findByPk(req.params.productId);
+    const cartItem = await CartItem.findByPk(req.params.cartId);
     const listing = await cartItem.getProductListing();
     const err = new Error("Insufficient quantity remaining");
     err.status = 400;
@@ -59,5 +80,12 @@ router.put('/:productId', async (req, res, next) => {
 
 })
 
+//delete item from cart
+router.delete('/:cartId', async (req, res, next) => {
+    const cartItem = await CartItem.findByPk(req.params.cartId);
+    await cartItem.destroy();
+    res.status(200)
+    res.json("Removed item from cart")
+})
 
 module.exports = router;
