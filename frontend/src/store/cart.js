@@ -74,17 +74,18 @@ export const deleteCartItem = (cartId) => async (dispatch) => {
     }
 }
 
-export const editCartItem = (product) => async (dispatch) => {
-    const res = await csrfFetch(`/api/cart/${product.id}`, {
+export const editCartItem = (cartItem) => async (dispatch) => {
+    const res = await csrfFetch(`/api/cart/${cartItem.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(product)
+        body: JSON.stringify(cartItem)
     })
-    const cartItem = await res.json();
+    const editCartItem = await res.json();
     if (res.ok) {
-        dispatch(editCartItemAction(cartItem))
+        dispatch(editCartItemAction(cartItem    ))
+        return editCartItem;
+
     }
-    return cartItem;
 }
 
 const initialState = {}

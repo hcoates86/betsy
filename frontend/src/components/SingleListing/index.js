@@ -87,9 +87,8 @@ const SingleListing = () => {
         e.preventDefault();
 
         const newCartItem = { quantity, productId: listing.id }
-        console.log('CART ITEM',newCartItem);
         dispatch(postCartItem(newCartItem));
-        // history.push('/cart')
+        history.push('/cart')
 
     }
 
