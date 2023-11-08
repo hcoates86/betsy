@@ -14,7 +14,7 @@ const Cart = () => {
         dispatch(getAllCartItems())
     }, [dispatch]);
 
-    console.log(cart);
+    console.log('!!!!', cart);
 
     if (!cart) return null;
 

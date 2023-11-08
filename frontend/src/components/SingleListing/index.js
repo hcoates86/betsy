@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
+import { postCartItem } from '../../store/cart';
 import noCow from '../../images/noCow.png';
-import './SingleListing.css';
 import DeleteReviewModal from '../DeleteReviewModal';
 import OpenModalButton from '../OpenModalButton/';
 import ReviewModal from '../ReviewModal';
-import { postCartItem } from '../../store/cart';
+import './SingleListing.css';
 
 
 const SingleListing = () => {
     const {productId} = useParams();
+    const history = useHistory();
     const dispatch = useDispatch();
+    
     const [stars, setStars] = useState(null);
     const [plural, setPlural] = useState(null);
-    const [quantity, setQuantity] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     const user = useSelector(state => state.session.user);
     const listing = useSelector(state => state.listings.singleListing);
@@ -85,8 +87,9 @@ const SingleListing = () => {
         e.preventDefault();
 
         const newCartItem = { quantity, productId: listing.id }
-
+        console.log('CART ITEM',newCartItem);
         dispatch(postCartItem(newCartItem));
+        // history.push('/cart')
 
     }
 
@@ -109,12 +112,12 @@ const SingleListing = () => {
                 <div>
                     <h3>Description</h3>
                     <p>{listing.description}</p>
-                    <p>{listing.quantity}</p>
                 </div>
                 
             </div>
 
-            <div>
+            {user ? 
+            (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
                 <label for="quantity-select">Quantity</label>
                         
@@ -126,7 +129,7 @@ const SingleListing = () => {
                 <button className='button-black' type="submit">Add to Cart</button>
 
             </form>
-            </div>
+            </div>) : (<></>)}
 
             <div>
                 <div className="review-total">

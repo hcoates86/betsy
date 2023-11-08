@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './ListingForm.css'
 import { createListing, postImage } from '../../store/listings';
-import noCow from '../../images/noCow.png';
+// import noCow from '../../images/noCow.png';
 import { fetchListing, updatedListing } from '../../store/listings';
 
 
@@ -96,8 +96,6 @@ const ListingForm = () => {
             const newListing = await dispatch(createListing(product))
 
             if (newListing.id) {
-                // let newImage;
-                // if (!photo.length) newImage = { url: noCow, productId: newListing.id}
                 const newImage = { url: photo, productId: newListing.id }
                 await dispatch(postImage(newImage))
                 history.push(`/listings/${newListing.id}`)

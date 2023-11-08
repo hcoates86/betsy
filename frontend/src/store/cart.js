@@ -42,6 +42,7 @@ export const postCartItem = (newCartItem) => async (dispatch) => {
     });
 
     const cartItem = await res.json();
+
     if (res.ok) {
         dispatch(postNewCartItem(cartItem))
     } 
@@ -86,24 +87,24 @@ export const editCartItem = (product) => async (dispatch) => {
     return data;
 }
 
-const initialState = {cart: {}}
+const initialState = {}
 
 const cartReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_CART_ITEMS:
-            newState = {...state, cart:{}};
+            newState = {...state};
             if (action.cartItems) {
-                action.cartItems.forEach(item => newState.cart[item.id] = item)
+                action.cartItems.forEach(item => newState[item.id] = item)
             }
             return newState;
         case DELETE_CART:
-            newState = {...state, cart: {...state.cart}};
-            delete newState.cart[action.productId];
+            newState = {...state};
+            delete newState[action.productId];
             return newState;
         case POST_CART:
-            newState = {...state, cart: {...state.cart}};
-            newState.listing[action.cart.id] = action.cartItem;
+            newState = {...state};
+            newState[action.cartItem.id] = action.cartItem;
             return newState;
         default:
             return state;

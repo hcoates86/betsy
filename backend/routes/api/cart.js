@@ -36,7 +36,7 @@ router.post('/:productId', async (req, res, next) => {
         productId: req.params.productId,
         shoppingCartId: cart.id
     })
-
+    res.status(201)
     res.json(newCartItem)
 
 })
