@@ -46,6 +46,7 @@ router.post('/:productId', async (req, res, next) => {
 
     const user = await User.findByPk(req.user.id);
     let cart = await user.getShoppingCart();
+    //if user doesn't have a cart, create one
     if (!cart) {
         cart = await ShoppingCart.create({
             userId: user.id
@@ -57,8 +58,23 @@ router.post('/:productId', async (req, res, next) => {
         productId: req.params.productId,
         shoppingCartId: cart.id
     })
-    res.status(201)
-    res.json(newCartItem)
+    
+    if (newCartItem.id) {
+        const newCartItem2 = {...newCartItem}
+        const itemListing = await ProductListing.findByPk(newCartItem.productId)
+        let images = await itemListing.getProductImages({ attributes: ['id', 'url'] })
+        const seller = await itemListing.getUser({ attributes: ['id', 'username', 'picture']});
+
+        newCartItem2.price = itemListing.price
+        newCartItem2.name = itemListing.name;
+        newCartItem2.totalQuantity = itemListing.quantity;
+        newCartItem2.seller = seller;
+        newCartItem2.image = images;
+
+
+        res.status(201)
+        res.json(newCartItem2)
+    }
 
 })
 

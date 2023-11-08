@@ -24,7 +24,7 @@ const Cart = () => {
         <div>
             <h1>Your Cart</h1>
         <div className=''>
-            <ul>
+            <ul className='cart-list'>
             {cart.map(item => (
                <CartItem cartItem={item} />
             ))}
