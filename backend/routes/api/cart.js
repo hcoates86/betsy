@@ -50,17 +50,34 @@ router.post('/:productId', async (req, res, next) => {
     if (!cart) {
         cart = await ShoppingCart.create({
             userId: user.id
-        }) 
+        })
     }
+    //if the item is in cart update the quantity
+    const itemExists = await CartItem.findAll({ raw:true, where: { 
+        productId: req.params.productId,
+        shoppingCartId: cart.id
+    }})[0]
+    console.log('@@@@@@@@@@@@@@@',itemExists);
+    console.log('!!@#@#@$',itemExists[0]);
+    if (itemExists) {
+        const itemListing = await ProductListing.findByPk(itemExists.productId)
+        const editItem = await CartItem.findByPk(itemExists.id)
+        const newQuant = quantity + itemExists.quantity
+        newQuant <= itemListing.quantity 
+            ? editItem.set({ quantity: newQuant })
+            : editItem.set({ quantity: itemListing.quantity });
 
+        await editItem.save();
+        res.json(editItem)
+    } else {
     const newCartItem = await CartItem.create({
         quantity,
         productId: req.params.productId,
         shoppingCartId: cart.id
     })
-    
+
     if (newCartItem.id) {
-        const newCartItem2 = {...newCartItem}
+        const newCartItem2 = {...newCartItem.dataValues}
         const itemListing = await ProductListing.findByPk(newCartItem.productId)
         let images = await itemListing.getProductImages({ attributes: ['id', 'url'] })
         const seller = await itemListing.getUser({ attributes: ['id', 'username', 'picture']});
@@ -75,7 +92,7 @@ router.post('/:productId', async (req, res, next) => {
         res.status(201)
         res.json(newCartItem2)
     }
-
+}
 })
 
 //edit quantity in cart

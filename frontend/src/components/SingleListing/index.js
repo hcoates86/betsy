@@ -118,7 +118,7 @@ const SingleListing = () => {
             {user ? 
             (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
-                <label for="quantity-select">Quantity</label>
+                <label>Quantity</label>
                         
                 <select name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
 
