@@ -52,30 +52,32 @@ router.post('/:productId', async (req, res, next) => {
             userId: user.id
         })
     }
-    //if the item is in cart update the quantity
-    const itemExists = await CartItem.findAll({ raw:true, where: { 
+    //if the item is in cart add the quantity to existing quantity
+    const itemExists = await CartItem.findOne({ raw:true, where: { 
         productId: req.params.productId,
         shoppingCartId: cart.id
-    }})[0]
-    console.log('@@@@@@@@@@@@@@@',itemExists);
-    console.log('!!@#@#@$',itemExists[0]);
-    if (itemExists) {
-        const itemListing = await ProductListing.findByPk(itemExists.productId)
-        const editItem = await CartItem.findByPk(itemExists.id)
-        const newQuant = quantity + itemExists.quantity
-        newQuant <= itemListing.quantity 
-            ? editItem.set({ quantity: newQuant })
-            : editItem.set({ quantity: itemListing.quantity });
+    }})
+    const cartItem = await CartItem.findByPk(itemExists?.id);
 
-        await editItem.save();
-        res.json(editItem)
+    let newCartItem;
+
+    if (cartItem) {
+        const itemListing = await ProductListing.findByPk(itemExists.productId)
+        newCartItem = await CartItem.findByPk(itemExists.id)
+        const newQuant = parseInt(quantity) + parseInt(itemExists.quantity)
+        newQuant <= itemListing.quantity 
+            ? newCartItem.set({ quantity: newQuant })
+            : newCartItem.set({ quantity: itemListing.quantity });
+
+        await newCartItem.save();
+
     } else {
-    const newCartItem = await CartItem.create({
+        newCartItem = await CartItem.create({
         quantity,
         productId: req.params.productId,
         shoppingCartId: cart.id
     })
-
+        }
     if (newCartItem.id) {
         const newCartItem2 = {...newCartItem.dataValues}
         const itemListing = await ProductListing.findByPk(newCartItem.productId)
@@ -92,7 +94,7 @@ router.post('/:productId', async (req, res, next) => {
         res.status(201)
         res.json(newCartItem2)
     }
-}
+
 })
 
 //edit quantity in cart

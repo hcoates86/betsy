@@ -37,4 +37,8 @@
     margin-right: 1em;
   }
 
+.profile-dropdown .category {
+  left: 40px;
+  right: 0;
+}
   

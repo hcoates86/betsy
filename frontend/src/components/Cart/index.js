@@ -26,7 +26,7 @@ const Cart = () => {
         <div className=''>
             <ul className='cart-list'>
             {cart.map(item => (
-               <CartItem cartItem={item} />
+               <CartItem cartItem={item} key={item.id} />
             ))}
             </ul>
         </div>   

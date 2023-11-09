@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import CategoryButton from './CategoryButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -12,6 +13,9 @@ function Navigation({ isLoaded }){
     <ul className='nav-bar'>
       <li>
         <NavLink className='betsy' exact to="/">Betsy</NavLink>
+      </li>
+      <li>
+        <CategoryButton />
       </li>
       <li>
         <NavLink exact to="/listings">All Cow Listings</NavLink>

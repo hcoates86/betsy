@@ -26,7 +26,7 @@ const CartItem = ({ cartItem }) => {
         quantityArr.push(<option key={`${i}`} value={`${i}`}>{i}</option>)
     }
 
-    //quantity wasn't updating the normal way, workaround with extra variable storage
+    //quantity wasn't updating immediately the normal way, workaround with extra variable storage
     const editQuantity = async (num) => {
         const editedCartItem = {
             ...cartItem, quantity: num
@@ -34,7 +34,7 @@ const CartItem = ({ cartItem }) => {
         console.log(editedCartItem);
         dispatch(editCartItem(editedCartItem))
     }
-
+ 
 
     const checkout = async () => {
 
@@ -48,9 +48,10 @@ const CartItem = ({ cartItem }) => {
             <p>{cartItem.seller.username}</p>
             <img className='seller-profile' src={cartItem.seller.picture} alt={cartItem.seller.username}></img>
 
+            <Link to={`/listings/${cartItem.productId}`}>
             <img className='cart-image' src={image} alt={cartItem.name}></img>
 
-            <Link className='link-cart' to={`/listings/${cartItem.productId}`}>{cartItem.name}</Link>
+            <span className='link-cart'>{cartItem.name}</span></Link>
 
             <select value={quantity} name="quantity" onChange={(e) => {
                     const newNum = parseInt(e.target.value);
