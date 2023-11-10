@@ -76,3 +76,20 @@ label {
 #desc {
     vertical-align: top;
 }
+
+#cat {
+    border-color: gainsboro;
+    position: relative;
+    left: 3em;
+}
+
+#price-div {
+    margin-bottom: 0;
+    display: inline-block;
+    position: relative;
+    left: 2em;
+}
+
+#price-input {
+    width: 6rem;
+}

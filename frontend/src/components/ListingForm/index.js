@@ -13,7 +13,7 @@ const ListingForm = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    // const listing = useSelector(state => state.listings.singleListing)
+
     const listings = Object.values(
         useSelector(state => state.listings.allListings)
     )
@@ -22,7 +22,6 @@ const ListingForm = () => {
     let listingPhoto = '';
     if (listing && listing.images) listingPhoto = listing.images[0].url
     
-    // const [photo, setPhoto] = useState(listingPhoto)
     const [photo, setPhoto] = useState(listing?.images ? listing.images[0].url :  '')
     const [name, setName] = useState(listing?.name || '')
     const [category, setCategory] = useState(listing?.category || '')
@@ -135,7 +134,7 @@ const ListingForm = () => {
                 </div>
                 {errors.name && <p className='errors'>{errors.name}</p>}
 
-
+                <div>
                 <label>Category</label>
                 <select name="category" id="cat" required>
                     <option value="dairy">Dairy</option>
@@ -144,6 +143,7 @@ const ListingForm = () => {
                     
                     onChange={(e) => setCategory(e.target.value)}
                     </select>
+                </div>
 
                 <div>
                     
@@ -165,13 +165,16 @@ const ListingForm = () => {
                 <div>
                     
                     <label>Price</label>
+                    <div id='price-div'>
                     <span id='price-tag'>$</span>
                     <input
                         className='input2'
+                        id='price-input'
                         type="number"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
+                    </div>
                 </div>
                 {errors.price && <p className='errors'>{errors.price}</p>}
 

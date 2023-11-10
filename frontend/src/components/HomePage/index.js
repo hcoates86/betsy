@@ -32,8 +32,8 @@ const HomePage = () => {
         <>
 
             <div className='tagline'>
-                <h3>Find the cow your heart desires...</h3>
-            <h3>or sell the one it doesn't.</h3>
+                <h3 className='text-right'>Find the cow your heart desires...</h3>
+            <h3 className='text-left'>...or sell the one it doesn't.</h3>
             </div>
         <div className='popular-outer'>
             
