@@ -26,6 +26,8 @@ const CartItem = ({ cartItem }) => {
         quantityArr.push(<option key={`${i}`} value={`${i}`}>{i}</option>)
     }
 
+    const quantityPrice = cartItem.quantity * cartItem.price;
+
     //quantity wasn't updating immediately the normal way, workaround with extra variable storage
     const editQuantity = async (num) => {
         const editedCartItem = {
@@ -69,7 +71,7 @@ const CartItem = ({ cartItem }) => {
                 <button className='no-button hover-focus' onClick={deleteItem}>Remove</button>
                 </div>
                 <div className='cart-price'>
-                    ${cartItem.price}
+                    ${quantityPrice}
                 </div>
             </div>
         </div>

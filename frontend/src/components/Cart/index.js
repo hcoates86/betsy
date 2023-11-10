@@ -19,6 +19,12 @@ const Cart = () => {
 
     if (!cart) return null;
 
+    let totalPrice = 0.00;
+    
+    cart.forEach(item => {
+        totalPrice += item.price * item.quantity
+    })
+
     const checkout = async () => {
 
 
@@ -39,7 +45,7 @@ const Cart = () => {
             </div>
 
             <div className='checkout-div'>
-                <p>Item total</p>
+                <p>Item(s) total <span className='span-price'>${totalPrice}</span></p>
                 <button onClick={checkout}>Proceed to Checkout</button>
             </div>
         </div>
