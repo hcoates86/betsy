@@ -30,32 +30,12 @@ const HomePage = () => {
 
     return (
         <>
-
-            
-        <div className='popular-outer'>
-            
-            <h1>The popular crowd</h1>
-        <div className='flex-div'>
-            {popular.map(listing => (
-                <div className='outer-div'>
-                    <ListingItem listing={listing}/>
-                </div>
-            ))}
-        </div>  
-
-        <div className='gift-div'>
-            <h1>The Betsy Gift Guide</h1>
-            <h2>Shop these unique cows</h2>
-            <div className='flex-div'>
-            {giftGuide.map(listing => (
-                <div>
-                    <ListingItem listing={listing}/>
-                </div>
-            ))}
+        <div className='tagline'>
+                <h3 className='text-right'>Find the cow your heart desires...</h3>
+            <h3 className='text-left'>...or sell the one it doesn't.</h3>
             </div>
-        </div>
 
-        </div>
+
         </>
     )
 }

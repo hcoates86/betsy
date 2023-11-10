@@ -19,17 +19,34 @@ const Cart = () => {
 
     if (!cart) return null;
 
+    const checkout = async () => {
+
+
+    }
+
 
     return (
         <div>
-            <h1>Your Cart</h1>
-        <div className=''>
-            <ul className='cart-list'>
-            {cart.map(item => (
-               <CartItem cartItem={item} key={item.id} />
-            ))}
-            </ul>
-        </div>   
+            <h1 className='text-align'>Your Cart</h1>
+        <div className='cart-checkout-arranged'>
+            
+            <div className='cart-block'>
+                <ul className='cart-list'>
+                    {cart.map(item => (
+                    <CartItem cartItem={item} key={item.id} />
+                    ))}
+                </ul>
+            </div>
+
+            <div className='checkout-div'>
+                <p>Item total</p>
+                <button onClick={checkout}>Proceed to Checkout</button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+            
 
         </div>
     )

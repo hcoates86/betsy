@@ -18,6 +18,9 @@ function Navigation({ isLoaded }){
         <li className='hover-focus flex relative'>
           <CategoryButton />
         </li>
+        <li>
+        <NavLink className='' exact to="/about">About</NavLink>
+        </li>
       </div>
 
       <div className='right-side'>

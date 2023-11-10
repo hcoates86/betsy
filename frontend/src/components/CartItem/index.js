@@ -36,34 +36,42 @@ const CartItem = ({ cartItem }) => {
     }
  
 
-    const checkout = async () => {
-
-
-    }
+    
 
 
     return (
         <li key={cartItem.id}>
         <div className='cart-div'>
-            <p>{cartItem.seller.username}</p>
-            <img className='seller-profile' src={cartItem.seller.picture} alt={cartItem.seller.username}></img>
+            <div className='seller-info'>
+                <img className='seller-profile' src={cartItem.seller.picture} alt={cartItem.seller.username}></img>
+                <p className='seller-name'>{cartItem.seller.username}</p>
+            </div>
 
-            <Link to={`/listings/${cartItem.productId}`}>
-            <img className='cart-image' src={image} alt={cartItem.name}></img>
+            <div className='cart-center'>
+                <Link to={`/listings/${cartItem.productId}`}>
+                <img className='cart-image' src={image} alt={cartItem.name}></img>
+                </Link>
 
-            <span className='link-cart'>{cartItem.name}</span></Link>
+                <div className='cart-center-col'>
+                    <Link to={`/listings/${cartItem.productId}`}>
+                    <span className='link-cart'>{cartItem.name}</span>
+                    </Link>
+                    
+                <select value={quantity} name="quantity" id='quant-cart' onChange={(e) => {
+                        const newNum = parseInt(e.target.value);
+                        setQuantity(newNum)
+                        editQuantity(newNum)
+                    }     
+                }>
+                    {quantityArr}
+                </select>
 
-            <select value={quantity} name="quantity" onChange={(e) => {
-                    const newNum = parseInt(e.target.value);
-                    setQuantity(newNum)
-                    editQuantity(newNum)
-                }     
-            }>
-                {quantityArr}
-            </select>
-
-            <button onClick={deleteItem}>Remove</button>
-            <button onClick={checkout}>Proceed to Checkout</button>
+                <button className='no-button hover-focus' onClick={deleteItem}>Remove</button>
+                </div>
+                <div className='cart-price'>
+                    ${cartItem.price}
+                </div>
+            </div>
         </div>
         </li>
     )

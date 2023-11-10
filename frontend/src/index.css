@@ -70,3 +70,7 @@ button {
   .flex {
     display: flex;
   }
+
+  .text-align {
+    text-align: center;
+  }

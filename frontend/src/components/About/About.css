@@ -1,0 +1,15 @@
+.tagline {
+    background-color: aliceblue;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-right {
+    margin-right: 20%;
+}
+
+.text-left {
+    margin-left: 20%;
+}
