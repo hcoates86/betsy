@@ -46,6 +46,12 @@ button {
     min-width: 6em;
 }
 
+.no-button {
+    color: black;
+    background-color: transparent;
+    border: none;
+}
+
 .flex-div {
     display: flex;
     justify-content: center;
@@ -56,3 +62,9 @@ button {
 .block {
     display: block;
 }
+
+.hover-focus :hover {
+    background-color: gainsboro;
+    border-radius: 24px;
+    width: 100%;
+  }

@@ -37,8 +37,21 @@
     margin-right: 1em;
   }
 
-.profile-dropdown .category {
-  left: 40px;
-  right: 0;
+.category {
+  position: absolute;
+    left: 40px;
+    z-index: 1000;
+    border: 1px solid gainsboro;
+    background-color: white;
+    margin: 5px;
+
+
 }
   
+.fa-bars {
+  font-size: large;
+}
+
+.category-text {
+  font-size: 16px;
+}

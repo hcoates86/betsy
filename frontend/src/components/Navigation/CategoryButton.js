@@ -26,13 +26,15 @@ function CategoryButton() {
 
   const closeMenu = () => setShowMenu(false);
 
-  const ulClassName = "profile-dropdown category" + (showMenu ? "" : " hidden");
+  const ulClassName = "category" + (showMenu ? "" : " hidden");
 
   return (
     <>
-      <button onClick={openMenu}>
-      <i className="fa-solid fa-bars"></i>
+    <div className="hover-focus">
+      <button className='no-button' onClick={openMenu}>
+        <i className="fa-solid fa-bars"></i> <span className="category-text">&nbsp; Categories</span>
       </button>
+      </div>
       <ul className={ulClassName} ref={ulRef}>
         <li>Dairy</li>
         <li>Meat</li>
