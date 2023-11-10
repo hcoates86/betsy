@@ -10,6 +10,7 @@ import NoPage from "./components/NoPage";
 import UserListings from "./components/UserListings";
 import AllListings from "./components/AllListings";
 import Cart from "./components/Cart";
+import About from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path='/category/:categoryId'>
           
+          </Route>
+          <Route exact path='/about'>
+            <About />
           </Route>
 
           <Route>

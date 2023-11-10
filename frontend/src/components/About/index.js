@@ -1,44 +1,28 @@
-import { getListings } from '../../store/listings';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import './HomePage.css';
-import ListingItem from '../ListingItem';
+import './About.css';
 
-const HomePage = () => {
-    //returns an array of all listings or an empty one if it's empty
-    const listings = Object.values(
-        useSelector(state => state.listings.allListings || []))
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getListings())
-    }, [dispatch]);
-
-    if (!listings) return null;
-
-    const popular = [];
-    const giftGuide = [];
-
-    //puts last 5 listings into popular, then 6 next ones into giftGuide
-    let count = 0;
-    for (let i = listings.length - 1; i > 0; i--) {
-        if(count < 5) popular.push(listings[i]);
-        if(count > 5 && count < 12) giftGuide.push(listings[i])
-        count++
-    }
+const About = () => {
 
     return (
         <>
+        <h1 className='text-align'>About Betsy</h1>
         <div className='tagline'>
                 <h3 className='text-right'>Find the cow your heart desires...</h3>
             <h3 className='text-left'>...or sell the one it doesn't.</h3>
             </div>
+        <div className='betsy-about'>
+            <p>At Betsy, we're dedicated to helping the average farmer (that's you) find the cow they're looking for.
+                Or, if you're looking to unload some extra cattle, find the right home for them. We host sales for everything from
+                dairy cows, to those intended for the dinner table, to whatever you might need a cow for. 
+            </p>
+            <p>
+                So get on over there and buy yourself a cow.
 
+            </p>
+        </div>
 
         </>
     )
 }
 
 
-export default HomePage;
+export default About;
