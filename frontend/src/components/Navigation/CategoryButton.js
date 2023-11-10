@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import OpenModalMenuItem from './OpenModalMenuItem';
+import { NavLink } from 'react-router-dom';
+
 
 function CategoryButton() {
   const [showMenu, setShowMenu] = useState(false);
@@ -36,9 +38,15 @@ function CategoryButton() {
       </button>
 
       <ul className={ulClassName} ref={ulRef}>
-        <li>Dairy</li>
-        <li>Meat</li>
-        <li>Other</li>
+        <li>
+          <NavLink className='/category/1' exact to="/">Dairy</NavLink>          
+        </li>
+        <li>
+          <NavLink className='/category/2' exact to="/">Meat</NavLink>
+        </li>
+        <li>
+          <NavLink className='/category/3' exact to="/">Other</NavLink>
+        </li>
       </ul>
     </>
   );

@@ -17,6 +17,8 @@
     border: 1px solid gainsboro;
     background-color: white;
     margin: 5px;
+    padding: 15px;
+    text-align: center;
   }
 
   .profile-dropdown > li {
@@ -31,21 +33,27 @@
     font-size: 2em;
   }
 
-  .nav-bar li {
+  .right-spacer {
     margin-right: 1em;
   }
 
 .category {
   position: absolute;
-    left: 40px;
     z-index: 1000;
     border: 1px solid gainsboro;
     background-color: white;
-    margin: 5px;
+    top: 100%;
+    left: 10%;
+    list-style: none;
+    text-align: center;
+    padding: 15px;
+}
 
+.category > ul :hover {
+  background-color: initial;
 
 }
-  
+
 .fa-bars {
   font-size: large;
 }
@@ -56,4 +64,8 @@
 
 .right-side, .left-side {
   display: flex;
+}
+
+.relative {
+  position: relative;
 }

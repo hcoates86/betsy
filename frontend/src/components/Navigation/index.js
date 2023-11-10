@@ -12,28 +12,28 @@ function Navigation({ isLoaded }){
   return (
     <ul className='nav-bar'>
       <div className='left-side'>
-        <li>
+        <li className='right-spacer'>
           <NavLink className='betsy' exact to="/">Betsy</NavLink>
         </li>
-        <li className='hover-focus flex'>
+        <li className='hover-focus flex relative'>
           <CategoryButton />
         </li>
       </div>
 
       <div className='right-side'>
-      <li>
+      <li className='right-spacer'>
         <NavLink exact to="/listings">All Cow Listings</NavLink>
       </li>
 
       {sessionUser && (
         <>
-        <li>
+        <li className='right-spacer'>
           <NavLink exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
         </li>
-        <li>
+        <li className='right-spacer'>
           <NavLink exact to='/user/listings'>My Herd</NavLink>
         </li>
-        <li className='hover-focus'>
+        <li className='hover-focus right-spacer'>
           <NavLink exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
         </li>
         </>

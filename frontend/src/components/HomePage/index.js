@@ -29,7 +29,14 @@ const HomePage = () => {
     }
 
     return (
+        <>
+
+            <div className='tagline'>
+                <h3>Find the cow your heart desires...</h3>
+            <h3>or sell the one it doesn't.</h3>
+            </div>
         <div className='popular-outer'>
+            
             <h1>The popular crowd</h1>
         <div className='flex-div'>
             {popular.map(listing => (
@@ -52,6 +59,7 @@ const HomePage = () => {
         </div>    
 
         </div>
+        </>
     )
 }
 

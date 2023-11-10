@@ -2,7 +2,7 @@ import { getAllCartItems } from '../../store/cart';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Cart.css';
-import CartItem from '../CartItem/CartItem';
+import CartItem from '../CartItem';
 
 const Cart = () => {
     //returns an array of all cart items or an empty one if it's empty

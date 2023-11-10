@@ -43,7 +43,9 @@ function App() {
           <Route exact path='/cart'>
             <Cart />
           </Route>
+          <Route exact path='/category/:categoryId'>
           
+          </Route>
 
           <Route>
             <NoPage />

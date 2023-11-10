@@ -14,8 +14,14 @@
     margin: 0;
 }
 
-
-
 .popular-div > div {
     max-width: 19%;
+}
+
+.tagline {
+    background-color: aliceblue;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
