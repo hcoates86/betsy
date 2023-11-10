@@ -30,11 +30,11 @@ function CategoryButton() {
 
   return (
     <>
-    <div className="hover-focus">
+
       <button className='no-button' onClick={openMenu}>
         <i className="fa-solid fa-bars"></i> <span className="category-text">&nbsp; Categories</span>
       </button>
-      </div>
+
       <ul className={ulClassName} ref={ulRef}>
         <li>Dairy</li>
         <li>Meat</li>

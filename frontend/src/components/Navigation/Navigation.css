@@ -1,8 +1,9 @@
 .nav-bar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     list-style-type: none;
+    flex-flow: row nowrap;
 }
 
 .fa-solid, a {
@@ -28,9 +29,6 @@
     font-family: 'Peralta', serif;
     color: black;
     font-size: 2em;
-    position: absolute;
-    left: .5rem;
-    top: .3rem;
   }
 
   .nav-bar li {
@@ -54,4 +52,8 @@
 
 .category-text {
   font-size: 16px;
+}
+
+.right-side, .left-side {
+  display: flex;
 }
