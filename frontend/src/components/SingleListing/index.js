@@ -100,42 +100,50 @@ const SingleListing = () => {
 
 
     return (
+        
         <div>
             <Link className='underline' exact to={`/category/${listing.categoryId}`}>
                 Category: {categoryName} Cow
             </Link>
-            <div>
-                <img className='listing-image' src={image} alt={listing.name}></img>
-            </div>
+        
+        <div className="single-outer-div">
 
-            <div>
+                <img className='listing-image' src={image} alt={listing.name}></img>
+
+
+            <div className="single-center-div">
                 <div>
                     <h1>${price}</h1>
                     <p>{listing.name}</p>
-                    <p>{listing.seller?.username}</p>
+                    <p>Seller: {listing.seller?.username}</p>
 
-                </div>
-                <div>
-                    <h3>Description</h3>
-                    <p>{listing.description}</p>
                 </div>
                 
-            </div>
-
+                
             {user && 
             (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
-                <label>Quantity</label>
+                <label className="one-space-down">Quantity</label>
                         
-                <select name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
+                <select className='one-space-down width' name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
 
                 {quantityArr}
                 </select>
 
-                <button className='button-black' type="submit">Add to Cart</button>
+                <button className='button-black width' type="submit">Add to Cart</button>
 
             </form>
             </div>)}
+            <div>
+                    <h3>Description</h3>
+                    <p>{listing.description}</p>
+                </div>
+
+            </div>
+
+
+            </div>
+
 
             <div>
                 <div className="review-total">
@@ -144,6 +152,7 @@ const SingleListing = () => {
                     {user && 
                     <OpenModalButton
                     buttonText="Leave a Review"
+                    buttonClass='one-space-down'
                     modalComponent={<ReviewModal productId={productId} type='create' />}
                     />
                     }
@@ -163,6 +172,7 @@ const SingleListing = () => {
                                 <>
                                     <OpenModalButton
                                     buttonText="Delete"
+                                    buttonClass="space-right"
                                     modalComponent={<DeleteReviewModal reviewId={review.id} />}
                                     />
 
