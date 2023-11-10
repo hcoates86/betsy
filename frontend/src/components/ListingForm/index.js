@@ -137,9 +137,9 @@ const ListingForm = () => {
                 <div>
                 <label>Category</label>
                 <select name="category" id="cat" required>
-                    <option value="dairy">Dairy</option>
-                    <option value="meat">Meat</option>
-                    <option value="other">Other</option>
+                    <option value="1">Dairy</option>
+                    <option value="2">Beef</option>
+                    <option value="3">Other</option>
                     
                     onChange={(e) => setCategory(e.target.value)}
                     </select>

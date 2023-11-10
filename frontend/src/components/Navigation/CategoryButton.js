@@ -39,13 +39,16 @@ function CategoryButton() {
 
       <ul className={ulClassName} ref={ulRef}>
         <li>
-          <NavLink className='/category/1' exact to="/">Dairy</NavLink>          
+          <NavLink className='' exact to="/category/1">Dairy</NavLink>          
         </li>
         <li>
-          <NavLink className='/category/2' exact to="/">Meat</NavLink>
+          <NavLink className='' exact to="/category/2">Beef</NavLink>
         </li>
         <li>
-          <NavLink className='/category/3' exact to="/">Other</NavLink>
+          <NavLink className='' exact to="/category/3">Other</NavLink>
+        </li>
+        <li>
+        <NavLink exact to="/listings">All Cows</NavLink>
         </li>
       </ul>
     </>

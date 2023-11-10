@@ -11,6 +11,7 @@ import UserListings from "./components/UserListings";
 import AllListings from "./components/AllListings";
 import Cart from "./components/Cart";
 import About from "./components/About";
+import Categories from "./components/Categories";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function App() {
             <Cart />
           </Route>
           <Route exact path='/category/:categoryId'>
-          
+            <Categories />
           </Route>
           <Route exact path='/about'>
             <About />

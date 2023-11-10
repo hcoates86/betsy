@@ -22,9 +22,10 @@ const UserListings = () => {
     if (!listings || !listings.length) return null;
 
     return (
+        <>
+            <h1 className='text-align'>Your listings</h1>
         <div className='flex-div'>
             
-            <h1>Your listings</h1>
             <div className='flex-div'>
                 
                 {listings.filter(listing => listing.userId === user.id).map(listing => (
@@ -32,6 +33,7 @@ const UserListings = () => {
                         <ListingItem listing={listing}/>
                         <OpenModalButton 
                             buttonText='Delete'
+                            buttonClass='no-button sixteen'
                             modalComponent={<DeleteListing productId={listing.id} />}
                         />
                         <Link to={`/user/listings/${listing.id}`}>Update</Link>
@@ -40,7 +42,7 @@ const UserListings = () => {
                 ))}
                 
             </div>
-        </div>
+        </div></>
     )        
 
 }

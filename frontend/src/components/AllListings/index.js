@@ -17,6 +17,8 @@ const AllListings = () => {
     if (!listings) return null;
 
     return (
+        <>
+        <h1 className='text-align'>All Cows</h1>
         <div className="flex-div">
             {listings.map(listing => (
                 <div className='outer-div'>
@@ -24,7 +26,7 @@ const AllListings = () => {
                 </div>
             ))}
 
-        </div>
+        </div></>
     )
 }
 

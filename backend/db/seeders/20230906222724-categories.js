@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         id: 2,
-        name: 'Meat'
+        name: 'Beef'
       },
       {
         id: 3,
@@ -30,7 +30,7 @@ module.exports = {
     options.tableName = 'Categories';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      name: { [Op.in]: ['Dairy', 'Meat', 'Other'] }
+      name: { [Op.in]: ['Dairy', 'Beef', 'Other'] }
     }, {});
   }
 };
