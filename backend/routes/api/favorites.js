@@ -17,6 +17,10 @@ router.post('/:productId', async (req, res, next) => {
     
 })
 
+//remove from favorites
+router.delete('/:productId', async (req, res, next) => {
+    
+})
 
 
 module.exports = router;
