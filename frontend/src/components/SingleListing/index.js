@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { fetchListing } from '../../store/listings';
 import { getListingReviews } from '../../store/reviews';
 import { postCartItem } from '../../store/cart';
@@ -82,7 +82,11 @@ const SingleListing = () => {
             quantityArr.push(<option key={`${i}`} value={`${i}`}>{i}</option>)
     }}
     
-        
+    let categoryName;
+    if (listing.categoryId === 1) categoryName = 'Dairy';
+    if (listing.categoryId === 2) categoryName = 'Beef';
+    if (listing.categoryId === 3) categoryName = 'Other Category';
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -97,6 +101,9 @@ const SingleListing = () => {
 
     return (
         <div>
+            <Link className='underline' exact to={`/category/${listing.categoryId}`}>
+                Category: {categoryName} Cow
+            </Link>
             <div>
                 <img className='listing-image' src={image} alt={listing.name}></img>
             </div>
@@ -115,7 +122,7 @@ const SingleListing = () => {
                 
             </div>
 
-            {user ? 
+            {user && 
             (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
                 <label>Quantity</label>
@@ -128,7 +135,7 @@ const SingleListing = () => {
                 <button className='button-black' type="submit">Add to Cart</button>
 
             </form>
-            </div>) : (<></>)}
+            </div>)}
 
             <div>
                 <div className="review-total">

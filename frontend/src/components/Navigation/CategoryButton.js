@@ -39,7 +39,7 @@ function CategoryButton() {
 
       <ul className={ulClassName} ref={ulRef}>
         <li>
-          <NavLink className='' exact to="/category/1">Dairy</NavLink>          
+          <NavLink exact to="/category/1">Dairy</NavLink>          
         </li>
         <li>
           <NavLink className='' exact to="/category/2">Beef</NavLink>
