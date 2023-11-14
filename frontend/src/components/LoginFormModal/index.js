@@ -34,9 +34,9 @@ function LoginFormModal() {
   }
 
   return (
-    <>
+    <div className="text-align">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <label>
           
           <input
@@ -61,8 +61,8 @@ function LoginFormModal() {
         )}
         <button type="submit">Log In</button>
       </form>
-      <button className='button-black' onClick={demo}>Demo User</button>
-    </>
+      <button className='button-demo' onClick={demo}>Demo User</button>
+    </div>
   );
 }
 
