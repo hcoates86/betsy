@@ -9,6 +9,11 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+  const cart =  Object.values(
+    useSelector(state => state.cart)|| [])
+
+  const itemsInCart = cart.length;
+
   return (
     <ul className='nav-bar'>
       <div className='left-side'>
@@ -34,6 +39,7 @@ function Navigation({ isLoaded }){
         </li>
         <li className='hover-focus right-spacer'>
           <NavLink className='five-padding' exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
+          <span id='cart-number'>{itemsInCart}</span>
         </li>
         </>
 

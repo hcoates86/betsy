@@ -70,3 +70,22 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+#cart-number {
+  font-size: .75em;
+  font-weight: bold;
+  background-color: cornflowerblue;
+  border: 2px solid white;
+  border-radius: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  position: relative;
+  top: -14px;
+  right: 13px;
+}
+
+.fa-cart-shopping, .fa-cow {
+  font-size: 1.2em;
+}

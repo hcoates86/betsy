@@ -78,3 +78,7 @@ display: flex;
 .text-align {
 text-align: center;
 }
+
+textarea {
+    resize: none;
+}

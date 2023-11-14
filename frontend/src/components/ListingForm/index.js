@@ -106,7 +106,7 @@ const ListingForm = () => {
     return (
         <div className='flex-div'>
     <form onSubmit={handleSubmit} className="list-form-box">
-            {/* {Object.values(errors).length > 0 && <label className="errors">{errors.comment}</label>} */}
+
             <h1>{title}</h1>
 
             <div className='div-border'>
@@ -119,8 +119,8 @@ const ListingForm = () => {
                     onChange={(e) => setPhoto(e.target.value)}
                     />
                     
-                </div>
                  {errors.photo && <p className='errors'>{errors.photo}</p>}
+                </div>
 
                 <div>
                     
@@ -131,8 +131,8 @@ const ListingForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     />
                     
-                </div>
                 {errors.name && <p className='errors'>{errors.name}</p>}
+                </div>
 
                 <div>
                 <label>Category</label>
@@ -150,14 +150,13 @@ const ListingForm = () => {
                     
                     <label id='desc'>Description</label>
                     <textarea 
-                    className='' 
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows="8" cols="75"
                     maxLength="1000"
                     />
-                </div>
                 {errors.description && <p className='errors'>{errors.description}</p>}
+                </div>
                 
             </div>
 
@@ -176,8 +175,8 @@ const ListingForm = () => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                     </div>
-                </div>
                 {errors.price && <p className='errors'>{errors.price}</p>}
+                </div>
 
 
                 <div>
@@ -190,8 +189,8 @@ const ListingForm = () => {
                         onChange={(e) => setQuantity(e.target.value)}
                     />
                     
-                </div>
                 {errors.quantity && <p className='errors'>{errors.quantity}</p>}
+                </div>
 
             </div>
 
