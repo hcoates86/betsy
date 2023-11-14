@@ -1,6 +1,6 @@
 .review-profile {
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -21,10 +21,11 @@
 }
 
 .listing-image {
-    max-width: 40%;
-    max-height: 40%;
-    min-width: 300px;
-    min-height: 300px;
+    max-width: 37.5rem;
+    max-height: 37.5rem;
+    min-width: 18.75rem;
+    min-height: 18.75rem;
+    object-fit: contain;
 }
 
 .underline {
@@ -44,7 +45,7 @@
 }
 
 .one-space-down {
-    margin-bottom: .5em;
+    margin-bottom: .5rem;
 }
 
 .space-right {
@@ -57,4 +58,8 @@
 
 .width {
     width: 100%;
+}
+
+.description-div, .price-div {
+    width: 18.75rem;
 }

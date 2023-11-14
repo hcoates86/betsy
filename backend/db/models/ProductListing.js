@@ -27,12 +27,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-          len: [2, 256],
+          len: [2, 1000],
         }
       },
       price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
+        validate: {
+          roundDecimal(num) {
+            const roundedNum = parseFloat(num).toFixed(2);
+            this.setDataValue('price', roundedNum);
+          }
+        }
       },
       quantity: {
         type: DataTypes.INTEGER,

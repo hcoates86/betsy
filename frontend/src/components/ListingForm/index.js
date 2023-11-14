@@ -24,7 +24,7 @@ const ListingForm = () => {
     
     const [photo, setPhoto] = useState(listing?.images ? listing.images[0].url :  '')
     const [name, setName] = useState(listing?.name || '')
-    const [category, setCategory] = useState(listing?.category || '')
+    const [category, setCategory] = useState(listing?.category || 1)
     const [description, setDescription] = useState(listing?.description || '')
     const [price, setPrice] = useState(listing?.price || 0);
     const [quantity, setQuantity] = useState(listing?.quantity || 1);
@@ -82,7 +82,7 @@ const ListingForm = () => {
         setSubmitted(true);
 
         const product = {
-            name, description, price, quantity
+            name, description, price, quantity, categoryId: category
         }
         if (!Object.keys(errors).length){
             if (productId) {
@@ -127,7 +127,7 @@ const ListingForm = () => {
                     <label>Name</label>
                     <input type='text' className='form-input' 
                     value={name}
-                    
+                    maxLength="50"
                     onChange={(e) => setName(e.target.value)}
                     />
                     
@@ -136,12 +136,13 @@ const ListingForm = () => {
 
                 <div>
                 <label>Category</label>
-                <select name="category" id="cat" required>
+                <select name="category" id="cat" required
+                    onChange={(e) => setCategory(e.target.value)}
+                    >
                     <option value="1">Dairy</option>
                     <option value="2">Beef</option>
                     <option value="3">Other</option>
                     
-                    onChange={(e) => setCategory(e.target.value)}
                     </select>
                 </div>
 
@@ -153,7 +154,7 @@ const ListingForm = () => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows="8" cols="75"
-                    maxlength="1000"
+                    maxLength="1000"
                     />
                 </div>
                 {errors.description && <p className='errors'>{errors.description}</p>}

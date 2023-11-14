@@ -65,12 +65,16 @@ button {
 .hover-focus :hover {
     background-color: gainsboro;
     border-radius: 24px;
-  }
+}
 
-  .flex {
-    display: flex;
-  }
+.five-padding {
+    padding: 5px;
+}
 
-  .text-align {
-    text-align: center;
-  }
+.flex {
+display: flex;
+}
+
+.text-align {
+text-align: center;
+}

@@ -34,7 +34,7 @@
   }
 
   .right-spacer {
-    margin-right: 1em;
+    margin-right: .8em;
   }
 
 .category {
@@ -47,11 +47,6 @@
     list-style: none;
     text-align: center;
     padding: 15px;
-}
-
-.category ul :hover {
-  background-color: initial;
-
 }
 
 .fa-bars {
@@ -69,4 +64,9 @@
 
 .relative {
   position: relative;
+}
+
+#all-cow {
+  padding-left: 10px;
+  padding-right: 10px;
 }

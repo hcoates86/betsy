@@ -73,7 +73,7 @@ const SingleListing = () => {
 
     }
 
-    //creates dropdown options for the quantity
+    //creates dropdown options for the quantity, shown only if quantiy is more than 1
 
     const quantityArr = [];
     if (!listing.quantity) quantityArr.push(<option key="0" value="0">0</option>)
@@ -102,17 +102,18 @@ const SingleListing = () => {
     return (
         
         <div>
-            <Link className='underline' exact to={`/category/${listing.categoryId}`}>
+            <div className="text-align one-space-down">
+            <Link className='underline' to={`/category/${listing.categoryId}`}>
                 Category: {categoryName} Cow
             </Link>
-        
+            </div>
         <div className="single-outer-div">
 
                 <img className='listing-image' src={image} alt={listing.name}></img>
 
 
             <div className="single-center-div">
-                <div>
+                <div className="price-div">
                     <h1>${price}</h1>
                     <p>{listing.name}</p>
                     <p>Seller: {listing.seller?.username}</p>
@@ -123,18 +124,22 @@ const SingleListing = () => {
             {user && 
             (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
+                {listing.quantity > 1 &&
+                <>
                 <label className="one-space-down">Quantity</label>
                         
                 <select className='one-space-down width' name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
 
                 {quantityArr}
                 </select>
+                </>
+                }
 
                 <button className='button-black width' type="submit">Add to Cart</button>
 
             </form>
             </div>)}
-            <div>
+            <div className="description-div">
                     <h3>Description</h3>
                     <p>{listing.description}</p>
                 </div>

@@ -12,6 +12,7 @@ import AllListings from "./components/AllListings";
 import Cart from "./components/Cart";
 import About from "./components/About";
 import Categories from "./components/Categories";
+import Checkout from "./components/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route exact path='/about'>
             <About />
+          </Route>
+          <Route exact path='/checkout'>
+            <Checkout />
           </Route>
 
           <Route>

@@ -15,25 +15,25 @@ function Navigation({ isLoaded }){
         <li className='right-spacer'>
           <NavLink className='betsy' exact to="/">Betsy</NavLink>
         </li>
-        <li className='hover-focus flex relative'>
+        <li className='flex relative'>
           <CategoryButton />
         </li>
-        <li>
-        <NavLink className='' exact to="/about">About</NavLink>
+        <li className='hover-focus'>
+        <NavLink className='five-padding' exact to="/about">About</NavLink>
         </li>
       </div>
 
       <div className='right-side'>
       {sessionUser && (
         <>
-        <li className='right-spacer'>
-          <NavLink exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
+        <li className='right-spacer hover-focus'>
+          <NavLink className='five-padding' exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
         </li>
-        <li className='right-spacer'>
-          <NavLink exact to='/user/listings'>My Listings</NavLink>
+        <li className='right-spacer hover-focus'>
+          <NavLink className='five-padding' exact to='/user/listings'>My Listings</NavLink>
         </li>
         <li className='hover-focus right-spacer'>
-          <NavLink exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
+          <NavLink className='five-padding' exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
         </li>
         </>
 
