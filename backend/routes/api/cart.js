@@ -10,6 +10,7 @@ const router = express.Router();
 //show cart with cart items inside
 router.get('/', async (req, res, next) => {
     //grab logged in user and get their cart
+    if (!req.user) return;
     const user = await User.findByPk(req.user.id);
     const cart = await user.getShoppingCart();
 

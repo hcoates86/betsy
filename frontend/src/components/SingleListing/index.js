@@ -96,6 +96,10 @@ const SingleListing = () => {
 
     }
 
+function datePosted(createdAt) {
+    return `${monthConverter(createdAt.split('-')[1])} ${createdAt.split('-')[2].split(' ')[0]}, ${createdAt.split('-')[0]}`
+}
+    
     
 
 
@@ -171,7 +175,8 @@ const SingleListing = () => {
                             
                             <img className='review-profile' src={review.user?.picture} alt={review.user?.username}></img>
                             <p className="review-userinfo">{review.user?.username}</p>
-                            <p className="review-userinfo">{monthConverter(review.createdAt.split('-')[1])} {review.createdAt.split('-')[2].split(' ')[0]}, {review.createdAt.split('-')[0]}</p>
+                            {/* <p className="review-userinfo">{monthConverter(review.createdAt.split('-')[1])} {review.createdAt.split('-')[2].split(' ')[0]}, {review.createdAt.split('-')[0]}</p> */}
+                            <p className="review-userinfo">{datePosted(review.createdAt)}</p>
                             { review.userId === user?.id ? 
                                 (
                                 <>
