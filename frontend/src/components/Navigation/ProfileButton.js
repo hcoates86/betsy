@@ -5,6 +5,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory } from 'react-router-dom';
+import noFarmer from '../../images/noFarmer.png';
 
 
 function ProfileButton({ user }) {
@@ -44,10 +45,15 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
+  const userPicture = user.picture || noFarmer;
+
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className='no-button' onClick={openMenu}>
+        {user 
+        ? (<img className='profile' src={userPicture} alt={user.username}></img>)
+      : (<i className="fas fa-user-circle" />)
+        }
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

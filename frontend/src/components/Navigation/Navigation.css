@@ -96,3 +96,14 @@
   padding-top: 6px;
   padding-bottom: 2px;
 }
+
+.profile {
+  height: 1.875rem;
+  width: 1.875rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.fa-user-circle {
+  font-size: 2em;
+}
