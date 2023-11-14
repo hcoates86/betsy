@@ -51,9 +51,10 @@ const ListingForm = () => {
             return photo.endsWith(type)})) && photo.length) {
             errorObj['photo'] = 'Photo URL must end in .png, .jpg, or .jpeg';
         }
-        if (submitted) {
-            //set them visible instead
         setErrors(errorObj);
+        if (submitted) {
+            //sets errors visible after clicking submit
+            setHidden('errors')
         }
     }, [photo, name, description, price, quantity, submitted])
 
@@ -81,12 +82,12 @@ const ListingForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await setSubmitted(true);
+        setSubmitted(true);
 
         const product = {
             name, description, price, quantity, categoryId: category
         }
-        if (submitted && !Object.keys(errors).length){
+        if (!Object.keys(errors).length){
             if (productId) {
                 product.id = productId;
                 await dispatch(updatedListing(product))
@@ -121,7 +122,7 @@ const ListingForm = () => {
                     onChange={(e) => setPhoto(e.target.value)}
                     />
                     
-                 {errors.photo && <p className='errors'>{errors.photo}</p>}
+                 {errors.photo && <p className={hidden}>{errors.photo}</p>}
                 </div>
 
                 <div>
@@ -133,7 +134,7 @@ const ListingForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     />
                     
-                {errors.name && <p className='errors'>{errors.name}</p>}
+                {errors.name && <p className={hidden}>{errors.name}</p>}
                 </div>
 
                 <div>
@@ -157,7 +158,7 @@ const ListingForm = () => {
                     rows="8" cols="75"
                     maxLength="1000"
                     />
-                {errors.description && <p className='errors'>{errors.description}</p>}
+                {errors.description && <p className={hidden}>{errors.description}</p>}
                 </div>
                 
             </div>
@@ -177,7 +178,7 @@ const ListingForm = () => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                     </div>
-                {errors.price && <p className='errors'>{errors.price}</p>}
+                {errors.price && <p className={hidden}>{errors.price}</p>}
                 </div>
 
 
@@ -191,7 +192,7 @@ const ListingForm = () => {
                         onChange={(e) => setQuantity(e.target.value)}
                     />
                     
-                {errors.quantity && <p className='errors'>{errors.quantity}</p>}
+                {errors.quantity && <p className={hidden}>{errors.quantity}</p>}
                 </div>
 
             </div>
