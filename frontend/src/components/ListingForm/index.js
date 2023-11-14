@@ -84,7 +84,7 @@ const ListingForm = () => {
         const product = {
             name, description, price, quantity, categoryId: category
         }
-        if (!Object.keys(errors).length){
+        if (submitted && !Object.keys(errors).length){
             if (productId) {
                 product.id = productId;
                 await dispatch(updatedListing(product))

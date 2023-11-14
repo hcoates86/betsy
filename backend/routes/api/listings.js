@@ -19,7 +19,7 @@ const properAuth = async (req, res, next) => {
 const productValidations = async (req, res, next) => {
     const {name, description, price, quantity} = req.body;
     const errors = {};
-    const err = new Error();
+    let err = new Error();
     if (!name) errors["name"] = "Name is required";
     if (!description) errors["description"] = "Description is required";
     if (price <= 0 ) errors['price'] = 'Please set a price of at least $0.01';
