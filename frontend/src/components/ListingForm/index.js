@@ -20,9 +20,9 @@ const ListingForm = () => {
     const listing = listings.filter(listing => listing.id === +productId)[0]
 
     let listingPhoto = '';
-    if (listing && listing.images) listingPhoto = listing.images[0].url
+    if (listing && listing.image) listingPhoto = listing.image[0].url
     
-    const [photo, setPhoto] = useState(listing?.images ? listing.images[0].url :  '')
+    const [photo, setPhoto] = useState(listingPhoto);
     const [name, setName] = useState(listing?.name || '')
     const [category, setCategory] = useState(listing?.category || 1)
     const [description, setDescription] = useState(listing?.description || '')
@@ -30,6 +30,7 @@ const ListingForm = () => {
     const [quantity, setQuantity] = useState(listing?.quantity || 1);
 
     const [errors, setErrors] = useState({});
+    const [hidden, setHidden] = useState('hidden');
     const [submitted, setSubmitted] = useState(false);
 
 
@@ -51,6 +52,7 @@ const ListingForm = () => {
             errorObj['photo'] = 'Photo URL must end in .png, .jpg, or .jpeg';
         }
         if (submitted) {
+            //set them visible instead
         setErrors(errorObj);
         }
     }, [photo, name, description, price, quantity, submitted])
@@ -79,7 +81,7 @@ const ListingForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setSubmitted(true);
+        await setSubmitted(true);
 
         const product = {
             name, description, price, quantity, categoryId: category
