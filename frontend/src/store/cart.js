@@ -1,9 +1,10 @@
 import {csrfFetch} from './csrf';
 
-const GET_CART_ITEMS = 'carts/getListingCarts';
-const DELETE_CART = 'carts/deleteCart';
-const POST_CART = 'carts/postCart';
-const EDIT_CART = 'carts/editCart';
+const GET_CART_ITEMS = 'cart/getListingCart';
+const DELETE_CART = 'cart/deleteCart';
+const POST_CART = 'cart/postCart';
+const EDIT_CART = 'cart/editCart';
+const CLEAR_CART = 'cart/clearCart'
 
 const getCartItems = (cartItems) => {
     return {
@@ -30,6 +31,12 @@ const editCartItemAction = (cartItem) => {
     return {
         type: EDIT_CART,
         cartItem
+    }
+}
+
+const clearCartAction = () => {
+    return {
+        type: CLEAR_CART
     }
 }
 
@@ -67,7 +74,7 @@ export const deleteCartItem = (cartId) => async (dispatch) => {
         method: 'DELETE'
     });
     if (res.ok) {
-        dispatch(removeCartItem(cartId))
+        dispatch(removeCartItem(cartId));
     } else {
         const errors = await res.json();
         return errors;
@@ -82,11 +89,20 @@ export const editCartItem = (cartItem) => async (dispatch) => {
     })
     const editCartItem = await res.json();
     if (res.ok) {
-        dispatch(editCartItemAction(cartItem    ))
+        dispatch(editCartItemAction(cartItem))
         return editCartItem;
 
     }
 }
+
+export const clearCart = (cart) => async (dispatch) => {
+    for (let cartItem of cart) {
+        await csrfFetch(`/api/cart/${cartItem.id}`, {
+            method: 'DELETE'
+        });
+    }
+    dispatch(clearCartAction());
+} 
 
 const initialState = {}
 
@@ -111,6 +127,8 @@ const cartReducer = (state = initialState, action) => {
             newState = {...state};
             newState[action.cartItem.id] = action.cartItem;
             return newState;
+        case CLEAR_CART:
+            return {};
         default:
             return state;
     }

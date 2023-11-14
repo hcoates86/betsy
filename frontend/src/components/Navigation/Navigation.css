@@ -89,3 +89,10 @@
 .fa-cart-shopping, .fa-cow {
   font-size: 1.2em;
 }
+
+.cart-padding {
+  padding-left: 5px;
+  padding-right: 6px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+}

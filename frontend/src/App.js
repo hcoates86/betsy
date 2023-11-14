@@ -12,7 +12,7 @@ import AllListings from "./components/AllListings";
 import Cart from "./components/Cart";
 import About from "./components/About";
 import Categories from "./components/Categories";
-import Checkout from "./components/Checkout";
+import Checkout from "./components/Cart/Checkout.js";
 
 function App() {
   const dispatch = useDispatch();

@@ -38,11 +38,9 @@ function Navigation({ isLoaded }){
           <NavLink className='five-padding' exact to='/user/listings'>My Listings</NavLink>
         </li>
         <li className='hover-focus right-spacer'>
-          <NavLink className='five-padding' exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
+          <NavLink className='cart-padding' exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
           {itemsInCart > 0 
-          ? ( <span id='cart-number'>{itemsInCart}</span>) 
-          : itemsInCart > 99
-          ? (<span id='cart-number'>99+</span>)
+          ? ( <span id='cart-number'>{itemsInCart}</span>)
           : (<></>)
           }
         </li>

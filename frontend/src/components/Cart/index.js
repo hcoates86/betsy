@@ -1,6 +1,7 @@
-import { getAllCartItems } from '../../store/cart';
+import { getAllCartItems, clearCart } from '../../store/cart';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './Cart.css';
 import CartItem from '../CartItem';
 
@@ -10,12 +11,11 @@ const Cart = () => {
         useSelector(state => state.cart || []))
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getAllCartItems())
     }, [dispatch]);
-
-    console.log('!!!!', cart);
 
     if (!cart) return null;
 
@@ -26,12 +26,21 @@ const Cart = () => {
     })
 
     const checkout = async () => {
-
+            await dispatch(clearCart(cart));
+            history.push('/checkout')
 
     }
 
+    if (!cart.length) return (
+        <div className='text-align'>
+            <h1>Your Cart</h1>
+            <h2>Your cart is empty</h2>
 
-    return (
+        </div>
+    )
+
+
+    else return (
         <div>
             <h1 className='text-align'>Your Cart</h1>
         <div className='cart-checkout-arranged'>
@@ -46,7 +55,7 @@ const Cart = () => {
 
             <div className='checkout-div'>
                 <p>Item(s) total <span className='span-price'>${totalPrice}</span></p>
-                <button onClick={checkout}>Proceed to Checkout</button>
+                <button className='checkout-button' onClick={checkout}>Checkout</button>
             </div>
         </div>
         <div>
