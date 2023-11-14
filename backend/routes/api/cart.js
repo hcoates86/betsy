@@ -16,11 +16,9 @@ router.get('/', async (req, res, next) => {
 
     const cartArray = [];
 
-    if (!cart) {
-        cart = await ShoppingCart.create({
-            userId: user.id
-        }) 
-    }
+    //if cart is empty return
+    if (!cart) return;
+    
     const cartItems = await cart.getCartItems({raw: true});
 
     for (let item of cartItems) {

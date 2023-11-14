@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { clearCartAction } from '../../store/cart';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -41,17 +42,18 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
     closeMenu();
     history.push('/')
+    //clears cart from store on logout, using only the action as to not delete it permanently
+    //set to the end to prevent it from grabbing the cart again before the url change???
+    dispatch(clearCartAction())
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-
-  const userPicture = user.picture || noFarmer;
 
   return (
     <>
       <button className='no-button' onClick={openMenu}>
         {user 
-        ? (<img className='profile' src={userPicture} alt={user.username}></img>)
+        ? (<img className='profile' src={user.picture || noFarmer} alt={user.username}></img>)
       : (<i className="fas fa-user-circle" />)
         }
       </button>
