@@ -53,7 +53,7 @@ const SingleListing = () => {
 
     //checks if listing belongs to logged in user
     let thisUser;
-    if (user.id === listing.userId) thisUser = true;
+    if (user && user.id === listing.userId) thisUser = true;
     else thisUser = false;
 
     let image;
