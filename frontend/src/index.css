@@ -82,3 +82,7 @@ text-align: center;
 textarea {
     resize: none;
 }
+
+.margin-bottom {
+    margin-bottom: .5rem;
+}

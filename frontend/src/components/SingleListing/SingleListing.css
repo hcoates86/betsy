@@ -3,20 +3,23 @@
     width: 1.875rem;
     object-fit: cover;
     border-radius: 50%;
+    vertical-align: sub;
 }
 
 .review-userinfo {
     display: inline-block;
     padding: 10px;
+    color: gray;
 }
 
 .single-review {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid gainsboro;
     width: 700px;
 }
 
 .review-total {
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid gainsboro;
+    width: 700px;
 
 }
 
@@ -26,6 +29,7 @@
     min-width: 18.75rem;
     min-height: 18.75rem;
     object-fit: contain;
+    border-radius: 6px;
 }
 
 .underline {
@@ -62,4 +66,13 @@
 
 .description-div, .price-div {
     width: 18.75rem;
+}
+
+.review-div {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.leave-review-button {
+    margin-bottom: 1.3rem;
 }

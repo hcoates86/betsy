@@ -153,16 +153,14 @@ function datePosted(createdAt) {
 
 
             </div>
-
-
-            <div>
+            <div className="review-div">
                 <div className="review-total">
     
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
                     {user && 
                     <OpenModalButton
                     buttonText="Leave a Review"
-                    buttonClass='one-space-down'
+                    buttonClass='leave-review-button'
                     modalComponent={<ReviewModal productId={productId} type='create' />}
                     />
                     }
@@ -196,6 +194,8 @@ function datePosted(createdAt) {
                     </div>
                     ))}
             </div>
+
+
 
 
         </div>

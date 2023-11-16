@@ -13,9 +13,9 @@ const DeleteListing = ({ productId }) => {
 
     return (
         <div>
-            <h1>Are you sure you want to delete this listing?</h1>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={closeModal}>Cancel</button>
+            <h2>Are you sure you want to delete this listing?</h2>
+            <button className='margin-bottom' onClick={handleDelete}>Delete</button>
+            <button className='button-white' onClick={closeModal}>Cancel</button>
         </div>
     )
 }
