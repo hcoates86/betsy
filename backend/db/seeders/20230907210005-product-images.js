@@ -107,8 +107,15 @@ module.exports = {
       'https://i.ibb.co/f11Zp2C/8.png',
       'https://i.ibb.co/MpbcgC7/9.png',
       'https://i.ibb.co/MN7mV2B/10.png',
-      'https://i.ibb.co/QddBDrJ/11.png'
-
+      'https://i.ibb.co/QddBDrJ/11.png',
+      'https://i.ibb.co/ZJFqdJw/16.png',
+      'https://i.ibb.co/zS3HpG3/15.png',
+      'https://i.ibb.co/LrxDJ78/8.png',
+      'https://i.ibb.co/3M82TVL/7.png',
+      'https://i.ibb.co/k8LYZrB/14.png',
+      'https://i.ibb.co/MnCVMKK/17.png',
+      'https://i.ibb.co/vPBchvn/13.png',
+      'https://i.ibb.co/kxwk1zg/6.png',
       ] }
     }, {});
   }

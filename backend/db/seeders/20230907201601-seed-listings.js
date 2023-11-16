@@ -175,7 +175,8 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       name: { [Op.in]: ['Sweetie Pie', 'Marshmallow', 'Sugarplum', 'Peaches', 'Tater Tot', 'Snickerdoodle', 'Bubblegum', 
-      'Bonbon', 'Daisy', 'Madame President', "Farmer Demo's Famous Cows", 'Moo', 'Dairy cow'] }
+      'Bonbon', 'Daisy', 'Madame President', "Farmer Demo's Famous Cows", 'Moo', 'Dairy cow', 'Popeye', 'Ferdinand', 
+      'Good-Grass Farms Dairy Cows', 'Chuck', 'Big Beauty', 'Pookie'] }
     }, {});
   }
 };
