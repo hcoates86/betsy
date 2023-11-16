@@ -108,6 +108,7 @@ module.exports = {
         userId: 5,
         categoryId: 2
       },
+      //13
       {
         name: 'Dairy cow',
         description: "Delicious milk",
@@ -115,6 +116,54 @@ module.exports = {
         quantity: 5,
         userId: 5,
         categoryId: 1
+      },
+      {
+        name: 'Popeye',
+        description: "Biggest stud you'll ever find",
+        price: 3999,
+        quantity: 1,
+        userId: 5,
+        categoryId: 2
+      },
+      {
+        name: 'Ferdinand',
+        description: "The sweetest boy in the world. Free to good home.",
+        price: 1,
+        quantity: 1,
+        userId: 5,
+        categoryId: 3
+      },
+      {
+        name: 'Good-Grass Farms Dairy Cows',
+        description: "Good, well-bred cows, high producers",
+        price: 999,
+        quantity: 8,
+        userId: 7,
+        categoryId: 1
+      },
+      {
+        name: 'Chuck',
+        description: "Plenty to go around.",
+        price: 1999,
+        quantity: 3,
+        userId: 4,
+        categoryId: 2
+      },
+      {
+        name: 'Big Beauty',
+        description: "She's a lot to love.",
+        price: 1599,
+        quantity: 1,
+        userId: 2,
+        categoryId: 2
+      },
+      {
+        name: 'Pookie',
+        description: "Good, pet quality cows.",
+        price: 599,
+        quantity: 3,
+        userId: 6,
+        categoryId: 3
       }
       
       

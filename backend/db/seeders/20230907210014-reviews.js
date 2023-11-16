@@ -53,6 +53,30 @@ module.exports = {
         stars: 4,
         userId: 1,
         productId: 6
+      },
+      {
+        comment: "Best cow I've ever met",
+        stars: 5,
+        userId: 2,
+        productId: 12
+      },
+      {
+        comment: 'Beautiful cows, would recommend!',
+        stars: 5,
+        userId: 4,
+        productId: 19
+      },
+      {
+        comment: "Average, but that's not a bad thing",
+        stars: 3,
+        userId: 3,
+        productId: 18
+      },
+      {
+        comment: 'Great! Amazing!!!! Love it!',
+        stars: 4,
+        userId: 4,
+        productId: 3
       }
       
     ], { validate: true });

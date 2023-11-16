@@ -20,11 +20,11 @@ const HomePage = () => {
     const popular = [];
     const giftGuide = [];
 
-    //puts last 5 listings into popular, then 6 next ones into giftGuide
+    //puts last 6 listings into popular, then 9 next ones into giftGuide
     let count = 0;
     for (let i = listings.length - 1; i > 0; i--) {
-        if(count < 5) popular.push(listings[i]);
-        if(count > 5 && count < 12) giftGuide.push(listings[i])
+        if(count < 6) popular.push(listings[i]);
+        if(count > 6 && count < 16) giftGuide.push(listings[i])
         count++
     }
 
@@ -34,7 +34,7 @@ const HomePage = () => {
             
         <div className='popular-outer'>
             
-            <h1>The popular crowd</h1>
+            <h1>New and rising cows</h1>
         <div className='flex-div'>
             {popular.map(listing => (
                 <div className='outer-div'>
