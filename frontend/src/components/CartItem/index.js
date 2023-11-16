@@ -33,7 +33,7 @@ const CartItem = ({ cartItem }) => {
         const editedCartItem = {
             ...cartItem, quantity: num
         }
-        console.log(editedCartItem);
+
         dispatch(editCartItem(editedCartItem))
     }
  
