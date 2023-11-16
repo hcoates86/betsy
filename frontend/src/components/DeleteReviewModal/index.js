@@ -1,13 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { deleteReview } from '../../store/reviews';
 import { useModal } from "../../context/Modal";
+import { fetchListing } from '../../store/listings';
 
-function DeleteReviewModal({reviewId}) {
+function DeleteReviewModal({reviewId, productId}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const confirmDelete = async () => {
         await dispatch(deleteReview(reviewId));
+        await dispatch(fetchListing(productId));
         closeModal();
     };
   

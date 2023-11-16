@@ -23,8 +23,8 @@ const SingleListing = () => {
 
     const user = useSelector(state => state.session.user);
     const listing = useSelector(state => state.listings.singleListing);
-    const reviewObj = useSelector(state => state.reviews.listing);
-    const reviews = Object.values(reviewObj);
+    // const reviewObj = useSelector(state => state.reviews.listing);
+    const reviews = Object.values(useSelector(state => state.reviews.listing));
     
     useEffect(() => {
         dispatch(fetchListing(productId));
@@ -45,11 +45,16 @@ const SingleListing = () => {
         if (listing.totalReviews !== 1) setPlural('s');
         else setPlural(null)
 
-    }, [listing])
+    }, [listing, reviews])
 
 
     if (!Object.keys(listing).length) return null;
     if (!listing || !listing.price) return null;
+
+    //checks if listing belongs to logged in user
+    let thisUser;
+    if (user.id === listing.userId) thisUser = true;
+    else thisUser = false;
 
     let image;
     if(listing.images && listing.images[0]) image = listing.images[0].url;
@@ -74,7 +79,7 @@ const SingleListing = () => {
 
     }
 
-    //creates dropdown options for the quantity, shown only if quantiy is more than 1
+    //creates dropdown options for the quantity, shown only if quantity is more than 1
 
     const quantityArr = [];
     if (!listing.quantity) quantityArr.push(<option key="0" value="0">0</option>)
@@ -97,9 +102,9 @@ const SingleListing = () => {
 
     }
 
-function datePosted(createdAt) {
-    return `${monthConverter(createdAt.split('-')[1])} ${createdAt.split('-')[2].split(' ')[0]}, ${createdAt.split('-')[0]}`
-}
+    function datePosted(createdAt) {
+        return `${monthConverter(createdAt.split('-')[1])} ${createdAt.split('-')[2].split(' ')[0]}, ${createdAt.split('-')[0]}`
+    }
     
     
 
@@ -126,7 +131,7 @@ function datePosted(createdAt) {
                 </div>
                 
                 
-            {user && 
+            {user && !thisUser &&
             (<div>
             <form onSubmit={handleSubmit} className="add-cart-form">
                 {listing.quantity > 1 &&
@@ -157,7 +162,7 @@ function datePosted(createdAt) {
                 <div className="review-total">
     
                     <h2>{listing.totalReviews} review{plural} {stars}</h2>
-                    {user && 
+                    {user && !thisUser &&
                     <OpenModalButton
                     buttonText="Leave a Review"
                     buttonClass='leave-review-button'
@@ -182,12 +187,12 @@ function datePosted(createdAt) {
                                     <OpenModalButton
                                     buttonText="Delete"
                                     buttonClass="space-right"
-                                    modalComponent={<DeleteReviewModal reviewId={review.id} />}
+                                    modalComponent={<DeleteReviewModal reviewId={review.id} productId={productId} />}
                                     />
 
                                     <OpenModalButton
                                     buttonText="Edit"
-                                    modalComponent={<ReviewModal review={review} type='update'/>}
+                                    modalComponent={<ReviewModal review={review} productId={productId} type='update'/>}
                                     />
                                 </>) : (<></>)}
                         </div>

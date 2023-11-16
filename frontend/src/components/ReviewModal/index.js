@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { editReview, postReview } from '../../store/reviews';
 import { useModal } from "../../context/Modal";
+import { fetchListing } from '../../store/listings';
 
 
 function ReviewModal({review, productId, type}) {
@@ -63,11 +64,14 @@ function ReviewModal({review, productId, type}) {
         if (type === 'create') {
             const newReview = {comment, stars}
             await dispatch(postReview({newReview, productId}));
+            await dispatch(fetchListing(productId));
+
         } 
         
         if (type === 'update') {
             const newReview = {id: review.id, comment, stars}
             await dispatch(editReview(newReview));
+            await dispatch(fetchListing(productId));
         }
 
         closeModal();
