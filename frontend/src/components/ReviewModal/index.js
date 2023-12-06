@@ -9,7 +9,6 @@ function ReviewModal({review, productId, type}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [errors, setErrors] = useState({});
-    const [disabled, setDisabled] = useState(false);
     const [comment, setComment] = useState(review?.comment || '');
     const [stars, setStars] = useState(review?.stars || 0);
     const [star1, setStar1] = useState('☆');
@@ -17,21 +16,24 @@ function ReviewModal({review, productId, type}) {
     const [star3, setStar3] = useState('☆');
     const [star4, setStar4] = useState('☆');
     const [star5, setStar5] = useState('☆');
-
-    
+    const [submitted, setSubmitted] = useState(false);
+    const [hidden, setHidden] = useState('hidden');
     const [buttonClass, setButtonClass] = useState('');
 
     useEffect(() => {
-        disabled ? setButtonClass('button-white') : setButtonClass('button-black')
-    }, [disabled])
+        const errorObj = {};
 
+        if (!stars) errorObj['stars'] = 'Please set a star rating of at least 1.';
+        if (!comment || comment.length < 4) errorObj['comment'] = 'Please leave a review with at least 4 characters.';
+        setErrors(errorObj);
+        if (submitted) {
+            //sets errors visible after clicking submit
+            setHidden('errors')
+        }
 
-    useEffect (() => {
-        if(comment.length >= 4 && stars) setDisabled(false);
-        if(comment.length < 4) setDisabled(true);
-        if(!stars) setDisabled(true);
-    }, [comment, stars])
+    }, [stars, comment, submitted])
     
+    console.log(errors);
 
     useEffect (() => {
         if (stars >= 1 ) setStar1('★');
@@ -61,31 +63,32 @@ function ReviewModal({review, productId, type}) {
     }
 
     const postYourReview = async () => {
-        if (type === 'create') {
-            const newReview = {comment, stars}
-            await dispatch(postReview({newReview, productId}));
-            await dispatch(fetchListing(productId));
+        setSubmitted(true)
+        if (!Object.keys(errors).length){
+            if (type === 'create') {
+                const newReview = {comment, stars}
+                await dispatch(postReview({newReview, productId}));
+                await dispatch(fetchListing(productId));
+            } 
+            
+            if (type === 'update') {
+                const newReview = {id: review.id, comment, stars}
+                await dispatch(editReview(newReview));
+                await dispatch(fetchListing(productId));
+            }
 
-        } 
-        
-        if (type === 'update') {
-            const newReview = {id: review.id, comment, stars}
-            await dispatch(editReview(newReview));
-            await dispatch(fetchListing(productId));
+            closeModal();
         }
-
-        closeModal();
     };
   
 
     return (
         <div className="rev-modal">
         <h1>{title}</h1>
-        <p className='errors'></p>
 
-        <p>{errors.message}</p>
+        {errors.comment && <p className={hidden}>{errors.comment}</p>}
+        {errors.stars && <p className={hidden}>{errors.stars}</p>}
         <textarea 
-            className='' 
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows="8" cols="50"
@@ -101,7 +104,7 @@ function ReviewModal({review, productId, type}) {
             <div className='star-filled' onClick={()=> {setStars(5)}}>{star5}</div>
             <span id='starSpan'> Stars</span>
             </div>
-        <button disabled={disabled} onClick={postYourReview} id='postRevButton' className={buttonClass}>{buttonText}</button>
+        <button onClick={postYourReview} id='postRevButton' className={buttonClass}>{buttonText}</button>
         </div>
     )
 }
