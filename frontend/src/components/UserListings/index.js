@@ -33,13 +33,12 @@ const UserListings = () => {
                         <ListingItem listing={listing}/>
                         <OpenModalButton 
                             buttonText='Delete'
-                            buttonClass=''
+                            buttonClass='space-right'
                             modalComponent={<DeleteListing productId={listing.id} />}
                         />
 
                         <Link to={`/user/listings/${listing.id}`}>
                         <button>
-                            
                             Update
                         </button>
                             </Link>

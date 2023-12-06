@@ -23,8 +23,7 @@ const SingleListing = () => {
 
     const user = useSelector(state => state.session.user);
     const listing = useSelector(state => state.listings.singleListing);
-    // const reviewObj = useSelector(state => state.reviews.listing);
-    const reviews = Object.values(useSelector(state => state.reviews.listing));
+    const reviews = Object.values(useSelector(state => state.reviews));
     
     useEffect(() => {
         dispatch(fetchListing(productId));

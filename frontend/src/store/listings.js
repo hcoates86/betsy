@@ -187,12 +187,6 @@ const listingReducer = (state = initialState, action) => {
             newState = {...state, allListings: {...state.allListings}, singleListing: {...state.singleListing}};
             delete newState.allListings[action.listingId];
             return newState;
-        // case USER_LISTINGS:
-        //     newState = {user:{}};
-        //         action.listings.Listings.forEach(listing => {
-        //             newState.user[listing.id] = listing;
-        //     })
-        //     return {...state, ...newState};
      default:
         return state;
       }

@@ -84,23 +84,30 @@ export const editReview = (review) => async (dispatch) => {
     return data;
 }
 
-const initialState = {listing: {}}
+const initialState = {}
 
 const reviewReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LISTING_REVIEWS:
-            newState = {...state, listing:{}};
+            newState = {...state};
             if (action.reviews) {
-            action.reviews.forEach(review => newState.listing[review.id] = review)}
+            action.reviews.forEach(review => newState[review.id] = review)}
             return newState;
         case DELETE_REVIEW:
-            newState = {...state, listing: {...state.listing}};
-            delete newState.listing[action.reviewId];
+            newState = {...state};
+            delete newState[action.reviewId];
             return newState;
         case POST_REVIEW:
-            newState = {...state, listing: {...state.listing}};
-            newState.listing[action.review.id] = action.review;
+            newState = {...state};
+            newState[action.review.id] = action.review;
+            return newState;
+        case EDIT_REVIEW:
+            newState = {...state};
+            // newState[action.review.id] = {user: {...state[rId]['user']}}
+            newState[action.review.id] = action.review;
+            newState[action.review.id].user = {...state[action.review.id].user};
+            // newState.rId.user = {...state.rId.user};
             return newState;
         default:
             return state;
