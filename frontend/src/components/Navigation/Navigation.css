@@ -20,8 +20,12 @@
     margin: 5px;
     padding: 0;
     text-align: center;
-    width: 9.375rem;
-    height: 3.75rem;
+    width: 9.3rem;
+    height: 4rem;
+    
+  }
+
+  .profile-display {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,4 +133,9 @@
 
 .login-signup:hover {
   background-color: gainsboro;
+}
+
+
+#hidden-prof {
+  display: hidden;
 }

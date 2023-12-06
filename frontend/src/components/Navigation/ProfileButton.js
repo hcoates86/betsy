@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
     dispatch(clearCartAction())
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown" + (showMenu ? " profile-display" : " hidden");
 
   return (
     <>
