@@ -33,10 +33,16 @@ const UserListings = () => {
                         <ListingItem listing={listing}/>
                         <OpenModalButton 
                             buttonText='Delete'
-                            buttonClass='no-button sixteen'
+                            buttonClass=''
                             modalComponent={<DeleteListing productId={listing.id} />}
                         />
-                        <Link to={`/user/listings/${listing.id}`}>Update</Link>
+
+                        <Link to={`/user/listings/${listing.id}`}>
+                        <button>
+                            
+                            Update
+                        </button>
+                            </Link>
                 
                     </div>
                 ))}
