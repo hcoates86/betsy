@@ -169,7 +169,7 @@ const SingleListing = () => {
                     />
                     }
                 </div>
-                    {reviews.map(review => (
+                    {reviews.reverse().map(review => (
                     <div className="single-review" key={review.id}>
                         <p>{returnStars(review.stars)}</p>
                         <p>{review.comment}</p>
@@ -178,7 +178,7 @@ const SingleListing = () => {
                             
                             <img className='review-profile' src={review.user?.picture || noFarmer} alt={review.user?.username}></img>
                             <p className="review-userinfo">{review.user?.username}</p>
-                            {/* <p className="review-userinfo">{monthConverter(review.createdAt.split('-')[1])} {review.createdAt.split('-')[2].split(' ')[0]}, {review.createdAt.split('-')[0]}</p> */}
+
                             <p className="review-userinfo">{datePosted(review.createdAt)}</p>
                             { review.userId === user?.id ? 
                                 (
