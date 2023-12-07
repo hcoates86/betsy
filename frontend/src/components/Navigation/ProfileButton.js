@@ -48,27 +48,30 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? " profile-display" : " hidden");
+  const ulClassName2 = "profile-dropdown2" + (showMenu ? " profile-display" : " hidden");
 
   return (
     <>
       <button className='no-button' onClick={openMenu}>
         {user 
-        ? (<img className='profile' src={user.picture || noFarmer} alt={user.username}></img>)
+        ? (
+        <img className='profile' src={user.picture || noFarmer} alt={user.username}></img>
+        )
       : (<i className="fas fa-user-circle" />)
         }
       </button>
-      <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
+      <ul className={ulClassName} ref={ulRef}>
+
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button className='logout-button' onClick={logout}>Log Out</button>
             </li>
-          </>
+          </ul>
         ) : (
-          <>
+          <ul className={ulClassName2} ref={ulRef}>
             <OpenModalMenuItem
               itemText="Log In"
               onItemClick={closeMenu}
@@ -81,9 +84,9 @@ function ProfileButton({ user }) {
               modalComponent={<SignupFormModal />}
               className="login-signup"
             />
-          </>
-        )}
+
       </ul>
+        )}
     </>
   );
 }

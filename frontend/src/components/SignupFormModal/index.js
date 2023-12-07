@@ -18,7 +18,7 @@ function SignupFormModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [disabled, setDisabled] = useState(true);
-  const [buttonClass, setButtonClass] = useState('button-white');
+  const [buttonClass, setButtonClass] = useState('button-disabled');
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -39,7 +39,7 @@ function SignupFormModal() {
 
     if (!email || !firstName || !lastName || !confirmPassword || username.length < 4 || password.length < 6 || confirmPassword.length < 6) {
         setDisabled(true)
-        setButtonClass('button-white');
+        setButtonClass('button-disabled');
       } else {
         setDisabled(false);
         setButtonClass('button-black')

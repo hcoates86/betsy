@@ -40,6 +40,7 @@ function LoginFormModal() {
         <label>
           
           <input
+            className="login-input"
             type="text"
             placeholder="Username or Email"
             value={credential}
@@ -49,6 +50,7 @@ function LoginFormModal() {
         </label>
         <label>
           <input
+            className="login-input"
             type="password"
             placeholder="Password"
             value={password}
@@ -59,7 +61,7 @@ function LoginFormModal() {
         {errors.credential && (
           <p>{errors.credential}</p>
         )}
-        <button type="submit">Log In</button>
+        <button className='login-button' type="submit">Log In</button>
       </form>
       <button className='button-demo' onClick={demo}>Demo User</button>
     </div>

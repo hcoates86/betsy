@@ -51,6 +51,12 @@ button {
     border: none;
 }
 
+.button-disabled {
+    color: rgb(168, 168, 168);
+    background-color: gainsboro;
+    border: 0;
+}
+
 .flex-div {
     display: flex;
     justify-content: center;

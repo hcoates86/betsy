@@ -16,16 +16,20 @@
 
 .signup-input{
     display: inline-block;
-    border: 2px solid black;
+    border: 1px solid lightgray;
     padding: 12px;
     border-radius: 5px;
     font-size: 14px;
     width: 350px;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+    background-color: aliceblue;
+    box-shadow: 0px 1px 4px 0px gainsboro;
 }
 
 #signup-button{
     padding: 12px;
     width: 350px;
     margin: 15px;
+    font-weight: 500;
+    font-size: 1em;
 }
