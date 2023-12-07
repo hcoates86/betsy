@@ -33,7 +33,6 @@ function ReviewModal({review, productId, type}) {
 
     }, [stars, comment, submitted])
     
-    console.log(errors);
 
     useEffect (() => {
         if (stars >= 1 ) setStar1('★');

@@ -75,4 +75,11 @@
 
 .leave-review-button {
     margin-bottom: 1.3rem;
+    font-weight: 500;
+    font-size: 1em;
+    padding: .6em 1.5em .6em 1.5em;
+}
+
+.add-cart-button {
+    padding: .6em 1.5em .6em 1.5em;
 }

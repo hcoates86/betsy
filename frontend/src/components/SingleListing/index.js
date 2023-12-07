@@ -144,7 +144,7 @@ const SingleListing = () => {
                 </>
                 }
 
-                <button className='button-black width' type="submit">Add to Cart</button>
+                <button className='button-black width button-font add-cart-button' type="submit">Add to Cart</button>
 
             </form>
             </div>)}

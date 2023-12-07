@@ -24,7 +24,7 @@ a {
     background-color: white;
     cursor: pointer;
     border: 2px solid black;
-    border-radius: 8px;
+
 }
 
 .button-black {
@@ -32,7 +32,7 @@ a {
     background-color: black;
     cursor: pointer;
     border: 2px solid black;
-    border-radius: 7px;
+
 }
 
 button {
@@ -40,7 +40,7 @@ button {
     background-color: black;
     cursor: pointer;
     border: 2px solid black;
-    border-radius: 7px;
+    border-radius: 24px;
     padding: 2px 1em;
     min-width: 6em;
 }
@@ -81,8 +81,18 @@ text-align: center;
 
 textarea {
     resize: none;
+    padding-left: .5em;
 }
 
 .margin-bottom {
     margin-bottom: .5rem;
+}
+
+.p-formatting {
+    margin: 0;
+}
+
+.button-font {
+    font-weight: 500;
+    font-size: 1em;
 }

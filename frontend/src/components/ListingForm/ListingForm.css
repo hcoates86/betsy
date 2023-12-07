@@ -6,7 +6,6 @@
 .cancel-post-div > button {
     margin-right: 2rem;
     margin-left: 2rem;
-    font-size: .9rem;
 }
 
 .list-form-box {
@@ -51,7 +50,7 @@ label {
     position: relative;
     left: 20px;
     margin-left: 10px;
-    padding: 3px;
+    padding: 3px 3px 3px .4em;
     border-radius: 3px;
 
 }
@@ -92,4 +91,11 @@ label {
 
 #price-input {
     width: 6rem;
+}
+
+.button-listing {
+    font-weight: 500;
+    font-size: 1em;
+    padding: .6em 1.5em .6em 1.5em;
+    width: 9rem;
 }

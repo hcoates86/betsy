@@ -198,8 +198,8 @@ const ListingForm = () => {
             </div>
 
             <div className='cancel-post-div'>
-            <button className='button-white' onClick={cancel}>Cancel</button>
-            <button className='button-black' type="submit">{buttonText}</button>
+            <button className='button-white button-listing' onClick={cancel}>Cancel</button>
+            <button className='button-black button-listing' type="submit">{buttonText}</button>
             </div>
         </form>
         </div>
