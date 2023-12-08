@@ -1,3 +1,8 @@
 .space-right {
     margin-right: 5px;
 }
+
+.listing-button-div {
+    margin-top: .5em;
+    text-align: center;
+}

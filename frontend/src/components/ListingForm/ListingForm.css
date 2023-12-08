@@ -80,6 +80,7 @@ label {
     border-color: gainsboro;
     position: relative;
     left: 3em;
+    border-radius: 3px;
 }
 
 #price-div {

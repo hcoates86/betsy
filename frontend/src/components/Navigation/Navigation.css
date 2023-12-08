@@ -76,7 +76,10 @@
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0px 2px 5px gray;
+    box-sizing: border-box;
+
 }
+
 
 .fa-bars {
   font-size: large;
@@ -169,4 +172,15 @@
   margin-left: .5em;
   font-size: larger;
   vertical-align: .3em;
+}
+
+.category-li {
+
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.category-li:hover {
+  background-color: gainsboro;
+  text-decoration: underline;
 }

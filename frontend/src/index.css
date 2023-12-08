@@ -102,3 +102,9 @@ textarea {
     font-weight: 500;
     font-size: 1em;
 }
+
+.button-delete {
+    padding: 8px;
+    font-weight: 500;
+    font-size: 1em;
+  }

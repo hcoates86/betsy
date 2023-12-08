@@ -5,6 +5,7 @@ import ListingItem from '../ListingItem';
 import OpenModalButton from '../OpenModalButton';
 import DeleteListing from '../DeleteListing';
 import { Link } from 'react-router-dom';
+import "./UserListings.css"
 
 
 const UserListings = () => {
@@ -31,17 +32,19 @@ const UserListings = () => {
                 {listings.filter(listing => listing.userId === user.id).map(listing => (
                     <div key={listing.id}>
                         <ListingItem listing={listing}/>
-                        <OpenModalButton 
-                            buttonText='Delete'
-                            buttonClass='space-right'
-                            modalComponent={<DeleteListing productId={listing.id} />}
-                        />
+                        <div className='listing-button-div'>
+                            <OpenModalButton 
+                                buttonText='Delete'
+                                buttonClass='space-right'
+                                modalComponent={<DeleteListing productId={listing.id} />}
+                            />
 
-                        <Link to={`/user/listings/${listing.id}`}>
-                        <button>
-                            Update
-                        </button>
-                            </Link>
+                            <Link to={`/user/listings/${listing.id}`}>
+                            <button>
+                                Update
+                            </button>
+                                </Link>
+                        </div>
                 
                     </div>
                 ))}

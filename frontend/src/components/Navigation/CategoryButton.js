@@ -28,7 +28,7 @@ function CategoryButton() {
 
   const closeMenu = () => setShowMenu(false);
 
-  const ulClassName = "category hover-focus" + (showMenu ? "" : " hidden");
+  const ulClassName = "category" + (showMenu ? "" : " hidden");
 
   return (
     <>
@@ -37,17 +37,18 @@ function CategoryButton() {
         <i className="fa-solid fa-bars"></i> <span className="category-text">&nbsp; Categories</span>
       </button>
     </div>
+    
       <ul className={ulClassName} ref={ulRef}>
-        <li>
+        <li className="category-li">
           <NavLink exact to="/category/1">Dairy</NavLink>          
         </li>
-        <li>
+        <li className="category-li">
           <NavLink className='' exact to="/category/2">Beef</NavLink>
         </li>
-        <li>
+        <li className="category-li">
           <NavLink className='' exact to="/category/3">Other</NavLink>
         </li>
-        <li>
+        <li className="category-li">
         <NavLink id='all-cow' exact to="/listings">All Cows</NavLink>
         </li>
       </ul>
