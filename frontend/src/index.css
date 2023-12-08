@@ -88,6 +88,9 @@ text-align: center;
 textarea {
     resize: none;
     padding-left: .5em;
+}
+
+.text-review-modal {
     font-size: 1em;
 }
 

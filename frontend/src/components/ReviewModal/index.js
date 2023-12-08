@@ -88,6 +88,7 @@ function ReviewModal({review, productId, type}) {
         {errors.comment && <p className={hidden}>{errors.comment}</p>}
         {errors.stars && <p className={hidden}>{errors.stars}</p>}
         <textarea 
+            className='text-review-modal'
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows="8" cols="50"
