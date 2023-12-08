@@ -24,7 +24,7 @@ function Navigation({ isLoaded }){
           <CategoryButton />
         </li>
         <li className='hover-focus'>
-        <NavLink className='five-padding' exact to="/about">About</NavLink>
+        <NavLink className='nav-button-padding' exact to="/about">About</NavLink>
         </li>
       </div>
 
@@ -32,10 +32,10 @@ function Navigation({ isLoaded }){
       {sessionUser && (
         <>
         <li className='right-spacer hover-focus'>
-          <NavLink className='five-padding' exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
+          <NavLink className='nav-button-padding' exact to='/new-listing'><i className="fa-solid fa-cow"></i><i className="fa-solid fa-plus fa-2xs"></i></NavLink>
         </li>
         <li className='right-spacer hover-focus'>
-          <NavLink className='five-padding' exact to='/user/listings'>My Listings</NavLink>
+          <NavLink className='nav-button-padding' exact to='/user/listings'>My Listings</NavLink>
         </li>
         <li className='hover-focus right-spacer'>
           <NavLink className='cart-padding' exact to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>

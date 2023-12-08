@@ -19,3 +19,8 @@
     margin: auto;
     font-size: 1.5em;
 }
+
+.screenshot {
+    width: 70%;
+    margin-top: 1em;
+}

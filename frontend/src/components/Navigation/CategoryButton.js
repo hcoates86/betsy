@@ -33,7 +33,7 @@ function CategoryButton() {
   return (
     <>
     <div className="hover-focus">
-      <button className='no-button' onClick={openMenu}>
+      <button className='no-button nav-button-padding' onClick={openMenu}>
         <i className="fa-solid fa-bars"></i> <span className="category-text">&nbsp; Categories</span>
       </button>
     </div>
