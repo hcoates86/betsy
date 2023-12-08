@@ -131,7 +131,8 @@
   width: 1.875rem;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1px solid white;
+  outline: 2px solid black;
 }
 
 .fa-user-circle {
@@ -156,4 +157,16 @@
 
 .logout-button {
   margin-top: .5rem;
+}
+
+.profile-arrow {
+  margin-left: .5em;
+  font-size: larger;
+  vertical-align: .5em;
+}
+
+.logged-out-arrow {
+  margin-left: .5em;
+  font-size: larger;
+  vertical-align: .3em;
 }

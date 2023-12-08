@@ -83,3 +83,28 @@
 .add-cart-button {
     padding: .6em 1.5em .6em 1.5em;
 }
+
+.quantity-input {
+    border: 1px solid lightgray;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 350px;
+    margin-bottom: 1em;
+    box-shadow: 0px 1px 4px 0px gainsboro;
+}
+
+.seller-text {
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .8em;
+}
+
+.quantity-text {
+    font-size: .8em;
+    margin-right: auto;
+}
+
+.price-div {
+    margin-bottom: 2rem;
+}

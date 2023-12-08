@@ -54,10 +54,14 @@ function ProfileButton({ user }) {
     <>
       <button className='no-button' onClick={openMenu}>
         {user 
-        ? (
+        ? (<>
         <img className='profile' src={user.picture || noFarmer} alt={user.username}></img>
+        <i className="fa-solid fa-caret-down profile-arrow" />
+        </>
         )
-      : (<i className="fas fa-user-circle" />)
+      : (<>
+      <i className="fas fa-user-circle" /><i className="fa-solid fa-caret-down logged-out-arrow" />
+      </>)
         }
       </button>
         {user ? (

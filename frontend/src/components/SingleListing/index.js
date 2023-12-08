@@ -125,7 +125,7 @@ const SingleListing = () => {
                 <div className="price-div">
                     <h1>${price}</h1>
                     <p>{listing.name}</p>
-                    <p>Seller: {listing.seller?.username}</p>
+                    <p className="seller-text">{listing.seller?.username}</p>
 
                 </div>
                 
@@ -135,9 +135,9 @@ const SingleListing = () => {
             <form onSubmit={handleSubmit} className="add-cart-form">
                 {listing.quantity > 1 &&
                 <>
-                <label className="one-space-down">Quantity</label>
+                <label className="one-space-down quantity-text">Quantity</label>
                         
-                <select className='one-space-down width' name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
+                <select className='one-space-down width quantity-input' name="quantity" id="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
 
                 {quantityArr}
                 </select>
