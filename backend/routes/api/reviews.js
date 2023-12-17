@@ -23,18 +23,6 @@ router.put('/:reviewId', requireAuth, properAuth, async (req, res, next) => {
     const { comment, stars } = req.body;
     const currReview = await Review.findByPk(req.params.reviewId);
 
-    //check if it works
-    // const errors = {};
-    // const err = new Error("Validation Error");
-    // err.title = "Body validation error";
-    // err.status = 400;
-    // if (!comment) errors['comment'] = "Review text is required";
-    // if (!stars || typeof stars !== 'number' || stars < 1 || stars > 5) errors['stars'] = "Stars must be a number from 1 to 5";
-    // if (Object.keys(errors).length) {
-    //     err.errors = errors;
-    //     next(err)
-    // }
-
     await currReview.set({ comment, stars })
     await currReview.save()
 
