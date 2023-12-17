@@ -97,9 +97,9 @@ router.post('/:productId', async (req, res, next) => {
 })
 
 //edit quantity in cart
-router.put('/:cartId', async (req, res, next) => {
+router.put('/:productId', async (req, res, next) => {
     const { quantity } = req.body;
-    const cartItem = await CartItem.findByPk(req.params.cartId);
+    const cartItem = await CartItem.findByPk(req.params.productId);
     const listing = await cartItem.getProductListing();
     const err = new Error("Insufficient quantity remaining");
     err.status = 400;
@@ -115,8 +115,8 @@ router.put('/:cartId', async (req, res, next) => {
 })
 
 //delete item from cart
-router.delete('/:cartId', async (req, res, next) => {
-    const cartItem = await CartItem.findByPk(req.params.cartId);
+router.delete('/:productId', async (req, res, next) => {
+    const cartItem = await CartItem.findByPk(req.params.productId);
     await cartItem.destroy();
     res.status(200)
     res.json("Removed item from cart")

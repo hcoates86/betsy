@@ -48,19 +48,6 @@ router.get('/', async (req, res, next) => {
 
         const seller = await currentProduct.getUser({ attributes: ['id', 'username', 'picture']});
 
-        // const sellerListings = await seller.getProductListings();
-
-         // let totalReviews = 0;
-    // let totalStars = 0;
-
-        // sellerListings.map(async listing => {
-        //     const sellerReviews = await listing.countReviews();
-        //     const reviewStars = await Review.sum('stars', { where: { productId: listing.id }});
-        //     totalStars += reviewStars;
-        //     totalReviews += sellerReviews;
-        // })
-
-
         if (!reviewTotal) avgStars = 0;
         else {
             const average = await Review.sum('stars', { where: { productId: product.id }});
@@ -171,8 +158,6 @@ router.get('/:productId/reviews', async (req, res, next) => {
 
 
 })
-
-//get all reviews for a user's listings
 
 //post review to a specific listing
 router.post('/:productId/reviews', requireAuth, async (req, res, next) => {
