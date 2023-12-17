@@ -112,9 +112,9 @@
   padding-right: 6px;
   padding-top: 1px;
   padding-bottom: 1px;
-  position: relative;
-  top: -14px;
-  right: 13px;
+  position: absolute;
+  top: 9px;
+  right: 140px;
 }
 
 .fa-cart-shopping, .fa-cow {
