@@ -71,5 +71,5 @@
 * Deletes a Product Listing from the cart
 
 ### Category
-`GET /api/category/categoryId/`
+`GET /api/category/:categoryId/`
 * View all Product Listings in a Category
